@@ -20,6 +20,9 @@ Note: Our project is based on MMCV, but you needn't install it currently.
 **Step0.** set your Python environment.
 
 >git clone https://github.com/XiaoXiao-Woo/PanCollection
+
+Then, 
+
 > python setup.py develop
 
 **Step1.**
