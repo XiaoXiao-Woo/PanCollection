@@ -1,3 +1,8 @@
+# GPL License
+# Copyright (C) 2021 , UESTC
+# All Rights Reserved
+# @Author  : Xiao Wu, LiangJian Deng
+# @reference:
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function

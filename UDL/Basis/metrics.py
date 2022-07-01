@@ -1,3 +1,8 @@
+# GPL License
+# Copyright (C) 2021 , UESTC
+# All Rights Reserved
+# @Author  : Xiao Wu, LiangJian Deng
+# @reference:
 import torch
 import numpy as np
 import math

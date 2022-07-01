@@ -1,3 +1,8 @@
+# GPL License
+# Copyright (C) 2021 , UESTC
+# All Rights Reserved
+# @Author  : Xiao Wu, LiangJian Deng
+# @reference:
 from torch import nn
 import torch
 from torch import distributed as dist

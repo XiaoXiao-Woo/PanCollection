@@ -1,3 +1,8 @@
+# GPL License
+# Copyright (C) 2021 , UESTC
+# All Rights Reserved
+# @Author  : Xiao Wu, LiangJian Deng
+# @reference:
 # Copyright (c) Open-MMLab. All rights reserved.
 import ast
 import copy

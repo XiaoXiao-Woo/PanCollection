@@ -1,3 +1,8 @@
+# GPL License
+# Copyright (C) 2021 , UESTC
+# All Rights Reserved
+# @Author  : Xiao Wu, LiangJian Deng
+# @reference:
 import os
 import torch
 import torch.backends.cudnn as cudnn

@@ -1,13 +1,14 @@
+# GPL License
+# Copyright (C) 2021 , UESTC
+# All Rights Reserved
+# @Author  : Xiao Wu, LiangJian Deng
+# @reference:
 import torch
 import torch.nn as nn
 import math
 from UDL.Basis.variance_sacling_initializer import variance_scaling_initializer
 from UDL.pansharpening.models import PanSharpeningModel
-"""
-CHANGES: no padding in conv_layers
-    1. rows 43-48: padding set to zero
-    2. rows 54-54: prototype of function forward is changed (takes x=cat(lms,pan) only)
-"""
+
 class PNN(nn.Module):
     def __init__(self, spectral_num, criterion, channel=64):
         super(PNN, self).__init__()

@@ -1,14 +1,8 @@
-'''
-[Flops]: ConvTranspose2d is not supported!
-[Memory]: ConvTranspose2d is not supported!
-===============================================================================================================================================
-Total params: 83,024
------------------------------------------------------------------------------------------------------------------------------------------------
-Total memory: 7.25MB
-Total MAdd: 646.84MMAdd
-Total Flops: 323.91MFlops
-Total MemR+W: 14.57MB
-'''
+# GPL License
+# Copyright (C) 2021 , UESTC
+# All Rights Reserved
+# @Author  : Xiao Wu, LiangJian Deng
+# @reference:
 import torch.nn as nn
 import torch.optim as optim
 from .model_pannet import PanNet

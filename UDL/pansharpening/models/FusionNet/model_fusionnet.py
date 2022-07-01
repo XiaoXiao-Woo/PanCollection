@@ -1,6 +1,8 @@
-# This is a pytorch version for the work of PanNet
-# YW Jin, X Wu, LJ Deng(UESTC);
-# 2020-09;
+# GPL License
+# Copyright (C) 2021 , UESTC
+# All Rights Reserved
+# @Author  : Xiao Wu, LiangJian Deng
+# @reference:
 
 import torch
 import torch.nn as nn
