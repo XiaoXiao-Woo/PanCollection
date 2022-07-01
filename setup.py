@@ -23,6 +23,11 @@ setup(
         "imageio",
         "colorlog",
         "scipy",
-        "timm"
+        "timm",
+        "h5py",
+        "regex",
+        "packaging",
+        "colorlog",
+        "pyyaml"
     ],
 )

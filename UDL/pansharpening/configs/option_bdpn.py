@@ -24,7 +24,7 @@ class parser_args(TaskDispatcher, name='BDPN'):
         parser.add_argument('--lr_scheduler', default=True, type=bool)
         parser.add_argument('--samples_per_gpu', default=32, type=int,  # 8
                             metavar='N', help='mini-batch size (default: 256)')
-        parser.add_argument('--print-freq', '-p', default=200, type=int,
+        parser.add_argument('--print-freq', '-p', default=1, type=int,
                             metavar='N', help='print frequency (default: 10)')
         parser.add_argument('--epochs', default=1600, type=int)
         parser.add_argument('--workers_per_gpu', default=0, type=int)
@@ -51,8 +51,8 @@ class parser_args(TaskDispatcher, name='BDPN'):
 
         cfg.merge_args2cfg(args)
         print(cfg.pretty_text)
-        # cfg.workflow = [('train', 50), ('val', 1)]
-        cfg.workflow = [('val', 1)]
+        cfg.workflow = [('train', 50), ('val', 1)]
+        # cfg.workflow = [('val', 1)]
         # cfg.workflow = [('train', 50)]
         self._cfg_dict = cfg
 
