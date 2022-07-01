@@ -19,8 +19,8 @@ Note: Our project is based on MMCV, but you needn't install it currently.
 ## Quick Start
 **Step0.** set your Python environment.
 
->git clone https://github.com/XiaoXiao-Woo/PanCollection)
-python setup.py develop
+>git clone https://github.com/XiaoXiao-Woo/PanCollection
+> python setup.py develop
 
 **Step1.**
 Download Datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homepage](PanCollection for Survey Paper (liangjiandeng.github.io)](https://liangjiandeng.github.io/PanCollection.html)). Put it with the following format.
