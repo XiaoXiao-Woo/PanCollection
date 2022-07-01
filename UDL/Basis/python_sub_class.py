@@ -1,3 +1,8 @@
+# GPL License
+# Copyright (C) 2021 , UESTC
+# All Rights Reserved
+# @Author  : Xiao Wu, LiangJian Deng
+# @reference:
 import torch
 from UDL.pansharpening.evaluation.ps_evaluate import analysis_accu, save_results
 from UDL.Basis.config import Config

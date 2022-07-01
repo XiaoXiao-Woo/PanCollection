@@ -1,3 +1,8 @@
+# GPL License
+# Copyright (C) 2021 , UESTC
+# All Rights Reserved
+# @Author  : Xiao Wu, LiangJian Deng
+# @reference:
 __copyright__ = 'Copyright (C) 2018 Swall0w'
 __version__ = '0.0.7'
 __author__ = 'Swall0w'

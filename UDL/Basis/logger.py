@@ -1,9 +1,7 @@
 # GPL License
 # Copyright (C) 2021 , UESTC
 # All Rights Reserved
-#
-# @Time    : 2022/1/24 11:03
-# @Author  : Xiao Wu
+# @Author  : Xiao Wu, LiangJian Deng
 # @reference:
 # Copyright (c) OpenMMLab. All rights reserved.
 import json

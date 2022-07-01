@@ -1,3 +1,8 @@
+# GPL License
+# Copyright (C) 2021 , UESTC
+# All Rights Reserved
+# @Author  : Xiao Wu, LiangJian Deng
+# @reference:
 from typing import Union, Optional, List, Tuple, Text, BinaryIO
 from PIL import Image
 import cv2
