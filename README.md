@@ -3,7 +3,7 @@
 
 [English](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README.md) | [简体中文](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README_zh.md)
 
-This repository is the official PyTorch implementation of “基于卷积神经网络的遥感图像全色锐化进展综述及相关数据集发布” ([paper](), [homepage](https://liangjiandeng.github.io/PanCollection.html).
+This repository is the official PyTorch implementation of “基于卷积神经网络的遥感图像全色锐化进展综述及相关数据集发布” ([paper](), [homepage](https://liangjiandeng.github.io/PanCollection.html)).
 
 * Release the PanCollection of the pan-sharpening training-test dataset of related satellites (such as WorldView-3, QuickBird, GaoFen2, WorldView-2 satellites); 
 * Release the Python code unified writing framework based on the Pytorch deep learning library, which is convenient for later scholars;
