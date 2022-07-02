@@ -91,8 +91,10 @@ Note that when you add a new model into PanCollection, you need to update PanCol
 
 * if you want to add customized tasks, you need to update:
 
-> Put model_*newModelName* and *newModelName*_main in PanCollection/UDL/*taskName*/models.
-> Create a new folder of PanCollection/UDL/*taskName*/configs to put option__*newModelName*.
+```
+Put model_*newModelName* and *newModelName*_main in PanCollection/UDL/*taskName*/models.
+Create a new folder of PanCollection/UDL/*taskName*/configs to put option__*newModelName*.
+```
 
 >PanCollection/UDL/AutoDL/`__init__.py`.
 >add a class in PanCollection/UDL/Basis/python_sub_class.py, like this:
