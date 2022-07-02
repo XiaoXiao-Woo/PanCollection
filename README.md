@@ -7,7 +7,7 @@ This repository is the official PyTorch implementation of “基于卷积神经�
 
 * Release the PanCollection of the pan-sharpening training-test dataset of related satellites (such as WorldView-3, QuickBird, GaoFen2, WorldView-2 satellites); 
 * Release the Python code based on the unified Pytorch framework , which is convenient for later scholars;
-* Release a unified Pansharpening traditional-deep learning method ( including MATLAB test software package), which is convenient for later scholars to conduct fair tests;
+* Release a unified Pansharpening traditional-deep learning method (including MATLAB test software package), which is convenient for later scholars to conduct fair tests;
 
 ## Features
 
