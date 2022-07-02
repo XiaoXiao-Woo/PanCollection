@@ -71,7 +71,7 @@ Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homep
   
 	cfg.eval = True or cfg.workflow = [('val', 1)]
 
-**Step4**. How to customize the code
+**Step4**. How to customize the code.
 
 One model is divided into three parts.
 
@@ -79,9 +79,9 @@ One model is divided into three parts.
 
 2. Set model, loss, optimizer, scheduler. see in folder of PanCollection/UDL/pansharpening/models/*modelName*_main.py.
 
-3. write a new model in folder of PanCollection/UDL/pansharpening/models/*modelName*/model_*modelName*.py.
+3. Write a new model in folder of PanCollection/UDL/pansharpening/models/*modelName*/model_*modelName*.py.
 
-Note that when you add a new model into PanCollection, you need to update  PanCollection/UDL/pansharpening/models/`__init__.py` and add option_*modelName*.py.
+Note that when you add a new model into PanCollection, you need to update PanCollection/UDL/pansharpening/models/`__init__.py` and add option_*modelName*.py.
 
 **Others**
 * if you want to add customized datasets, you need to update:
