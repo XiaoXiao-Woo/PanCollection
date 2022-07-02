@@ -75,9 +75,9 @@ Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homep
 
 One model is divided into three parts.
 
-1. Option_*modelName*.py records hyperparameter configures in folder of PanCollection/UDL/pansharpening/configs. For example, you can load pretrained model by setting model_path = "your_model_path" or cfg.resume_from = "your_model_path".
+1. Record hyperparameter configurations in folder of PanCollection/UDL/pansharpening/configs/Option_*modelName*.py. For example, you can load pretrained model by setting model_path = "your_model_path" or cfg.resume_from = "your_model_path".
 
-2. Set model, loss, optimizer, scheduler. see in folder of PanCollection/UDL/pansharpening/models/*modelName*_main.py.
+2. Set model, loss, optimizer, scheduler in folder of PanCollection/UDL/pansharpening/models/*modelName*_main.py.
 
 3. Write a new model in folder of PanCollection/UDL/pansharpening/models/*modelName*/model_*modelName*.py.
 
