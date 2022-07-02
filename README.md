@@ -6,7 +6,7 @@
 This repository is the official PyTorch implementation of “基于卷积神经网络的遥感图像全色锐化进展综述及相关数据集发布” ([paper](), [homepage](https://liangjiandeng.github.io/PanCollection.html)).
 
 * Release the PanCollection of the pan-sharpening training-test dataset of related satellites (such as WorldView-3, QuickBird, GaoFen2, WorldView-2 satellites); 
-* Release the Python code unified writing framework based on the Pytorch deep learning library, which is convenient for later scholars;
+* Release the Python code based on the unified Pytorch framework , which is convenient for later scholars;
 * Release a unified Pansharpening traditional-deep learning method ( including MATLAB test software package), which is convenient for later scholars to conduct fair tests;
 
 ## Features
