@@ -17,7 +17,7 @@ This repository is the official PyTorch implementation of “基于卷积神经�
 * NVIDIA GPU + CUDA
 * Run `python setup.py develop`
 
-Note: Our project is based on MMCV, but you needn't install it currently.
+Note: Our project is based on MMCV, but you needn't to install it currently.
 
 ## Quick Start
 **Step0.** set your Python environment.
@@ -73,7 +73,7 @@ Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homep
 
 **Step4**. How to customize the code.
 
-One model is divided into three parts.
+One model is divided into three parts:
 
 1. Record hyperparameter configurations in folder of `PanCollection/UDL/pansharpening/configs/Option_modelName.py`. For example, you can load pretrained model by setting __model_path__ = "your_model_path" or __cfg.resume_from__ = "your_model_path".
 
