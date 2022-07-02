@@ -59,7 +59,7 @@ Then,
 
 	run_pansharpening.py
   
-	where arch='BDPN', and option_bdpn.py has: 
+	where arch='BDPN', and configs/option_bdpn.py has: 
   
 	__cfg.eval__ = False, 
   
