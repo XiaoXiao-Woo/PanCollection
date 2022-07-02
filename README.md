@@ -29,7 +29,7 @@ Then,
 > python setup.py develop
 
 **Step1.**
-Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homepage](PanCollection for Survey Paper (liangjiandeng.github.io)](https://liangjiandeng.github.io/PanCollection.html)). Put it with the following format.
+Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homepage](https://liangjiandeng.github.io/PanCollection.html). Put it with the following format.
 
 ```
 |-$ROOT/Datasets
