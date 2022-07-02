@@ -86,15 +86,17 @@ Note that when you add a new model into PanCollection, you need to update PanCol
 **Others**
 * if you want to add customized datasets, you need to update:
 
->PanCollection/UDL/AutoDL/`__init__.py`.
->PanCollection/UDL/pansharpening/common/psdata.py.
+```
+PanCollection/UDL/AutoDL/__init__.py.
+PanCollection/UDL/pansharpening/common/psdata.py.
+```
 
 * if you want to add customized tasks, you need to update:
 
 ```
-1.Put model_*newModelName* and *newModelName*_main in PanCollection/UDL/*taskName*/models.
-2.Create a new folder of PanCollection/UDL/*taskName*/configs to put option__*newModelName*.
-3.Update PanCollection/UDL/AutoDL/`__init__.py`.
+1.Put model_newModelName and newModelName_main in PanCollection/UDL/taskName/models.
+2.Create a new folder of PanCollection/UDL/taskName/configs to put option__newModelName.
+3.Update PanCollection/UDL/AutoDL/__init__.py.
 4.Add a class in PanCollection/UDL/Basis/python_sub_class.py, like this:
 class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
 ```
