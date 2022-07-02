@@ -29,7 +29,9 @@ Then,
 > python setup.py develop
 
 **Step1.**
-Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homepage](https://liangjiandeng.github.io/PanCollection.html). Put it with the following format.
+* Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homepage](https://liangjiandeng.github.io/PanCollection.html). Put it with the following format. 
+
+* Verify the dataset path in `PanCollection/UDL/Basis/option.py`, or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
 
 ```
 |-$ROOT/Datasets
@@ -52,8 +54,6 @@ Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homep
 > python run_pansharpening.py
 
 **step3.** How to train/test the code.
-
-* Verify the dataset path in `PanCollection/UDL/Basis/option.py`, or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
 
 * A training example：
 
