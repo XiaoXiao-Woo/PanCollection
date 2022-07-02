@@ -47,13 +47,13 @@ Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homep
 │   │   │   ├── ...
 ```
 
-**Step2.** Open PanCollection/UDL/pansharpening,  run the following code:
+**Step2.** Open `PanCollection/UDL/pansharpening`,  run the following code:
 
 > python run_pansharpening.py
 
 **step3.** How to train/test the code.
 
-* Verify the dataset path in PanCollection/UDL/Basis/option.py, or you can print the output of run_pansharpening.py, then set cfg.data_dir to your dataset path.
+* Verify the dataset path in `PanCollection/UDL/Basis/option.py`, or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
 
 * A training example：
 
@@ -61,27 +61,27 @@ Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homep
   
 	where arch='BDPN', and option_bdpn.py has: 
   
-	cfg.eval = False, 
+	__cfg.eval__ = False, 
   
-	cfg.workflow = [('train', 50), ('val', 1)], cfg.dataset = {'train': 'wv3', 'val': 'wv3_multiExm.h5'}
+	__cfg.workflow__ = [('train', 50), ('val', 1)], __cfg.dataset__ = {'train': 'wv3', 'val': 'wv3_multiExm.h5'}
 	
 * A test example:
 
 	run_test_pansharpening.py
   
-	cfg.eval = True or cfg.workflow = [('val', 1)]
+	__cfg.eval__ = True or __cfg.workflow__ = [('val', 1)]
 
 **Step4**. How to customize the code.
 
 One model is divided into three parts.
 
-1. Record hyperparameter configurations in folder of PanCollection/UDL/pansharpening/configs/Option_*modelName*.py. For example, you can load pretrained model by setting model_path = "your_model_path" or cfg.resume_from = "your_model_path".
+1. Record hyperparameter configurations in folder of `PanCollection/UDL/pansharpening/configs/Option_modelName.py`. For example, you can load pretrained model by setting __model_path__ = "your_model_path" or __cfg.resume_from__ = "your_model_path".
 
-2. Set model, loss, optimizer, scheduler in folder of PanCollection/UDL/pansharpening/models/*modelName*_main.py.
+2. Set model, loss, optimizer, scheduler in folder of `PanCollection/UDL/pansharpening/models/modelName_main.py`.
 
-3. Write a new model in folder of PanCollection/UDL/pansharpening/models/*modelName*/model_*modelName*.py.
+3. Write a new model in folder of `PanCollection/UDL/pansharpening/models/*modelName*/model_modelName.py`.
 
-Note that when you add a new model into PanCollection, you need to update PanCollection/UDL/pansharpening/models/`__init__.py` and add option_*modelName*.py.
+Note that when you add a new model into PanCollection, you need to update `PanCollection/UDL/pansharpening/models/__init__.py` and add option_modelName.py.
 
 **Others**
 * if you want to add customized datasets, you need to update:
@@ -95,8 +95,8 @@ PanCollection/UDL/pansharpening/common/psdata.py.
 
 ```
 1.Put model_newModelName and newModelName_main in PanCollection/UDL/taskName/models.
-2.Create a new folder of PanCollection/UDL/taskName/configs to put option__newModelName.
-3.Update PanCollection/UDL/AutoDL/__init__.py.
+2.Create a new folder of PanCollection/UDL/taskName/configs to put option_newModelName.
+3.Update PanCollection/UDL/AutoDL/__init__.p.
 4.Add a class in PanCollection/UDL/Basis/python_sub_class.py, like this:
 class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
 ```
@@ -109,7 +109,7 @@ PanCollection/UDL/mmcv/mmcv/runner/hooks
 
 Note that: Don't put model/dataset/task-related files into the folder of AutoDL.
 
-* if you want to know more details of runner about how to train/test in PanCollection/UDL/AutoDL/trainer.py, please see PanCollection/UDL/mmcv/mmcv/runner/epoch_based_runner.py
+* if you want to know more details of runner about how to train/test in `PanCollection/UDL/AutoDL/trainer.py`, please see PanCollection/UDL/mmcv/mmcv/runner/epoch_based_runner.py
 
 ## Contribution
 We appreciate all contributions to improving PanCollection. Looking forward to your contribution to PanCollection.
