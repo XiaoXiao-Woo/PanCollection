@@ -6,8 +6,11 @@
 This repository is the official PyTorch implementation of “基于卷积神经网络的遥感图像全色锐化进展综述及相关数据集发布” ([paper](), [homepage](https://liangjiandeng.github.io/PanCollection.html)).
 
 * Release the PanCollection of the pan-sharpening training-test dataset of related satellites (such as WorldView-3, QuickBird, GaoFen2, WorldView-2 satellites); 
-* Release the Python code unified writing framework based on the Pytorch deep learning library, which is convenient for later scholars;
-* Release a unified Pansharpening traditional-deep learning method ( including MATLAB test software package), which is convenient for later scholars to conduct fair tests;
+* Release the Python code based on the unified Pytorch framework , which is convenient for later scholars;
+* Release a unified Pansharpening traditional-deep learning method (including MATLAB test software package), which is convenient for later scholars to conduct fair tests;
+
+## Features
+
 
 ## Requirements
 * Python3.7+, Pytorch>=1.6.0
@@ -26,7 +29,7 @@ Then,
 > python setup.py develop
 
 **Step1.**
-Download Datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homepage](PanCollection for Survey Paper (liangjiandeng.github.io)](https://liangjiandeng.github.io/PanCollection.html)). Put it with the following format.
+Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homepage](https://liangjiandeng.github.io/PanCollection.html). Put it with the following format.
 
 ```
 |-$ROOT/Datasets
@@ -50,6 +53,8 @@ Download Datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homep
 
 **step3.** How to train/test the code.
 
+* Verify the dataset path in PanCollection/UDL/Basis/option.py, or you can print the output of run_pansharpening.py, then set cfg.data_dir to your dataset path.
+
 * A training example：
 
 	run_pansharpening.py
@@ -66,7 +71,7 @@ Download Datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homep
   
 	cfg.eval = True or cfg.workflow = [('val', 1)]
 
-**Step4**. How to customize the code
+**Step4**. How to customize the code.
 
 One model is divided into three parts.
 
@@ -74,9 +79,9 @@ One model is divided into three parts.
 
 2. Set model, loss, optimizer, scheduler. see in folder of PanCollection/UDL/pansharpening/models/*modelName*_main.py.
 
-3. write a new model in folder of PanCollection/UDL/pansharpening/models/*modelName*/model_*modelName*.py.
+3. Write a new model in folder of PanCollection/UDL/pansharpening/models/*modelName*/model_*modelName*.py.
 
-Note that when you add a new model into PanCollection, you need to update  PanCollection/UDL/pansharpening/models/`__init__.py` and add option_*modelName*
+Note that when you add a new model into PanCollection, you need to update PanCollection/UDL/pansharpening/models/`__init__.py` and add option_*modelName*.py.
 
 **Others**
 * if you want to add customized datasets, you need to update:
@@ -99,8 +104,7 @@ Note that when you add a new model into PanCollection, you need to update  PanCo
 
 Note that: Don't put model/dataset/task-related files into the folder of AutoDL.
 
-* if you want to know runner how to train/test in PanCollection/UDL/AutoDL/trainer.py, please see PanCollection/UDL/mmcv/mmcv/runner/epoch_based_runner.py
-
+* if you want to know more details of runner about how to train/test in PanCollection/UDL/AutoDL/trainer.py, please see PanCollection/UDL/mmcv/mmcv/runner/epoch_based_runner.py
 
 ## Contribution
 We appreciate all contributions to improving PanCollection. Looking forward to your contribution to PanCollection.
