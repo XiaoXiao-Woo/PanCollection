@@ -34,10 +34,9 @@ class parser_args(TaskDispatcher, name='DCFNet'):
         # * Model and Dataset
         parser.add_argument('--arch', '-a', metavar='ARCH', default='DCFNet', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet', 'DCFNet'])
-        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'wv3_multiExm.h5'}, type=str,
+        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'wv3_multiExm1.h5'}, type=str,
                             choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf',
-                                     'wv2_hp', ...,
-                                     'wv3_fr', 'wv3_singleMat', 'wv3_multi_exm1258', 'wv3_multi_exm78'],
+                                     'wv3_OrigScale_multiExm1.h5', 'wv3_multiExm1.h5'],
                             help="performing evalution for patch2entire")
         parser.add_argument('--eval', default=False, type=bool,
                             help="performing evalution for patch2entire")
