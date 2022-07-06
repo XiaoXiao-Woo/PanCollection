@@ -13,7 +13,7 @@ class parser_args(TaskDispatcher, name='FusionNet'):
         script_path = os.path.dirname(os.path.dirname(__file__))
         root_dir = script_path.split(cfg.task)[0]
 
-        model_path = f'/home/woo/文档/GitHub/UDL_bak/UDL/results/pansharpening/wv3/FusionNet/Test/.pth.tar'
+        model_path = f'.pth.tar'
 
 
         parser = argparse.ArgumentParser(description='PyTorch Pansharpening Training')
