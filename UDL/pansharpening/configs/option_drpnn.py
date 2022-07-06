@@ -13,7 +13,7 @@ class parser_args(TaskDispatcher, name='DRPNN'):
         script_path = os.path.dirname(os.path.dirname(__file__))
         root_dir = script_path.split(cfg.task)[0]
 
-        model_path = f'{root_dir}/results/{cfg.task}/wv3/DRPNN/Test/model_2022-05-10-22-08-54/1920.pth.tar'
+        model_path = f'{root_dir}/results/{cfg.task}/wv3/DRPNN/Test/.pth.tar'
 
         parser = argparse.ArgumentParser(description='PyTorch Pansharpening Training')
         # * Logger
@@ -36,10 +36,9 @@ class parser_args(TaskDispatcher, name='DRPNN'):
         parser.add_argument('--arch', '-a', metavar='ARCH', default='DRPNN', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet'])
         # _multiExm1.h5
-        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'wv3_multiExm.h5'}, type=str,
+        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'wv3_multiExm1.h5'}, type=str,
                             choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf',
-                                     'wv2_hp', ...,
-                                     'fr', 'wv3_singleMat', 'wv3_multi_exm1258'],
+                                     'wv3_OrigScale_multiExm1.h5', 'wv3_multiExm1.h5'],
                             help="performing evalution for patch2entire")
         parser.add_argument('--eval', default=False, type=bool,
                             help="performing evalution for patch2entire")
