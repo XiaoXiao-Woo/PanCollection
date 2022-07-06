@@ -53,11 +53,13 @@ class PNN(nn.Module):
         log_vars.update(loss=loss['loss'])
         return {'loss': loss['loss'], 'log_vars': log_vars}
 
-    def eval_step(self, data, *args, **kwargs):
+    def val_step(self, data, *args, **kwargs):
         blk = self.blk
         gt, lms, ms, pan = data['gt'].cuda(), data['lms'].cuda(), \
                            data['ms'].cuda(), data['pan'].cuda()
-        lms = torch.cat([lms, pan], dim=1)
+        test_I_in1 = torch.cat([lms, pan], dim=1)
+        test_I_in1 = F.pad(test_I_in1, (blk, blk, blk, blk), mode='replicate')
+        sr = self(test_I_in1)
         sr = self(lms)
 
         return sr, gt[:, blk:-blk, blk:-blk, :]
