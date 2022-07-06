@@ -13,10 +13,10 @@ class parser_args(TaskDispatcher, name='PanNet'):
         script_path = os.path.dirname(os.path.dirname(__file__))
         root_dir = script_path.split(cfg.task)[0]
 
-        # model_path = f'/home/woo/文档/GitHub/UDL_bak/UDL/results/pansharpening/gf2_hp/PanNet/Test/model_2022-05-10-14-16-33/448.pth.tar'
-        # model_path = f'{root_dir}/results/{cfg.task}/qb_hp/PanNet/Test/model_2022-04-29-14-13-41/440.pth.tar'
-        model_path = f'{root_dir}/results/{cfg.task}/wv3_hp/PanNet/Test/model_2022-04-29-14-13-19/449.pth.tar'
-        # model_path = f''
+
+        # model_path = f'{root_dir}/results/{cfg.task}/qb_hp/PanNet/Test/.pth.tar'
+        model_path = f'{root_dir}/results/{cfg.task}/wv3_hp/PanNet/Test/.pth.tar'
+        
         parser = argparse.ArgumentParser(description='PyTorch Pansharpening Training')
         # * Logger
         parser.add_argument('--out_dir', metavar='DIR', default=f'{root_dir}/results/{cfg.task}',
@@ -40,10 +40,10 @@ class parser_args(TaskDispatcher, name='PanNet'):
         # * Model and Dataset
         parser.add_argument('--arch', '-a', metavar='ARCH', default='PanNet', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet'])
-        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'wv3_multiExm.h5'}, type=str,
+        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'wv3_multiExm1_hp.h5'}, type=str,
                             choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf',
                                      'wv2_hp', ...,
-                                     'fr', 'wv3_singleMat_hp', 'wv3_multi_exm1258_hp'],
+                                     'wv3_OrigScale_multiExm_hp.h5', 'wv3_multiExm1_hp.h5'],
                             help="performing evalution for patch2entire")
         parser.add_argument('--eval', default=False, type=bool,
                             help="performing evalution for patch2entire")
@@ -58,5 +58,4 @@ class parser_args(TaskDispatcher, name='PanNet'):
         cfg.reg = True
         cfg.workflow = [('train', 1)]
         print(cfg.pretty_text)
-        cfg.workflow = [('train', 1)]
         self._cfg_dict = cfg
