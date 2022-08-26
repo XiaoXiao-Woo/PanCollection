@@ -79,7 +79,7 @@ One model is divided into three parts:
 
 2. Set model, loss, optimizer, scheduler in folder of `PanCollection/UDL/pansharpening/models/modelName_main.py`.
 
-3. Write a new model in folder of `PanCollection/UDL/pansharpening/models/*modelName*/model_modelName.py`.
+3. Write a new model in folder of `PanCollection/UDL/pansharpening/models/modelName/model_modelName.py`.
 
 Note that when you add a new model into PanCollection, you need to update `PanCollection/UDL/pansharpening/models/__init__.py` and add option_modelName.py.
 
