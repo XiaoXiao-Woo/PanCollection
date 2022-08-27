@@ -117,14 +117,14 @@ We appreciate all contributions to improving PanCollection. Looking forward to y
 
 ## Citation
 Please cite this project if you use datasets or the toolbox in your research.
-> 
+```
 @misc{PanCollection,
     author = {Xiao Wu, Liang-Jian Deng, Ran Ran},
     title = {"PanCollection" for Remote Sensing Pansharpening},
     url = {https://github.com/XiaoXiao-Woo/PanCollection/},
     year = {2022},
 }
-
+```
 
 ## Acknowledgement
 - [MMCV](https://github.com/open-mmlab/mmcv): OpenMMLab foundational library for computer vision.
