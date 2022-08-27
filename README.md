@@ -119,7 +119,7 @@ We appreciate all contributions to improving PanCollection. Looking forward to y
 Please cite this project if you use datasets or the toolbox in your research.
 ```
 @misc{PanCollection,
-    author = {Xiao Wu, Liang-Jian Deng, Ran Ran},
+    author = {Xiao Wu, Liang-Jian Deng and Ran Ran},
     title = {"PanCollection" for Remote Sensing Pansharpening},
     url = {https://github.com/XiaoXiao-Woo/PanCollection/},
     year = {2022},
