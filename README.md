@@ -77,11 +77,11 @@ One model is divided into three parts:
 
 1. Record hyperparameter configurations in folder of `PanCollection/UDL/pansharpening/configs/Option_modelName.py`. For example, you can load pretrained model by setting __model_path__ = "your_model_path" or __cfg.resume_from__ = "your_model_path".
 
-2. Set model, loss, optimizer, scheduler in folder of `PanCollection/UDL/pansharpening/models/modelName_main.py`.
+2. Set model, loss, optimizer, scheduler in folder of `PanCollection/UDL/pansharpening/models/<modelName>_main.py`.
 
-3. Write a new model in folder of `PanCollection/UDL/pansharpening/models/modelName/model_modelName.py`.
+3. Write a new model in folder of `PanCollection/UDL/pansharpening/models/<modelName>/model_<modelName>.py`.
 
-Note that when you add a new model into PanCollection, you need to update `PanCollection/UDL/pansharpening/models/__init__.py` and add option_modelName.py.
+Note that when you add a new model into PanCollection, you need to update `PanCollection/UDL/pansharpening/models/__init__.py` and add option_<modelName>.py.
 
 **Others**
 * if you want to add customized datasets, you need to update:
@@ -94,8 +94,8 @@ PanCollection/UDL/pansharpening/common/psdata.py.
 * if you want to add customized tasks, you need to update:
 
 ```
-1.Put model_newModelName and newModelName_main in PanCollection/UDL/taskName/models.
-2.Create a new folder of PanCollection/UDL/taskName/configs to put option_newModelName.
+1.Put model_<newModelName> and <newModelName>_main in PanCollection/UDL/<taskName>/models.
+2.Create a new folder of PanCollection/UDL/<taskName>/configs to put option_<newModelName>.
 3.Update PanCollection/UDL/AutoDL/__init__.p.
 4.Add a class in PanCollection/UDL/Basis/python_sub_class.py, like this:
 class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
