@@ -96,7 +96,7 @@ PanCollection/UDL/pansharpening/common/psdata.py.
 ```
 1.Put model_<newModelName> and <newModelName>_main in PanCollection/UDL/<taskName>/models.
 2.Create a new folder of PanCollection/UDL/<taskName>/configs to put option_<newModelName>.
-3.Update PanCollection/UDL/AutoDL/__init__.p.
+3.Update PanCollection/UDL/AutoDL/__init__.
 4.Add a class in PanCollection/UDL/Basis/python_sub_class.py, like this:
 class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
 ```
