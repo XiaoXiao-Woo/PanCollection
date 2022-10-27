@@ -53,7 +53,7 @@ Then,
 
 > python run_pansharpening.py
 
-**step3.** How to train/test the code.
+**step3.** How to train/validate the code.
 
 * A training example：
 
