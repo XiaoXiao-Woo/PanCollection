@@ -45,7 +45,6 @@ Then,
 │   ├── test_data
 │   │   ├── WV3
 │   │   │   ├── test_wv3_multiExm.h5
-│   │   │   ├── test_wv3_multiExm.h5
 │   │   │   ├── ...
 ```
 
