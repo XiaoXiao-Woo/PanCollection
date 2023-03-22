@@ -1,7 +1,8 @@
 import glob
 import torch
 from torch.utils.data import DataLoader
-
+from common.test_panloader import oldPan_dataloader, PanCollection_dataloader, DLPan_dataloader
+from common.train_panloader import oldPan_trainloader, PanCollection_trainloader, DLPan_trainloader
 
 class PansharpeningSession():
     def __init__(self, args):
@@ -16,25 +17,17 @@ class PansharpeningSession():
 
     def get_dataloader(self, dataset_name, distributed):
 
-        if any(list(map(lambda x: x in dataset_name, ['wv2', 'wv3', 'wv4', 'qb', 'gf']))):
-            if "hp" in dataset_name:
-                # high-pass filter
-                from UDL.pansharpening.common.dataset_hp import Dataset_Pro
-                dataset_name = dataset_name.split('_')[0] #'wv2_hp'
-                dataset = Dataset_Pro('/'.join([self.args.data_dir, 'training_data', f'train_{dataset_name}.h5']), img_scale=self.args.img_range)
-            else:
+        dataset = None
+        dataloader_name = self.args.dataloader_name
+        if dataloader_name == "oldPan_dataloader":
+            dataset = oldPan_trainloader(dataset_name, self.args)
+        elif dataloader_name == "DLPan_dataloader":
+            dataset = DLPan_trainloader(dataset_name, self.args)
+        elif dataloader_name == "PanCollection_dataloader":
+            dataset = PanCollection_trainloader(dataset_name, self.args)
 
-                from UDL.pansharpening.common.dataset import Dataset_Pro
-                dataset = Dataset_Pro('/'.join([self.args.data_dir, 'training_data', f'train_{dataset_name}.h5']), img_scale=self.args.img_range)
-        elif dataset_name in ['DatasetFR1']:
-            from UDL.pansharpening.common.zspaired_image_dataset import ZSPairedImageDataset
-            dataset = ZSPairedImageDataset(self.args, '/'.join([self.args.data_dir, 'hsp', dataset_name]))
-
-
-        else:
-            print(f"train_{dataset_name} is not supported.")
-            raise NotImplementedError
-
+        if dataset is None:
+            raise NotImplementedError(f"{dataset_name} or {dataloader_name} is not supported.")
 
         sampler = None
         if distributed:
@@ -48,74 +41,47 @@ class PansharpeningSession():
 
         return dataloaders, sampler
 
-    def get_test_dataloader(self, dataset_name, distributed):
-        # creat data for validation
-        if dataset_name in ['wv3', 'wv2', 'qb', 'gf2']:
-            from UDL.pansharpening.common.dataset_hp import Dataset_Pro
-            dataset = Dataset_Pro(
-                '/'.join([self.args.data_dir, 'validation_data', f'valid_{dataset_name}.h5']), img_scale=self.args.img_range)
-        else:
-            print(f"{dataset_name} is not supported.")
-            raise NotImplementedError
+    def get_valid_dataloader(self, dataset_name, distributed):
+
+        dataset = None
+        dataloader_name = self.args.dataloader_name
+        if dataloader_name == "oldPan_dataloader":
+            dataset = oldPan_trainloader(dataset_name, self.args)
+        elif dataloader_name == "DLPan_dataloader":
+            dataset = DLPan_trainloader(dataset_name, self.args)
+        elif dataloader_name == "PanCollection_dataloader":
+            dataset = PanCollection_trainloader(dataset_name, self.args)
+
+        if dataset is None:
+            raise NotImplementedError(f"{dataset_name} or {dataloader_name} is not supported.")
 
         sampler = None
         if distributed:
             sampler = torch.utils.data.distributed.DistributedSampler(dataset)
 
-        if not dataset_name in self.dataloaders:
-            self.dataloaders = \
-                DataLoader(dataset, batch_size=self.samples_per_gpu, pin_memory=True,
-                           shuffle=False, num_workers=self.workers_per_gpu, drop_last=True, sampler=sampler)
+        # if not dataset_name in self.dataloaders:
+        dataloaders = \
+            DataLoader(dataset, batch_size=self.samples_per_gpu,
+                       persistent_workers=(True if self.workers_per_gpu > 0 else False), pin_memory=True,
+                       shuffle=(sampler is None), num_workers=self.workers_per_gpu, drop_last=True, sampler=sampler)
 
-        return self.dataloaders, sampler
+        return dataloaders, sampler
 
     def get_eval_dataloader(self, dataset_name, distributed):
-        if 'new_data' in dataset_name:
-            from UDL.pansharpening.evaluation.ps_evaluate import SingleDataset
-            dataset = SingleDataset(['/'.join([self.args.data_dir, "test_data", f"{dataset_name}.mat"])], dataset_name, img_scale=self.args.img_range)
-
-        elif 'multi_exm1258' in dataset_name:
-            from UDL.pansharpening.evaluation.ps_evaluate import MultiExmTest_h5
-            dataset = MultiExmTest_h5('/'.join([self.args.data_dir, "test_data/WV3_Simu_mulExm/test1_mulExm1258.mat"]), dataset_name, suffix='.mat', img_scale=self.args.img_range)
-
-        elif 'singleMat' in dataset_name:
-            from UDL.pansharpening.evaluation.ps_evaluate import SingleDataset
-            dataset = SingleDataset(glob.glob('/'.join([self.args.data_dir, "test_data", "*.mat"])), dataset_name)
-
-        elif 'Test(HxWxC)' in dataset_name:
-            # Test(HxWxC)_gf2_data_fr/rr...
-            from UDL.pansharpening.evaluation.ps_evaluate import SingleDatasetV2
-            satellite = dataset_name.split('_')[1]
-            type = 'FR-Data' if 'fr' in dataset_name else 'RR-Data'
-            dataset = SingleDatasetV2(glob.glob('/'.join([self.args.data_dir, f"/test_data/{satellite.upper()}/{type}/*.mat"])), dataset_name, img_scale=self.args.img_range)
-
-        elif 'multiExm' in dataset_name:
-            satellite = dataset_name.split('_')[0]
-            suffix = dataset_name.split('.')[-1]
-            from UDL.pansharpening.evaluation.ps_evaluate import MultiExmTest_h5
-            dataset = MultiExmTest_h5('/'.join([self.args.data_dir, f"test_data/{satellite.upper()}/test_{dataset_name}"]),
-                                      dataset_name, suffix=f'.{suffix}', img_scale=self.args.img_range)
-        # elif 'multiExm' in dataset_name or mode == 'val':
-        #
-        #     if mode == "val" and dataset_name in self.mapping:
-        #         dataset_name = self.mapping[dataset_name]
-
-            # satellite = dataset_name.split('_')[0]
-            # suffix = dataset_name.split('.')[-1]
-            # from UDL.pansharpening.evaluation.ps_evaluate import MultiExmTest_h5
-            # dataset = MultiExmTest_h5('/'.join([self.args.data_dir, f"test_data/{satellite.upper()}/test_{dataset_name}"]),
-            #                           dataset_name, suffix=f'.{suffix}', img_scale=self.args.img_range)
-        elif 'Test' in dataset_name:
-            from UDL.pansharpening.evaluation.ps_evaluate import SingleDataset
-            satellite = dataset_name.split('_')[0]
-            dataset = SingleDataset(glob.glob('/'.join([self.args.data_dir, "test_data", satellite, "01-Test_Single", "RR-Data", "/*.mat"])), dataset_name, img_scale=self.args.img_range)
 
 
-
-
+        dataloader_name = self.args.dataloader_name
+        if dataloader_name == "oldPan_dataloader":
+            dataset = oldPan_dataloader(dataset_name, self.args)
+        elif dataloader_name == "DLPan_dataloader":
+            dataset = DLPan_dataloader(dataset_name, self.args)
+        elif dataloader_name == "PanCollection_dataloader":
+            dataset = PanCollection_dataloader(dataset_name, self.args)
         else:
-            print(f"{dataset_name} is not supported.")
-            raise NotImplementedError
+            dataset = None
+
+        if dataset is None:
+            raise NotImplementedError(f"{dataset_name} or {dataloader_name} is not supported.")
 
         sampler = None
         if distributed:
@@ -128,6 +94,88 @@ class PansharpeningSession():
         return dataloaders, sampler
 
 
+def test_my_data(args, sess):
+    # oldPan: RR: ['gt', 'lms', 'ms', 'pan'] FR: ['lms', 'ms', 'pan']
+    # 12,580 = 0.7 0.2 0.1
+    # train_wv3.h5: 8806, 16-64
+    # valid_wv3.h5: 2516
+    # test1_mulExm1258.mat: 1258, 16-64
+
+    # test_wv3_mulExm.h5: 78, 64-256
+    # test1_mulExm_OrigScale.mat: 200, 64-256
+
+    # test_wv2_mulExm: 93, 64-256
+
+    # train_qb.h5 20685 16-64
+    # valid_qb.h5
+    # test_qb_multiExm.h5 48 64-256
+
+    # qb48.mat: 48, 64-256
+    # TestData_QB: 48
+
+    # train_gf2.h5 21607 16-64
+    # valid_gf2.h5
+    # test_gf2_mulExm.h5: 84, 64-256 ???
+
+    # gf81.mat: 81, 64-256
+
+    args.data_dir = "D:/Datasets/pansharpening/oldPan"
+    # args.dataset = 'train_wv3.h5'
+    # loader, _ = sess.get_dataloader(args.dataset, False)
+
+    # args.dataset = 'valid_wv3'
+    # loader, _ = sess.get_test_dataloader(args.dataset, False)
+
+    args.dataset = 'test_gf2_mulExm_84.h5'
+    loader, _ = sess.get_eval_dataloader(args.dataset, False)
+
+    print(len(loader))
+
+def test_PanCollection(args, sess):
+    # survey: RR: ['gt', 'lms', 'ms', 'pan'] FR: ['lms', 'ms', 'pan']
+    # train_wv3.h5 9714 16-64 / / 20
+    # train_wv2.h5 15084 16-64
+    # train_gf2.h5 19809 16-64
+    # train_qb.h5  17139 16-64
+
+    # test_wv3_OrigScale_mulExm.h5: 126, 128-512
+    # test_gf2_OrigScale_mulExm.h5: 318 128-512
+    # test_qb_OrigScale_multiExm.h5
+
+    args.data_dir = "D:/Datasets/pansharpening/PanCollection"
+    args.dataset = 'train_gf2.h5'
+    loader, _ = sess.get_dataloader(args.dataset, False)
+
+    # TODO: validate
+    # args.dataset = 'wv3'
+    # loader, _ = sess.get_test_dataloader(args.dataset, False)
+
+    # args.dataset = 'wv3_multiExm1.h5'
+    # loader, _ = sess.get_eval_dataloader(args.dataset, False)
+    print(len(loader))
+
+def test_DLPan(args, sess):
+    # DLPan: RR: ['gt', 'lms', 'ms', 'pan'] FR: ['lms', 'ms', 'pan']
+    # train_wv3_10000: 9000 16-64
+    # valid_wv3_10000: 1000 16-64
+    # TestData_wv3.h5: 4 128-512
+    # Single: NY1_WV3_FR.mat, NY1_WV3_RR.mat
+
+    # qb 9000 16-64
+
+    args.data_dir = "D:/Datasets/pansharpening/DLPan"
+    # args.dataset = 'train_qb_10000.h5'
+    # loader, _ = sess.get_dataloader(args.dataset, False)
+
+    # args.dataset = 'valid_wv3_10000.h5'
+    # loader, _ = sess.get_test_dataloader(args.dataset, False)
+
+    args.dataset = 'TestData_wv3.h5'
+    # args.dataset = 'NY1_WV3_FR.mat'
+    loader, _ = sess.get_eval_dataloader(args.dataset, False)
+
+    print(len(loader))
+
 
 if __name__ == '__main__':
     # from option import args
@@ -137,21 +185,13 @@ if __name__ == '__main__':
     args = parser.parse_args()
     args.samples_per_gpu = 8
     args.workers_per_gpu = 0
-    args.data_dir = "C:/Datasets/pansharpening_2"
-    args.dataset = 'gf2'
+    args.img_range = 2047.0
 
-    # survey
-    # wv3 9714 16-64
-    # wv2 15084 16-64
-    # gf2 19809 16-64
-    # qb  17139 16-64
+
+
     sess = PansharpeningSession(args)
-    train_loader, _ = sess.get_test_dataloader(args.dataset, False)
-    print(len(train_loader))
 
-    # import scipy.io as sio
-    #
-    # x = sio.loadmat("D:/Datasets/pansharpening/training_data/train1.mat")
-    # print(x.keys())
-
+    # test_PanCollection(args, sess)
+    # test_DLPan(args, sess)
+    test_my_data(args, sess)
 

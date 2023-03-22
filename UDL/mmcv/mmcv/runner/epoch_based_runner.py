@@ -166,7 +166,7 @@ class EpochBasedRunner(BaseRunner):
             self._inner_iter = i
             self.call_hook('before_val_iter')
             self.run_iter(data_batch, train_mode=False, idx=i,
-                          img_range=self.opt_cfg['img_range'],
+                          img_range=self.opt_cfg['img_range'], eval=self.opt_cfg['eval'],
                           save_fmt=self.opt_cfg['save_fmt'], filename=data_batch.get('filename', [None])[0], save_dir=self.save_dir)
             self.call_hook('after_val_iter')
         print("test time:", time.time() - tic)

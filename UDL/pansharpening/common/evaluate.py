@@ -378,22 +378,28 @@ def _ssim(img1, img2):
     img1 = img1.float()
     img2 = img2.float()
 
+
     channel = img1.shape[1]
     max_val = 1
     _, c, w, h = img1.size()
     window_size = min(w, h, 11)
     sigma = 1.5 * window_size / 11
+
+    pad_size = [window_size//2]*4
+    img1 = F.pad(img1, mode='replicate', pad=pad_size)
+    img2 = F.pad(img2, mode='replicate', pad=pad_size)
+
     window = create_window(window_size, sigma, channel).cuda()
-    mu1 = F.conv2d(img1, window, padding=window_size // 2, groups=channel)
-    mu2 = F.conv2d(img2, window, padding=window_size // 2, groups=channel)
+    mu1 = F.conv2d(img1, window, groups=channel) #, padding=window_size // 2
+    mu2 = F.conv2d(img2, window, groups=channel) #, padding=window_size // 2
 
     mu1_sq = mu1.pow(2)
     mu2_sq = mu2.pow(2)
     mu1_mu2 = mu1 * mu2
 
-    sigma1_sq = F.conv2d(img1 * img1, window, padding=window_size // 2, groups=channel) - mu1_sq
-    sigma2_sq = F.conv2d(img2 * img2, window, padding=window_size // 2, groups=channel) - mu2_sq
-    sigma12 = F.conv2d(img1 * img2, window, padding=window_size // 2, groups=channel) - mu1_mu2
+    sigma1_sq = F.conv2d(img1 * img1, window, groups=channel) - mu1_sq #, padding=window_size // 2
+    sigma2_sq = F.conv2d(img2 * img2, window, groups=channel) - mu2_sq #, padding=window_size // 2
+    sigma12 = F.conv2d(img1 * img2, window, groups=channel) - mu1_mu2 #, padding=window_size // 2
     C1 = (0.01 * max_val) ** 2
     C2 = (0.03 * max_val) ** 2
     V1 = 2.0 * sigma12 + C2
@@ -459,5 +465,28 @@ def compare_index(A):
 
 
 if __name__ == "__main__":
-    a = np.zeros(shape=[256, 256])
-    print(a[:255, :255].shape)
+    # a = np.zeros(shape=[256, 256])
+    # print(a[:255, :255].shape)
+
+    # from scipy.ndimage import gaussian_filter
+    # a = np.arange(50, step=2).reshape((5, 5))
+    # print(a)
+    # print(gaussian_filter(a, sigma=1))
+    # from torch import nn
+    #
+    # gs_filter = nn.Conv2d(1, 1, kernel_size=(3, 3))
+    # gs_filter.weight.data = torch.tensor([[[[0,0,0],[0,1,0],[0,0,0]]]]).float()
+    # print(gs_filter.weight)
+    # a_t = torch.from_numpy(a).unsqueeze(0).unsqueeze(0).float()
+    # a_t_pad = nn.functional.pad(a_t, pad=(1, 1, 1, 1), mode='replicate')
+    # print(a_t_pad)
+    # print(gs_filter())
+    from skimage.metrics import structural_similarity
+    from scipy import io as sio
+    I_HRMS = sio.loadmat('./I_HRMS.mat')['I_HRMS'] / 2047.0
+    I_GT = sio.loadmat('./I_GT.mat')['I_GT'] / 2047.0
+    print(structural_similarity(I_HRMS, I_GT, win_size=11, data_range=1, multichannel=True, gaussian_weights=True))
+    I_HRMS = torch.from_numpy(I_HRMS).unsqueeze(0).permute(0, 3, 1, 2).cuda()
+    I_GT = torch.from_numpy(I_GT).unsqueeze(0).permute(0, 3, 1, 2).cuda()
+    print(I_GT[0, 0, :5, :5])
+    print(torch.mean(_ssim(I_HRMS, I_GT)))

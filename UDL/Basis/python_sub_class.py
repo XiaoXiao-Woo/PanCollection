@@ -3,13 +3,15 @@
 # All Rights Reserved
 # @Author  : Xiao Wu, LiangJian Deng
 # @reference:
+import numpy as np
 import torch
 from UDL.pansharpening.evaluation.ps_evaluate import analysis_accu, save_results
 from UDL.Basis.config import Config
 import warnings
-import scipy.io as sio
+from torch.nn import functional as F
+# import scipy.io as sio
 
-class TaskDispatcher(object):
+class TaskDispatcher(Config):
     _task = dict()
 
     def __init_subclass__(cls, name='', **kwargs):
@@ -37,23 +39,23 @@ class TaskDispatcher(object):
 
         return instance
 
-    def __len__(self):
-        return len(self._cfg_dict)
-
-    def __getattr__(self, name):
-        return getattr(self._cfg_dict, name)
-
-    def __delattr__(self, name):
-        return delattr(self._cfg_dict, name)
-
-    def __getitem__(self, name):
-        return self._cfg_dict.__getitem__(name)
-
-    def __iter__(self):
-        return iter(self._cfg_dict)
-
-    def __repr__(self):
-        return f'TaskDispatcher {self._cfg_dict.__repr__()}'
+    # def __len__(self):
+    #     return len(self._cfg_dict)
+    #
+    # def __getattr__(self, name):
+    #     return getattr(self._cfg_dict, name)
+    #
+    # def __delattr__(self, name):
+    #     return delattr(self._cfg_dict, name)
+    #
+    # def __getitem__(self, name):
+    #     return self._cfg_dict.__getitem__(name)
+    #
+    # def __iter__(self):
+    #     return iter(self._cfg_dict)
+    #
+    # def __repr__(self):
+    #     return f'TaskDispatcher {self._cfg_dict.__repr__()}'
 
     # def __setattr__(self, name, value):
     #     if isinstance(value, dict):
@@ -172,6 +174,8 @@ class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
         self.model = model
         self.criterion = criterion
         self.reg = False
+        self.SAM_list = []
+        self.ERGAS_list = []
         if hasattr(self.model, 'reg'):
             self.reg = self.model.reg
 
@@ -215,12 +219,21 @@ class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
 
     def val_step(self, *args, **kwargs):
         sr, gt = self.model.val_step(*args, **kwargs)
-        result_our = torch.squeeze(sr).permute(1, 2, 0)
-        result_our = result_our * kwargs['img_range']
-        metrics = analysis_accu(gt.cuda().squeeze(0), result_our, 4)
+        if kwargs['eval']:
+            result_our = torch.squeeze(sr).permute(1, 2, 0)
+            result_our = result_our * kwargs['img_range']
+            metrics = analysis_accu(gt.cuda().squeeze(0), result_our, 4)
 
-        if kwargs['idx'] not in [220, 231, 236, 469, 766, 914]:
-            if kwargs['save_fmt'] is not None:
-                save_results(kwargs['idx'], kwargs['save_dir'], kwargs['filename'], kwargs['save_fmt'], result_our)
+            if kwargs['idx'] not in [220, 231, 236, 469, 766, 914]:
+                if kwargs['save_fmt'] is not None:
+                    save_results(kwargs['idx'], kwargs['save_dir'], kwargs['filename'], kwargs['save_fmt'], result_our)
+                self.SAM_list.append(metrics['SAM'].item())
+                self.ERGAS_list.append(metrics['ERGAS'].item())
+            if kwargs['idx'] == 1257:
+                print(np.mean(self.SAM_list), np.mean(self.ERGAS_list))
+        else:
+            sr, gt = self.model.val_step(*args, **kwargs)
+            metrics = {'loss': F.l1_loss(sr, gt).item()}
+
         return {'log_vars': metrics}
 

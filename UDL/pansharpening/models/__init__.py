@@ -8,3 +8,5 @@ from .DCFNet.model_fcc_dense_head import build_DCFNet, DCFNet
 from .LAGConv.model import build_LAGNet
 from .BDPN.bdpn_main import build_bdpn, BDPN
 from .MSDCNN.msdcnn_main import build_msdcnn, MSDCNN
+from .DHIFNet.CAVE.Model import build_DHIF
+from .HyperTransformer.models.HyperTransformer import build_Pre, build_HSP

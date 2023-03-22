@@ -14,12 +14,10 @@ import torch
 import torch.distributed as dist
 import time
 
-tic = time.time()
 # 1.14s
 
 import sys
 sys.path.append('../..')
-
 sys.path.append('../mmcv')
 
 from UDL.AutoDL import build_model, getDataSession, ModelDispatcher
@@ -79,11 +77,13 @@ def trainer(cfg, logger,
     # ]
 
     sess = getDataSession(cfg)
-
+    cfg.valid_or_test = False
     if cfg.eval:
-        cfg.workflow = [('val', 1)]
+        cfg.workflow = [('test', 1)]
     if not any('train' in mode for mode, _ in cfg.workflow):
         cfg.eval = True
+    if not any('valid' in mode for mode, _ in cfg.workflow):
+        cfg.valid_or_test = True
 
     # put model on gpus
     if distributed:
@@ -143,7 +143,7 @@ def trainer(cfg, logger,
                      'metrics': cfg.metrics,
                      'save_fmt': cfg.save_fmt,
                      'mode': cfg.mode,
-                     'eval': cfg.eval, # 在base_runner的resume里用于设置测试最大轮数来评估训练好的模型
+                     'eval': cfg.valid_or_test, # 在base_runner的resume里用于设置测试最大轮数来评估训练好的模型
                      'save_dir': cfg.work_dir + "/results"}))
 
     # an ugly workaround to make .log and .log.json filenames the same
@@ -234,9 +234,9 @@ def trainer(cfg, logger,
     data_loaders = {}
 
 
-    for flow in cfg.workflow:
-        mode, _ = flow
-        if 'val' in mode:
+    for idx, flow in enumerate(cfg.workflow):
+        mode, epoch = flow
+        if 'test' in mode:
             # cfg.dataset = cfg.dataset + '_OrigScale_multiExm1.h5'
             # cfg.dataset = cfg.dataset + '_multiExm1.h5'
 
@@ -252,9 +252,17 @@ def trainer(cfg, logger,
                 runner.register_hook(
                     eval_hook(eval_loader, **eval_cfg), priority='LOW')
 
-            data_loaders[mode] = eval_loader
+            data_loaders['val'] = eval_loader
+            cfg.workflow[idx] = ('val', epoch)
             # if len(cfg.workflow) == 0:
             #     cfg.workflow.append(('val', 1))
+
+        if 'valid' in mode:
+            valid_loader, valid_sampler = sess.get_valid_dataloader(cfg.dataset[mode], distributed)
+            if cfg.once_epoch:
+                valid_loader = iter(list(valid_loader))
+            data_loaders['val'] = valid_loader
+            cfg.workflow[idx] = ('val', epoch)
 
         if 'train' in mode:
             train_loader, train_sampler = sess.get_dataloader(cfg.dataset[mode], distributed)

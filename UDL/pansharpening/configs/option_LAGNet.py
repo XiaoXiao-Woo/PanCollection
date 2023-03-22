@@ -5,6 +5,7 @@ import os
 
 class parser_args(TaskDispatcher, name='LAGNet'):
     def __init__(self, cfg=None):
+        super(parser_args, self).__init__()
 
         if cfg is None:
             from UDL.Basis.option import panshaprening_cfg
@@ -54,4 +55,4 @@ class parser_args(TaskDispatcher, name='LAGNet'):
         # cfg.config = f"{script_path}/configs/hook_configs.py"
 
 
-        self._cfg_dict = cfg
+        self.merge_from_dict(cfg)

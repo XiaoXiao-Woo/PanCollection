@@ -5,6 +5,7 @@
 # @reference:
 import torch
 import torch.nn as nn
+from torch.nn import functional as F
 import math
 from UDL.Basis.variance_sacling_initializer import variance_scaling_initializer
 from UDL.pansharpening.models import PanSharpeningModel
@@ -60,7 +61,7 @@ class PNN(nn.Module):
         test_I_in1 = torch.cat([lms, pan], dim=1)
         test_I_in1 = F.pad(test_I_in1, (blk, blk, blk, blk), mode='replicate')
         sr = self(test_I_in1)
-        sr = self(lms)
+        # sr = self(lms)
 
         return sr, gt[:, blk:-blk, blk:-blk, :]
 

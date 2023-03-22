@@ -10,7 +10,7 @@ class Dataset_Pro(data.Dataset):
 
         data = h5py.File(file_path)  # NxCxHxW = 0x1x2x3
 
-        print(f"loading Dataset_Pro: {file_path} with {img_scale}")
+        print(f"loading Dataset_Pro: {file_path} with {img_scale}, keys: {data.keys()}")
         # tensor type:
         gt1 = data["gt"][...]  # convert to np tpye for CV2.filter
         gt1 = np.array(gt1, dtype=np.float32) / img_scale

@@ -45,7 +45,7 @@ def get_edge(data):  # get high-frequency
 
 def load_dataset_singlemat_hp(file_path, scale):
     data = sio.loadmat(file_path)  # HxWxC
-
+    print(data.keys())
     # tensor type:
     lms = torch.from_numpy(data['lms'] / scale).permute(2, 0, 1)  # CxHxW = 8x256x256
     ms_hp = torch.from_numpy(get_edge(data['ms'] / scale)).permute(2, 0, 1).unsqueeze(dim=0)  # CxHxW= 8x64x64
@@ -59,6 +59,7 @@ def load_dataset_singlemat_hp(file_path, scale):
 
 def load_dataset_singlemat(file_path, scale):
     data = sio.loadmat(file_path)  # HxWxC
+    print(data.keys())
     # tensor type:
     lms = torch.from_numpy(data['lms'] / scale).permute(2, 0, 1)  # CxHxW = 8x256x256
     ms = torch.from_numpy(data['ms'] / scale).permute(2, 0, 1).unsqueeze(dim=0)  # CxHxW= 8x64x64
@@ -101,9 +102,13 @@ def load_dataset_H5_hp(file_path, scale, use_cuda=True):
             'gt': gt.permute([0, 2, 3, 1])
             }
 
-def load_dataset_H5(file_path, scale, use_cuda=True):
-    data = h5py.File(file_path)  # CxHxW
-    print(data.keys())
+def load_dataset_H5(file_path, scale, suffix, use_cuda=True):
+    if suffix == '.h5':
+        data = h5py.File(file_path)  # CxHxW
+        print(data.keys())
+    else:
+        data = sio.loadmat(file_path[0])
+
     # tensor type:
     if use_cuda:
         lms = torch.from_numpy(data['lms'][...] / scale).cuda().float()  # CxHxW = 8x64x64
@@ -122,10 +127,15 @@ def load_dataset_H5(file_path, scale, use_cuda=True):
         mms = torch.nn.functional.interpolate(ms, size=(ms.size(2) * 2, ms.size(3) * 2),
                                               mode="bilinear", align_corners=True)
         pan = torch.from_numpy(data['pan'][...] / scale).float()  # HxW = 256x256
+
         if data.get('gt', None) is None:
             gt = torch.from_numpy(data['lms'][...]).float()
         else:
-            gt = torch.from_numpy(data['gt'][...]).float()
+            if np.max(data['gt'][...]) > 1:
+                gt = torch.from_numpy(data['gt'][...] / scale).float()
+                gt = gt * scale
+            else:
+                gt = torch.from_numpy(data['gt'][...]).float()
 
     return {'lms': lms,
             'mms:': mms,
@@ -147,7 +157,7 @@ class MultiExmTest_h5(Dataset):
         print(f"loading MultiExmTest_h5: {file_path} with {img_scale}")
         # 一次性载入到内存
         if 'hp' not in dataset_name:
-            data = load_dataset_H5(file_path, img_scale, False)
+            data = load_dataset_H5(file_path, img_scale, suffix, False)
 
         elif 'hp' in dataset_name:
             file_path = file_path.replace('_hp', '')
@@ -156,6 +166,7 @@ class MultiExmTest_h5(Dataset):
         else:
             print(f"{dataset_name} is not supported in evaluation")
             raise NotImplementedError
+
         if suffix == '.mat':
             self.lms = data['lms'].permute(0, 3, 1, 2)  # CxHxW = 8x256x256
             self.ms = data['ms'].permute(0, 3, 1, 2)  # CxHxW= 8x64x64
@@ -211,23 +222,29 @@ class SingleDataset(Dataset):
             print(f"{dataset_name} is not supported in evaluation")
             raise NotImplementedError
 
+        if len(file_lists) == 1:
+            self.test_lms, self.test_mms, self.test_ms, self.test_pan, self.gt = self.dataset(file_lists[0], self.img_scale)
+            print(f"lms: {self.test_lms.shape}, ms: {self.test_ms.shape}, pan: {self.test_pan.shape}, gt: {self.gt.shape}")
+
     def __getitem__(self, idx):
         file_path = self.file_lists[idx % self.file_nums]
-        test_lms, test_mms, test_ms, test_pan, gt = self.dataset(file_path, self.img_scale)
+        if self.file_lists != 0:
+            self.test_lms, self.test_mms, self.test_ms, self.test_pan, self.gt = self.dataset(file_path,
+                                                                                              self.img_scale)
 
         if 'hp' not in self.dataset_name:
-            return {'gt': (gt * self.img_scale),
-                    'lms': test_lms,
-                    'mms': test_mms,
-                    'ms': test_ms,
-                    'pan': test_pan.unsqueeze(dim=0),
+            return {'gt': (self.gt * self.img_scale),
+                    'lms': self.test_lms,
+                    'mms': self.test_mms,
+                    'ms': self.test_ms,
+                    'pan': self.test_pan.unsqueeze(dim=0),
                     'filename': file_path}
         else:
-            return {'gt': (gt * self.img_scale),
-                    'lms': test_lms,
-                    'mms_hp': test_mms,
-                    'ms_hp': test_ms,
-                    'pan_hp': test_pan.unsqueeze(dim=0),
+            return {'gt': (self.gt * self.img_scale),
+                    'lms': self.test_lms,
+                    'mms_hp': self.test_mms,
+                    'ms_hp': self.test_ms,
+                    'pan_hp': self.test_pan.unsqueeze(dim=0),
                     'filename': file_path}
 
     def __len__(self):

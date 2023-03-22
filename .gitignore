@@ -153,3 +153,10 @@ cython_debug/
 UDL/bak/
 UDL/results/
 *.mat
+UDL/pansharpening/models/ADKNet/*
+UDL/pansharpening/models/DHIFNet/*
+UDL/pansharpening/models/GTP-PNet/*
+UDL/pansharpening/models/HyperTransformer/*
+UDL/pansharpening/models/MUCNN/*
+UDL/pansharpening/models/GPPNN/*
+UDL/pansharpening/models/DCFNet/Weights/*

@@ -5,6 +5,7 @@ import os
 
 class parser_args(TaskDispatcher, name='FusionNet'):
     def __init__(self, cfg=None):
+        super(parser_args, self).__init__()
 
         if cfg is None:
             from UDL.Basis.option import panshaprening_cfg
@@ -39,12 +40,12 @@ class parser_args(TaskDispatcher, name='FusionNet'):
         ##
         parser.add_argument('--arch', '-a', metavar='ARCH', default='FusionNet', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet'])
-        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'wv3_multiExm.h5'}, type=str,
-                            choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf',
-                                     'wv3_OrigScale_multiExm1.h5', 'wv3_multiExm1.h5'],
+        parser.add_argument('--dataset', default={'train': 'wv3', 'test': 'test_wv3_multiExm1.h5'}, type=str, # 'valid': 'wv3' , 'eval': 'wv3_multiExm.h5'
+                            choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf2',
+                                     'wv3_OrigScale_multiExm1.h5', 'test_wv3_multiExm1.h5'],
                             help="performing evalution for patch2entire")
-        parser.add_argument('--eval', default=False, type=bool,
-                            help="performing evalution for patch2entire")
+        parser.add_argument('--eval', default=True, type=bool,
+                            help="performing evaluation out of training process, which can avoid dead loop !!")
 
 
         args = parser.parse_args()
@@ -53,9 +54,13 @@ class parser_args(TaskDispatcher, name='FusionNet'):
         cfg.merge_args2cfg(args)
         cfg.save_fmt = "mat"
         # cfg.workflow = [('train', 10), ('val', 1)]
-        cfg.workflow = [('train', 1)]
+        cfg.workflow = [('valid', 1)]
         # cfg.config = f"{script_path}/configs/hook_configs.py"
         cfg.use_tfb = False
         cfg.img_range = 2047.0#1023.0
+        cfg.dataloader_name = "PanCollection_dataloader"  # PanCollection_dataloader, oldPan_dataloader, DLPan_dataloader
 
-        self._cfg_dict = cfg
+
+        cfg.merge_args2cfg(args)
+
+        self.merge_from_dict(cfg)

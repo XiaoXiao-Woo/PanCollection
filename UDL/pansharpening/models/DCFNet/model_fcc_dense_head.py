@@ -98,13 +98,13 @@ class Bottleneck(nn.Module):
 class ChannelFuseBlock(nn.Module):
     expansion = 1
 
-    def __init__(self, inplanes, planes, num_res=1, stride=1, downsample=None):
+    def __init__(self, spectral_num, inplanes, planes, num_res=1, stride=1, downsample=None):
         super(ChannelFuseBlock, self).__init__()
-        self.conv_up = conv3x3(8, planes, stride)
+        self.conv_up = conv3x3(spectral_num, planes, stride)
         self.epsilon = 1e-4
         self.rs_w = nn.Parameter(torch.ones(2, dtype=torch.float32), requires_grad=True)
         self.relu = nn.ReLU()
-        # PanNetUnit类似于U^2 net necked U-net
+
         self.res_block = nn.ModuleList([])
         num_res = 1
         for i in range(num_res):
@@ -117,6 +117,7 @@ class ChannelFuseBlock(nn.Module):
         rs_w = self.relu(self.rs_w)
         weight = rs_w / (torch.sum(rs_w, dim=0) + self.epsilon)
 
+        # y = self.conv_up(torch.cat([x, y], dim=1))
         y = self.conv_up(y)
 
         out = weight[0] * x + weight[1] * y
@@ -135,7 +136,7 @@ class HighResolutionModule(nn.Module):
     高低分支交叉 前后branches数
     '''
 
-    def __init__(self, num_branches, blocks, num_blocks, num_inchannels, num_channels_pre_layer,
+    def __init__(self, spectral_num, num_branches, blocks, num_blocks, num_inchannels, num_channels_pre_layer,
                  num_channels_cur_layer,
                  num_channels, fuse_method, multi_scale_output=True):
         super(HighResolutionModule, self).__init__()
@@ -152,7 +153,7 @@ class HighResolutionModule(nn.Module):
             num_branches, blocks, num_blocks, num_channels)
         self.fuse_layers = self._make_fuse_layers()
         if num_branches == 2:
-            self.transition_layers = self._our_make_transition_layer(num_channels_pre_layer, num_channels_cur_layer)
+            self.transition_layers = self._our_make_transition_layer(spectral_num, num_channels_pre_layer, num_channels_cur_layer)
 
         self.relu = nn.ReLU(inplace=True)
 
@@ -202,7 +203,7 @@ class HighResolutionModule(nn.Module):
                 self._make_one_branch(i, block, num_blocks, num_channels))
 
         return nn.ModuleList(branches)
-    def _our_make_transition_layer(self, num_channels_pre_layer, num_channels_cur_layer):
+    def _our_make_transition_layer(self, spectral_num, num_channels_pre_layer, num_channels_cur_layer):
 
         num_branches_cur = len(num_channels_cur_layer)  # 2,3,4,4
         num_branches_pre = len(num_channels_pre_layer)  # 1,2,3,4
@@ -229,7 +230,7 @@ class HighResolutionModule(nn.Module):
                 transfpn = []
                 if i + 1 - num_branches_pre > 0:
                     transfpn.append(nn.Sequential(
-                        TransitionFPN(len(num_channels_cur_layer), 0, 0,
+                        TransitionFPN(spectral_num, len(num_channels_cur_layer), 0, 0,
                                       kernel_size=3, stride=2, padding=1)))
 
                 transition_layers.append(nn.Sequential(*transfpn))
@@ -333,14 +334,14 @@ class HighResolutionModule(nn.Module):
 
 
 class TransitionFPN(nn.Module):
-    def __init__(self, num_branches_after_trans, inchannels=0, outchannels=0, kernel_size=3, stride=1, padding=1):
+    def __init__(self, spectral_num, num_branches_after_trans, inchannels=0, outchannels=0, kernel_size=3, stride=1, padding=1):
         super(TransitionFPN, self).__init__()
         self.num_branches = num_branches_after_trans  # num_branches_cur=2,3
         if self.num_branches == 2:
             self.b0_in_down = nn.Sequential(nn.Conv2d(256, 64, kernel_size=3, stride=2, padding=1, bias=False),
                                             nn.BatchNorm2d(64, momentum=BN_MOMENTUM),
                                             nn.ReLU())
-            self.cfs_layers = nn.Sequential(ChannelFuseBlock(64, 64))
+            self.cfs_layers = nn.Sequential(ChannelFuseBlock(spectral_num, 64, 64))
         if self.num_branches == 3:
             self.epsilon = 1e-4
             self.b0_in_down = nn.Sequential(nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1, bias=False),
@@ -356,7 +357,7 @@ class TransitionFPN(nn.Module):
 
             self.b2_conv_out = nn.Sequential(nn.Conv2d(128, 128, kernel_size=3, stride=2, padding=1, bias=False),
                                              nn.BatchNorm2d(128, momentum=BN_MOMENTUM))  # no relu
-            self.cfs_layers = nn.Sequential(ChannelFuseBlock(128, 128))
+            self.cfs_layers = nn.Sequential(ChannelFuseBlock(spectral_num, 128, 128))
 
             self.rs_w = nn.Parameter(torch.ones(2, dtype=torch.float32), requires_grad=True)
             self.relu = nn.ReLU()
@@ -426,10 +427,12 @@ class DCFNet(nn.Module):
             self.channels_list[1][i] * BasicBlock.expansion for i in range(len(self.channels_list[1]))]
 
         self.transition1 = self._our_make_transition_layer(
+            spectral_num,
             [stage1_out_channel], num_channels)
         transition_num_channels = [
             self.channels_list[2][i] * BasicBlock.expansion for i in range(len(self.channels_list[2]))]
         self.stage2, pre_stage_channels = self._make_stage(
+            spectral_num=spectral_num,
             num_modules=NUM_MODULES, num_branches=self.Stage2_NUM_BRANCHES,
             num_blocks=self.blocks_list[1], num_inchannels=num_channels,
             num_channels_pre_layer=self.channels_list[1], num_channels_cur_layer=transition_num_channels,
@@ -442,6 +445,7 @@ class DCFNet(nn.Module):
             self.channels_list[2][i] * BasicBlock.expansion for i in range(len(self.channels_list[2]))]
 
         self.stage3, pre_stage_channels = self._make_stage(
+            spectral_num=spectral_num,
             num_modules=NUM_MODULES, num_branches=self.Stage3_NUM_BRANCHES,
             num_blocks=self.blocks_list[2], num_inchannels=num_channels,
             num_channels_pre_layer=pre_stage_channels, num_channels_cur_layer=num_channels,
@@ -500,7 +504,7 @@ class DCFNet(nn.Module):
         return nn.Sequential(*layers)
 
     # 为每个分支进行构造卷积模块
-    def _make_stage(self, num_modules, num_branches, num_blocks, num_inchannels,
+    def _make_stage(self, spectral_num, num_modules, num_branches, num_blocks, num_inchannels,
                     num_channels_pre_layer, num_channels_cur_layer,
                     num_channels, block, fuse_method="SUM", multi_scale_output=True):
 
@@ -512,7 +516,8 @@ class DCFNet(nn.Module):
             else:
                 reset_multi_scale_output = True
             modules.append(
-                HighResolutionModule(num_branches,
+                HighResolutionModule(spectral_num,
+                                     num_branches,
                                      block,
                                      num_blocks,
                                      num_inchannels,
@@ -566,7 +571,7 @@ class DCFNet(nn.Module):
 
         return nn.ModuleList(transition_layers)
 
-    def _our_make_transition_layer(self, num_channels_pre_layer, num_channels_cur_layer):
+    def _our_make_transition_layer(self, spectral_num, num_channels_pre_layer, num_channels_cur_layer):
 
         num_branches_cur = len(num_channels_cur_layer)  # 2,3,4,4
         num_branches_pre = len(num_channels_pre_layer)  # 1,2,3,4
@@ -594,7 +599,7 @@ class DCFNet(nn.Module):
                 transfpn = []
                 if i + 1 - num_branches_pre > 0:
                     transfpn.append(nn.Sequential(
-                        TransitionFPN(len(num_channels_cur_layer), 0, 0,
+                        TransitionFPN(spectral_num, len(num_channels_cur_layer), 0, 0,
                                       kernel_size=3, stride=2, padding=1)))
 
                 transition_layers.append(nn.Sequential(*transfpn))
@@ -613,7 +618,7 @@ class DCFNet(nn.Module):
         :return: higher resolution image x, shape:[N, C, 64, 64]
         '''
         if self.first_fuse == "SUM":
-            x = x.repeat(1, 8, 1, 1)
+            x = x.repeat(1, ly.shape[1], 1, 1)
             x = x + ly
         if self.first_fuse == "C":
             x = torch.cat([x, ly], dim=1)
@@ -689,7 +694,7 @@ class DCFNet(nn.Module):
 
         return outputs#sr, loss
 
-    def val_step(self, data):
+    def val_step(self, data, *args, **kwargs):
         lms = data['lms'].cuda().float()
         ms = data['ms'].cuda().float()
         # if hasattr(data, 'mms') is not None:
@@ -709,7 +714,7 @@ class build_DCFNet(PanSharpeningModel, name='DCFNet'):
             spectral_num = 8
         else:
             spectral_num = 4
-
+        # spectral_num = 4
         loss = nn.MSELoss(size_average=True).cuda()  ## Define the Loss function
         weight_dict = {'loss': 1}
         losses = {'loss': loss}
@@ -718,3 +723,12 @@ class build_DCFNet(PanSharpeningModel, name='DCFNet'):
         optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=0)  ## optimizer 1: Adam
 
         return model, criterion, optimizer, scheduler
+
+if __name__ == "__main__":
+    from UDL.Basis.auxiliary import torchstat
+    loss = nn.MSELoss(size_average=True).cuda()  ## Define the Loss function
+    weight_dict = {'loss': 1}
+    losses = {'loss': loss}
+    criterion = SetCriterion(losses, weight_dict)
+    model = DCFNet(8, criterion, mode="C").cuda()
+    torchstat.stat(model, [[1, 1, 256, 256], [1, 8, 256, 256], [1, 8, 128, 128], [1, 8, 64, 64]])
