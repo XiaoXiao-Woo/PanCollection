@@ -703,7 +703,7 @@ class DCFNet(nn.Module):
         #     mms = torch.nn.functional.interpolate(ms, size=(ms.size(2) * 2, ms.size(3) * 2),
         #                                                mode="bilinear", align_corners=True)
         pan = data['pan'].cuda().float()
-        sr = self(pan, lms, mms, ms)
+        sr = self(pan, lms, mms, ms) + lms
         return sr, data['gt'].cuda().float()
 
 

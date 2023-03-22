@@ -668,7 +668,9 @@ def load_checkpoint(resume_mode,
             state_dict._metadata = metadata
             load_state_dict(m, state_dict, strict, logger)
     else:
-        if 'state_dict' in checkpoint:
+        if 'model' in checkpoint:
+            state_dict = checkpoint['model']
+        elif 'state_dict' in checkpoint:
             state_dict = checkpoint['state_dict']
         else:
             state_dict = checkpoint

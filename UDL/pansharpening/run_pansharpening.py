@@ -1,5 +1,5 @@
 # GPL License
-# Copyright (C) 2021 , UESTC
+# Copyright (C) UESTC
 # All Rights Reserved 
 #
 # @Time    : 2022/4/25 0:17
@@ -11,6 +11,6 @@ from UDL.AutoDL import TaskDispatcher
 from UDL.AutoDL.trainer import main
 
 if __name__ == '__main__':
-    cfg = TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='FusionNet')
+    cfg = TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='DCFNet')
     print(TaskDispatcher._task.keys())
     main(cfg)

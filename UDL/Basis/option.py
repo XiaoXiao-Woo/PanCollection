@@ -148,7 +148,7 @@ class get_cfg(TaskDispatcher, name='entrypoint'):
                              f"one of {super()._task.keys()} in TaskDispatcher")
         # cfg.setdefault('workflow', [])
         cfg = data_cfg(cfg)
-        print(cfg.pretty_text)
+        # print(cfg.pretty_text)
 
         self.merge_from_dict(cfg)
 
