@@ -91,7 +91,7 @@ def load_dataset_H5_hp(file_path, scale, use_cuda=True):
     pan = pan[:, np.newaxis, :, :]  # NxCxHxW (C=1)
     pan_hp = torch.from_numpy(get_edge(pan / scale)).float()#.permute(0, 3, 1, 2)  # Nx1xHxW:
     if data.get('gt', None) is None:
-        gt = torch.from_numpy(data['lms'][...]).float()
+        gt = torch.from_numpy(data['lms'][...] / scale).float()
     else:
         gt = torch.from_numpy(data['gt'][...] / scale).float()
 
@@ -129,11 +129,10 @@ def load_dataset_H5(file_path, scale, suffix, use_cuda=True):
         pan = torch.from_numpy(data['pan'][...] / scale).float()  # HxW = 256x256
 
         if data.get('gt', None) is None:
-            gt = torch.from_numpy(data['lms'][...]).float()
+            gt = torch.from_numpy(data['lms'][...] / scale).float()
         else:
             if np.max(data['gt'][...]) > 1:
                 gt = torch.from_numpy(data['gt'][...] / scale).float()
-                gt = gt * scale
             else:
                 gt = torch.from_numpy(data['gt'][...]).float()
 
@@ -281,14 +280,14 @@ class SingleDatasetV2(Dataset):
         test_lms, test_mms, test_ms, test_pan, gt = self.dataset(file_path, self.img_scale)
 
         if 'hp' not in self.dataset_name:
-            return {'gt': (gt * self.img_scale),
+            return {'gt': gt,
                     'lms': test_lms,
                     'mms': test_mms,
                     'ms': test_ms,
                     'pan': test_pan.unsqueeze(dim=0),
                     'filename': file_path}
         else:
-            return {'gt': (gt * self.img_scale),
+            return {'gt': gt,
                     'lms': test_lms,
                     'mms_hp': test_mms,
                     'ms_hp': test_ms,
