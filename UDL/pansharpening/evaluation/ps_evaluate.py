@@ -93,7 +93,7 @@ def load_dataset_H5_hp(file_path, scale, use_cuda=True):
     if data.get('gt', None) is None:
         gt = torch.from_numpy(data['lms'][...]).float()
     else:
-        gt = torch.from_numpy(data['gt'][...]).float()
+        gt = torch.from_numpy(data['gt'][...] / scale).float()
 
     return {'lms': lms,
             'mms:': mms_hp,
@@ -118,7 +118,7 @@ def load_dataset_H5(file_path, scale, suffix, use_cuda=True):
                                               mode="bilinear", align_corners=True)
         pan = torch.from_numpy(data['pan'][...] / scale).cuda().float()  # HxW = 256x256
 
-        gt = torch.from_numpy(data['gt'][...]).cuda().float()
+        gt = torch.from_numpy(data['gt'][...] / scale).cuda().float()
 
     else:
         lms = torch.from_numpy(data['lms'][...] / scale).float()  # CxHxW = 8x64x64
@@ -233,14 +233,14 @@ class SingleDataset(Dataset):
                                                                                               self.img_scale)
 
         if 'hp' not in self.dataset_name:
-            return {'gt': (self.gt * self.img_scale),
+            return {'gt': self.gt,
                     'lms': self.test_lms,
                     'mms': self.test_mms,
                     'ms': self.test_ms,
                     'pan': self.test_pan.unsqueeze(dim=0),
                     'filename': file_path}
         else:
-            return {'gt': (self.gt * self.img_scale),
+            return {'gt': self.gt,
                     'lms': self.test_lms,
                     'mms_hp': self.test_mms,
                     'ms_hp': self.test_ms,
