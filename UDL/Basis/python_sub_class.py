@@ -221,9 +221,8 @@ class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
         sr, gt = self.model.val_step(*args, **kwargs)
         if kwargs['eval']:
             result_our = torch.squeeze(sr).permute(1, 2, 0)
-            # result_our = result_our * kwargs['img_range']
-            metrics = analysis_accu(gt.cuda().squeeze(0) / kwargs['img_range'], result_our, 4)
-
+            metrics = analysis_accu(gt.cuda().squeeze(0), result_our, 4)
+            result_our = result_our * kwargs['img_range']
             if kwargs['idx'] not in [220, 231, 236, 469, 766, 914]:
                 if kwargs['save_fmt'] is not None:
                     save_results(kwargs['idx'], kwargs['save_dir'], kwargs['filename'], kwargs['save_fmt'], result_our)
