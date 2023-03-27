@@ -17,7 +17,7 @@
 import glob
 
 
-def oldPan_trainloader(dataset_name, args):
+def oldPan_validloader(dataset_name, args):
 
     dataset = None
     if any(list(map(lambda x: x in dataset_name, ['wv2', 'wv3', 'qb', 'gf2']))):
@@ -43,7 +43,7 @@ def oldPan_trainloader(dataset_name, args):
     return dataset
 
 
-def DLPan_trainloader(dataset_name, args):
+def DLPan_validloader(dataset_name, args):
 
     dataset = None
     if any(list(map(lambda x: x in dataset_name, ['wv2', 'wv3', 'wv4', 'qb']))):
@@ -72,7 +72,7 @@ def DLPan_trainloader(dataset_name, args):
     return dataset
 
 
-def PanCollection_trainloader(dataset_name, args):
+def PanCollection_validloader(dataset_name, args):
 
     dataset = None
     if any(list(map(lambda x: x in dataset_name, ['wv2', 'wv3', 'qb', 'gf2']))):
