@@ -54,7 +54,7 @@ class parser_args(TaskDispatcher, name='DCFNet'):
         cfg.img_range = 2047.0
         cfg.dataloader_name = "PanCollection_dataloader"  # PanCollection_dataloader, oldPan_dataloader, DLPan_dataloader
 
-        cfg.workflow = [('val', 1)]
+        cfg.workflow = [('valid', 1)]
         print(cfg.pretty_text)
 
         self.merge_from_dict = cfg
