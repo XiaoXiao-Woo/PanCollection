@@ -20,7 +20,7 @@ import sys
 sys.path.append('../..')
 sys.path.append('../mmcv')
 
-from UDL.AutoDL import build_model, getDataSession, ModelDispatcher
+# from UDL.AutoDL import build_model, getDataSession, ModelDispatcher
 from UDL.Basis.auxiliary import init_random_seed, set_random_seed
 from mmcv.utils.logging import print_log, create_logger
 # 1.5s
@@ -35,7 +35,8 @@ from mmcv.runner import (DistSamplerSeedHook, EpochBasedRunner,
 # from mmdet.datasets import (build_dataloader, build_dataset,
 #                             replace_ImageToTensor)
 
-def trainer(cfg, logger,
+def trainer(cfg, logger, build_model,
+            getDataSession,
             distributed=False,
             meta=None):
 
@@ -293,7 +294,7 @@ def trainer(cfg, logger,
     runner.run(data_loaders, cfg.workflow)
 
 
-def main(cfg):
+def main(cfg, build_model, getDataSession):
     # init distributed env first, since logger depends on the dist info.
     if cfg.launcher == 'none':
         distributed = False
@@ -322,5 +323,7 @@ def main(cfg):
     trainer(
         cfg,
         logger,
+        build_model,
+        getDataSession,
         distributed=distributed,
         meta={})
