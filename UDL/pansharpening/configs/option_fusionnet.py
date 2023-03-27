@@ -53,7 +53,7 @@ class parser_args(TaskDispatcher, name='FusionNet'):
         args.experimental_desc = 'Test'
         cfg.merge_args2cfg(args)
         cfg.save_fmt = "mat"
-        # cfg.workflow = [('train', 10), ('val', 1)]
+        # cfg.workflow = [('train', 10), ('valid', 1)]
         cfg.workflow = [('valid', 1)]
         # cfg.config = f"{script_path}/configs/hook_configs.py"
         cfg.use_tfb = False
