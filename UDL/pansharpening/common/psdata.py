@@ -3,6 +3,7 @@ import torch
 from torch.utils.data import DataLoader
 from common.test_panloader import oldPan_dataloader, PanCollection_dataloader, DLPan_dataloader
 from common.train_panloader import oldPan_trainloader, PanCollection_trainloader, DLPan_trainloader
+from common.valid_panloader import oldPan_validloader, PanCollection_validloader, DLPan_validloader
 
 class PansharpeningSession():
     def __init__(self, args):
@@ -46,11 +47,11 @@ class PansharpeningSession():
         dataset = None
         dataloader_name = self.args.dataloader_name
         if dataloader_name == "oldPan_dataloader":
-            dataset = oldPan_trainloader(dataset_name, self.args)
+            dataset = oldPan_validloader(dataset_name, self.args)
         elif dataloader_name == "DLPan_dataloader":
-            dataset = DLPan_trainloader(dataset_name, self.args)
+            dataset = DLPan_validloader(dataset_name, self.args)
         elif dataloader_name == "PanCollection_dataloader":
-            dataset = PanCollection_trainloader(dataset_name, self.args)
+            dataset = PanCollection_validloader(dataset_name, self.args)
 
         if dataset is None:
             raise NotImplementedError(f"{dataset_name} or {dataloader_name} is not supported.")
