@@ -10,7 +10,8 @@ This repository is the official PyTorch implementation of “基于卷积神经�
 * Release a unified Pansharpening traditional-deep learning method (including MATLAB test software package), which is convenient for later scholars to conduct fair tests.
 
 See the [repo](https://github.com/liangjiandeng/PanCollection) for more detailed descriptions. 
-## Features
+## Updates
+* Plan to have UDL as a separate library, see the branch:hot for details.
 
 
 ## Requirements
