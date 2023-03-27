@@ -151,12 +151,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 UDL/bak/
-UDL/results/
+/results/
 *.mat
-UDL/pansharpening/models/ADKNet/*
-UDL/pansharpening/models/DHIFNet/*
-UDL/pansharpening/models/GTP-PNet/*
-UDL/pansharpening/models/HyperTransformer/*
-UDL/pansharpening/models/MUCNN/*
-UDL/pansharpening/models/GPPNN/*
-UDL/pansharpening/models/DCFNet/Weights/*
+/models/ADKNet/*
+/models/DHIFNet/*
+/models/GTP-PNet/*
+/models/HyperTransformer/*
+/models/MUCNN/*
+/models/GPPNN/*
+/models/DCFNet/Weights/*
