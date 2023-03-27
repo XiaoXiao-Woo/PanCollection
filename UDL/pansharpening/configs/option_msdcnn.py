@@ -37,7 +37,7 @@ class parser_args(TaskDispatcher, name='MSDCNN'):
         parser.add_argument('--arch', '-a', metavar='ARCH', default='MSDCNN', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet'])
         # wv3 qb wv2
-        parser.add_argument('--dataset', default={'train': 'wv3', 'val': 'wv3_multiExm1.h5'}, type=str,
+        parser.add_argument('--dataset', default={'train': 'wv3', 'test': 'wv3_multiExm1.h5'}, type=str,
                             choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf',
                                      'wv3_OrigScale_multiExm1.h5', 'wv3_multiExm1.h5'],
                             help="performing evalution for patch2entire")
@@ -52,8 +52,8 @@ class parser_args(TaskDispatcher, name='MSDCNN'):
 
         cfg.merge_args2cfg(args)
         print(cfg.pretty_text)
-        # cfg.workflow = [('train', 50), ('val', 1)]
-        # cfg.workflow = [('val', 1)]
+        # cfg.workflow = [('train', 50), ('valid', 1)]
+        # cfg.workflow = [('valid', 1)]
         cfg.workflow = [('train', 50)]
 
         self.merge_from_dict(cfg)
