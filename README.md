@@ -11,7 +11,7 @@ This repository is the official PyTorch implementation of “基于卷积神经�
 
 See the [repo](https://github.com/liangjiandeng/PanCollection) for more detailed descriptions. 
 ## Updates
-* Plan to have UDL as a separate library, see the branch:hot for details.
+* Plan to have UDL as a separate library, see the branch:[hot](https://github.com/XiaoXiao-Woo/PanCollection/tree/hot) for details.
 
 
 ## Requirements
