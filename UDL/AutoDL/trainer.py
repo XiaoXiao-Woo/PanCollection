@@ -143,7 +143,8 @@ def trainer(cfg, logger,
                      'metrics': cfg.metrics,
                      'save_fmt': cfg.save_fmt,
                      'mode': cfg.mode,
-                     'eval': cfg.valid_or_test, # 在base_runner的resume里用于设置测试最大轮数来评估训练好的模型
+                     'eval': cfg.eval,
+                     'val_mode': cfg.valid_or_test, # 在base_runner的resume里用于设置测试最大轮数来评估训练好的模型
                      'save_dir': cfg.work_dir + "/results"}))
 
     # an ugly workaround to make .log and .log.json filenames the same
