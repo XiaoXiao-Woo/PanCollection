@@ -66,7 +66,7 @@ class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
 
     def val_step(self, *args, **kwargs):
         sr, gt = self.model.val_step(*args, **kwargs)
-        if kwargs['eval']:
+        if kwargs['val_mode']:
             result_our = torch.squeeze(sr).permute(1, 2, 0)
             metrics = analysis_accu(gt.cuda().squeeze(0), result_our, 4)
             result_our = result_our * kwargs['img_range']
