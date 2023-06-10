@@ -25,6 +25,14 @@ See the [PanCollection Paper](https://liangjiandeng.github.io/papers/2022/deng-j
 
 We recommend users to use the code-toolbox [DLPan-Toolbox](https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/02-Test-toolbox-for-traditional-and-DL(Matlab)) + the dataset [PanCollection](https://drive.google.com/drive/folders/15VXUjqPybtqUN_spKfJbw40W05K4nDdY?usp=sharing) for fair training and testing!
 
+## Datasets (Reduced and Full)
+
+| **Satellite** | **Value** | **Comment**                            |
+|--------------------|-----------|----------------------------------------|
+| WorldView-3        | 2047      |   Training; Testing; Generalization   |
+| QuickBird          | 2047      |    Training; Testing   |
+| GaoFen-2           | 1023      |    Training; Testing   |
+| WorldView-2        | 2047      |    Training; Testing; Generalization        |
 
 ## Requirements
 * Python3.7+, Pytorch>=1.6.0
