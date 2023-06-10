@@ -134,9 +134,9 @@ Note that: Don't put model/dataset/task-related files into the folder of AutoDL.
 ## Plannings
 	
 - [ ] [hugging face 🤗](https://huggingface.co/datasets/elsting/PanCollection)
-	
-- [ ] Improve MMCV repo to simplify expensive hooks.
-	
+
+- [ ] Support more models	
+
 ## Contribution
 We appreciate all contributions to improving PanCollection. Looking forward to your contribution to PanCollection.
 
