@@ -1,6 +1,4 @@
-# PanCollection
 "PanCollection" for Remote Sensing Pansharpening
-<<<<<<< Updated upstream
 =======
 
 [English](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README.md) | [简体中文](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README_zh.md)
@@ -12,7 +10,9 @@ This repository is the official PyTorch implementation of “基于卷积神经�
 * Release a unified Pansharpening traditional-deep learning method (including MATLAB test software package), which is convenient for later scholars to conduct fair tests.
 
 See the [repo](https://github.com/liangjiandeng/PanCollection) for more detailed descriptions. 
-## Features
+## Recommendations
+
+We recommend users to use the code-toolbox [DLPan-Toolbox](https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/02-Test-toolbox-for-traditional-and-DL(Matlab)) + the dataset [PanCollection](https://drive.google.com/drive/folders/15VXUjqPybtqUN_spKfJbw40W05K4nDdY?usp=sharing) for fair training and testing!
 
 
 ## Requirements
@@ -23,6 +23,19 @@ See the [repo](https://github.com/liangjiandeng/PanCollection) for more detailed
 Note: Our project is based on MMCV, but you needn't to install it currently.
 
 ## Quick Start
+
+🤗 To get started with PanCollection benchmark (training, inference, etc.), we recommend reading [Google Colab](https://colab.research.google.com/drive/1KpWWj1lVUGllZCws01zQfd6CeURuGL2O#scrollTo=k53dsFhAdp6n)!
+
+```python
+import pancollection as pan
+cfg = pan.TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='FusionNet', 
+                             dataset_name="gf2", use_resume=False,
+                             dataset={'train': 'gf2', 'test': 'test_gf2_multiExm1.h5'})
+print(pan.TaskDispatcher._task)
+pan.trainer.main(cfg, pan.build_model, pan.getDataSession)
+```
+### Quick Start for Developer
+
 **Step0.** set your Python environment.
 
 >git clone https://github.com/XiaoXiao-Woo/PanCollection
@@ -118,6 +131,12 @@ Note that: Don't put model/dataset/task-related files into the folder of AutoDL.
 
 * if you want to know more details of runner about how to train/test in `PanCollection/UDL/AutoDL/trainer.py`, please see PanCollection/UDL/mmcv/mmcv/runner/epoch_based_runner.py
 
+## Plan
+	
+- [ ] [hugging face 🤗](https://huggingface.co/datasets/elsting/PanCollection)
+	
+- [ ] Improve MMCV repo to simplify expensive hooks.
+	
 ## Contribution
 We appreciate all contributions to improving PanCollection. Looking forward to your contribution to PanCollection.
 
@@ -138,5 +157,3 @@ Please cite this project if you use datasets or the toolbox in your research.
 
 ## License & Copyright
 This project is open sourced under GNU General Public License v3.0.
-
->>>>>>> Stashed changes
