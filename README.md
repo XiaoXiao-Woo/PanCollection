@@ -131,7 +131,7 @@ Note that: Don't put model/dataset/task-related files into the folder of AutoDL.
 
 * if you want to know more details of runner about how to train/test in `PanCollection/UDL/AutoDL/trainer.py`, please see PanCollection/UDL/mmcv/mmcv/runner/epoch_based_runner.py
 
-## Plan
+## Plannings
 	
 - [ ] [hugging face 🤗](https://huggingface.co/datasets/elsting/PanCollection)
 	
