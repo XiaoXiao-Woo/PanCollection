@@ -1,5 +1,10 @@
-# "PanCollection" for Remote Sensing Pansharpening
+<div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/liangjiandeng/DLPan-Toolbox"><img src="logo/logo-dlpan.png" width="400"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PanCollection.html"><img src="logo/logo-collection.png" width="400"></a>
+</div>
 
+
+# "PanCollection" for Remote Sensing Pansharpening
 
 [English](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README.md) | [简体中文](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README_zh.md)
 
