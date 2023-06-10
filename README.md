@@ -134,6 +134,7 @@ Note that: Don't put model/dataset/task-related files into the folder of AutoDL.
 ## Plannings
 	
 - [ ] [hugging face 🤗](https://huggingface.co/datasets/elsting/PanCollection)
+  - [ ] Integrated into [Huggingface Spaces 🤗](https://huggingface.co/spaces) using [Gradio](https://github.com/gradio-app/gradio). Try out the web demo: [Hugging Face Spaces](https://huggingface.co/spaces/elsting/PanCollection)
 
 - [ ] Support more models	
 
