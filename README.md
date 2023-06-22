@@ -1,5 +1,10 @@
-"PanCollection" for Remote Sensing Pansharpening
-=======
+<div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/liangjiandeng/DLPan-Toolbox"><img src="logo/logo-dlpan.png" width="250"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PanCollection.html"><img src="logo/logo-collection.png" width="250"></a>
+</div>
+
+
+# "PanCollection" for Remote Sensing Pansharpening (Make Available on [PyPI](https://pypi.org/project/pancollection/) :tada:)
 
 [English](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README.md) | [简体中文](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README_zh.md)
 
@@ -8,17 +13,30 @@ This repository is the official PyTorch implementation of “基于卷积神经�
 * Release the PanCollection of the pan-sharpening training-test dataset of related satellites (such as WorldView-3, QuickBird, GaoFen2, WorldView-2 satellites); 
 * Release the Python code based on the unified Pytorch framework , which is convenient for later scholars;
 * Release a unified Pansharpening traditional-deep learning method (including MATLAB test software package), which is convenient for later scholars to conduct fair tests.
+* Make available on [PyPI](https://pypi.org/project/pancollection/).
+* Added Colab Demo. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]([https://colab.research.google.com/drive/1C2818h7KnjNv4R1sabe14_AYL7lWhmu6?usp=sharing](https://colab.research.google.com/drive/1KpWWj1lVUGllZCws01zQfd6CeURuGL2O#scrollTo=k53dsFhAdp6n))
 
 See the [repo](https://github.com/liangjiandeng/PanCollection) for more detailed descriptions. 
+
+See the [PanCollection Paper](https://liangjiandeng.github.io/papers/2022/deng-jig2022.pdf) for early results.
+
+
 ## Recommendations
 
 We recommend users to use the code-toolbox [DLPan-Toolbox](https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/02-Test-toolbox-for-traditional-and-DL(Matlab)) + the dataset [PanCollection](https://drive.google.com/drive/folders/15VXUjqPybtqUN_spKfJbw40W05K4nDdY?usp=sharing) for fair training and testing!
 
+## Datasets (Reduced and Full)
+
+| **Satellite** | **Value** | **Comment**                            |
+|--------------------|-----------|----------------------------------------|
+| WorldView-3        | 2047      |   Training; Testing; Generalization   |
+| QuickBird          | 2047      |    Training; Testing   |
+| GaoFen-2           | 1023      |    Training; Testing   |
+| WorldView-2        | 2047      |    Training; Testing; Generalization        |
 
 ## Requirements
-* Python3.7+, Pytorch>=1.6.0
+* Python3.7+, Pytorch>=1.9.0
 * NVIDIA GPU + CUDA
-* Run `python setup.py develop`
 
 Note: Our project is based on MMCV, but you needn't to install it currently.
 
@@ -131,12 +149,15 @@ Note that: Don't put model/dataset/task-related files into the folder of AutoDL.
 
 * if you want to know more details of runner about how to train/test in `PanCollection/UDL/AutoDL/trainer.py`, please see PanCollection/UDL/mmcv/mmcv/runner/epoch_based_runner.py
 
-## Plan
+## Plannings
 	
 - [ ] [hugging face 🤗](https://huggingface.co/datasets/elsting/PanCollection)
-	
-- [ ] Improve MMCV repo to simplify expensive hooks.
-	
+  - [ ] Integrated into [Huggingface Spaces 🤗](https://huggingface.co/spaces) using [Gradio](https://github.com/gradio-app/gradio). Try out the web demo: [Hugging Face Spaces](https://huggingface.co/spaces/elsting/PanCollection)
+
+- [ ] Support more models	
+
+- [ ] Make the [Leaderboard](https://paperswithcode.com/dataset/worldview-3-pancollection) for model results.
+
 ## Contribution
 We appreciate all contributions to improving PanCollection. Looking forward to your contribution to PanCollection.
 
@@ -149,6 +170,30 @@ Please cite this project if you use datasets or the toolbox in your research.
     title = {"PanCollection" for Remote Sensing Pansharpening},
     url = {https://github.com/XiaoXiao-Woo/PanCollection/},
     year = {2022},
+}
+```
+
+```
+@ARTICLE{dengjig2022,
+	author={邓良剑，冉燃，吴潇，张添敬},
+	journal={中国图象图形学报},
+	title={遥感图像全色锐化的卷积神经网络方法研究进展},
+ 	year={2022},
+  	volume={},
+  	number={9},
+  	pages={},
+  	doi={10.11834/jig.220540}
+   }
+```
+
+```
+@ARTICLE{deng2022grsm,
+author={L.-J. Deng, G. Vivone, M. E. Paoletti, G. Scarpa, J. He, Y. Zhang, J. Chanussot, and A. Plaza},
+booktitle={IEEE Geoscience and Remote Sensing Magazine},
+title={Machine Learning in Pansharpening: A Benchmark, from Shallow to Deep Networks},
+year={2022},
+pages={2-38},
+doi={10.1109/MGRS.2020.3019315}
 }
 ```
 
