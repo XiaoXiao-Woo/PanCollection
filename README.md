@@ -12,7 +12,7 @@ This repository is the official PyTorch implementation of “基于卷积神经�
 
 * Release the PanCollection of the pan-sharpening training-test dataset of related satellites (such as WorldView-3, QuickBird, GaoFen2, WorldView-2 satellites); 
 * Release the Python code based on the unified Pytorch framework , which is convenient for later scholars;
-* Release a unified Pansharpening traditional-deep learning method (including MATLAB test software package), which is convenient for later scholars to conduct fair tests.
+* Release a unified Pansharpening traditional-deep learning method (including MATLAB test software package, see [link](https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/02-Test-toolbox-for-traditional-and-DL(Matlab))), which is convenient for later scholars to conduct fair tests.
 * Make available on [PyPI](https://pypi.org/project/pancollection/).
 * Added Colab Demo. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]([https://colab.research.google.com/drive/1C2818h7KnjNv4R1sabe14_AYL7lWhmu6?usp=sharing](https://colab.research.google.com/drive/1KpWWj1lVUGllZCws01zQfd6CeURuGL2O#scrollTo=k53dsFhAdp6n))
 
