@@ -140,41 +140,41 @@ if __name__ == '__main__':
 
 One model is divided into three parts:
 
-1. Record hyperparameter configurations in folder of `PanCollection/UDL/pansharpening/configs/option_<modelName>.py`. For example, you can load pretrained model by setting __model_path__ = "your_model_path" or __cfg.resume_from__ = "your_model_path".
+1. Record hyperparameter configurations in folder of `pancollection/configs/option_<modelName>.py`. For example, you can load pretrained model by __cfg.resume_from__ = "your_model_path".
 
-2. Set model, loss, optimizer, scheduler in folder of `PanCollection/UDL/pansharpening/models/<modelName>_main.py`.
+2. Set model, loss, optimizer, scheduler in folder of `pancollection/models/<modelName>_main.py`.
 
-3. Write a new model in folder of `PanCollection/UDL/pansharpening/models/<modelName>/model_<modelName>.py`.
+3. Write a new model in folder of `pancollection/models/<modelName>/model_<modelName>.py`.
 
-Note that when you add a new model into PanCollection, you need to update `PanCollection/UDL/pansharpening/models/__init__.py` and add option_<modelName>.py.
+Note that when you add a new model into PanCollection, you need to update `pancollection/models/__init__.py` and add option_<modelName>.py.
 
 **Others**
 * if you want to add customized datasets, you need to update:
 
 ```
-PanCollection/UDL/AutoDL/__init__.py.
-PanCollection/UDL/pansharpening/common/psdata.py.
+pansharpening/common/psdata.py.
 ```
 
 * if you want to add customized tasks, you need to update:
 
 ```
-1.Put model_<newModelName> and <newModelName>_main in PanCollection/UDL/<taskName>/models.
-2.Create a new folder of PanCollection/UDL/<taskName>/configs to put option_<newModelName>.
-3.Update PanCollection/UDL/AutoDL/__init__.
-4.Add a class in PanCollection/UDL/Basis/python_sub_class.py, like this:
+1.Put model_<newModelName> and <newModelName>_main in pancollection/models.
+2.Create a new folder of pancollection/configs to put option_<newModelName>.
+3.Add a class in panCollection/models/base_model.py, like this:
+```
+```python
 class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
 ```
 
 * if you want to add customized training settings, such as saving model, recording logs, and so on. you need to update:
 
 ```
-PanCollection/UDL/mmcv/mmcv/runner/hooks
+udl-vis/mmcv/mmcv/runner/hooks
 ```
 
 Note that: Don't put model/dataset/task-related files into the folder of AutoDL.
 
-* if you want to know more details of runner about how to train/test in `PanCollection/UDL/AutoDL/trainer.py`, please see PanCollection/UDL/mmcv/mmcv/runner/epoch_based_runner.py
+* if you want to know more details of runner about how to train/test in `udl-vis/AutoDL/trainer.py`, please see  udl-vis/mmcv/runner/epoch_based_runner.py
 
 ## Plannings
 	
