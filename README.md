@@ -4,7 +4,7 @@
 </div>
 
 
-# "PanCollection" for Remote Sensing Pansharpening
+# "PanCollection" for Remote Sensing Pansharpening (Make Available on PyPI :tada:)
 
 [English](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README.md) | [简体中文](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README_zh.md)
 
@@ -13,7 +13,7 @@ This repository is the official PyTorch implementation of “基于卷积神经�
 * Release the PanCollection of the pan-sharpening training-test dataset of related satellites (such as WorldView-3, QuickBird, GaoFen2, WorldView-2 satellites); 
 * Release the Python code based on the unified Pytorch framework , which is convenient for later scholars;
 * Release a unified Pansharpening traditional-deep learning method (including MATLAB test software package), which is convenient for later scholars to conduct fair tests.
-* Make available on PyPI
+* Make available on PyPI.
 * Added Colab Demo. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]([https://colab.research.google.com/drive/1C2818h7KnjNv4R1sabe14_AYL7lWhmu6?usp=sharing](https://colab.research.google.com/drive/1KpWWj1lVUGllZCws01zQfd6CeURuGL2O#scrollTo=k53dsFhAdp6n))
 
 See the [repo](https://github.com/liangjiandeng/PanCollection) for more detailed descriptions. 
@@ -35,7 +35,7 @@ We recommend users to use the code-toolbox [DLPan-Toolbox](https://github.com/li
 | WorldView-2        | 2047      |    Training; Testing; Generalization        |
 
 ## Requirements
-* Python3.7+, Pytorch>=1.6.0
+* Python3.7+, Pytorch>=1.9.0
 * NVIDIA GPU + CUDA
 
 Note: Our project is based on MMCV, but you needn't to install it currently.
