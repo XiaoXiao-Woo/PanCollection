@@ -13,7 +13,7 @@ setup(
     author="XiaoXiao-Woo",
     author_email="wxwsx1997@gmail.com",
     url='https://github.com/XiaoXiao-Woo/PanCollection',
-    version='0.3.4',
+    version='0.3.5',
     include_package_data=True,
     packages=find_packages(exclude=["results", "pancollection/results"]),
     package_data={'pancollection': ['models/*']},
@@ -35,6 +35,6 @@ setup(
         "packaging",
         "colorlog",
         "pyyaml",
-        "udl-vis==0.3.4"
+        "udl-vis==0.3.5"
     ],
 )

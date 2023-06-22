@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9724290-a12c-44d4-ba58-02d113c639eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/UDL.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/PanCollection_colab.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/PanCollection_colab.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/common/psdata.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/common/psdata.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/common/valid_panloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/common/valid_panloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/hook_configs.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/hook_configs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/option_DCFNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_DCFNet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/option_LAGNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_LAGNet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/option_bdpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_bdpn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/option_dicnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_dicnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/option_drpnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_drpnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/option_fusionnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_fusionnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/option_msdcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_msdcnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/option_pannet.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_pannet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/option_pnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_pnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/FusionNet/fusionnet_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/FusionNet/fusionnet_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/FusionNet/model_fusionnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/FusionNet/model_fusionnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/base_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pancollection/run_pansharpening.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/run_pansharpening.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
@@ -141,7 +122,7 @@
       <workItem from="1687276823404" duration="9255000" />
       <workItem from="1687354875663" duration="297000" />
       <workItem from="1687355448156" duration="14842000" />
-      <workItem from="1687403932393" duration="9352000" />
+      <workItem from="1687403932393" duration="13984000" />
     </task>
     <servers />
   </component>
@@ -192,15 +173,15 @@
           <option name="timeStamp" value="131" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/../../UDL-VIS/udl_vis/mmcv/runner/base_runner.py</url>
-          <line>459</line>
-          <option name="timeStamp" value="138" />
+          <url>file://$PROJECT_DIR$/../../UDL-VIS/udl_vis/mmcv/runner/epoch_based_runner.py</url>
+          <line>180</line>
+          <option name="timeStamp" value="159" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PanCollection$run_nni.coverage" NAME="run_nni Coverage Results" MODIFIED="1687405154229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pancollection/AutoDL" />
-    <SUITE FILE_PATH="coverage/PanCollection$run_pansharpening.coverage" NAME="run_pansharpening Coverage Results" MODIFIED="1687424219626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pancollection" />
+    <SUITE FILE_PATH="coverage/PanCollection$run_pansharpening.coverage" NAME="run_pansharpening Coverage Results" MODIFIED="1687462308934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pancollection" />
   </component>
 </project>
