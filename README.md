@@ -109,7 +109,7 @@ or
   
 	__cfg.eval__ = True or __cfg.workflow__ = [('test', 1)]
 
-**Step4.** How to customize your model
+**Step4.** How to customize your model.
 ```pythonn
 def run_demo():
     import os 
@@ -137,7 +137,7 @@ if __name__ == '__main__':
 ```
 
 
-**Step5.**. How to customize the code.
+**Step5.** How to customize the code.
 
 One model is divided into three parts:
 
