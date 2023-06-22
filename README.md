@@ -123,7 +123,7 @@ def run_demo():
     import option_<your_model_file> # please refer to https://github.com/XiaoXiao-Woo/PanCollection/blob/main/pancollection/configs/option_fusionnet.py
 
 
-    cfg = TaskDispatcher.new(task='hisr', mode='entrypoint', arch='FCFormer', **data_path,
+    cfg = TaskDispatcher.new(task='hisr', mode='entrypoint', arch='your_model_name', **data_path,
                              workflow=[('train', 10), ('valid', 1), ('test', 1)], resume_from="", experimental_desc="LN")
                             #  **data_path)
                             #  , data_dir="/Data/Datasets/hisr")
