@@ -109,7 +109,35 @@ or
   
 	__cfg.eval__ = True or __cfg.workflow__ = [('test', 1)]
 
-**Step4**. How to customize the code.
+**Step4.** How to customize your model
+```pythonn
+def run_demo():
+    import os 
+    os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
+    from <your_model_file> import build
+    from pancollection.configs.configs import TaskDispatcher
+    from udl_vis.AutoDL.trainer import main
+    from pancollection.common.builder import build_model, getDataSession
+    import option_<your_model_file> # please refer to https://github.com/XiaoXiao-Woo/PanCollection/blob/main/pancollection/configs/option_fusionnet.py
+
+
+    cfg = TaskDispatcher.new(task='hisr', mode='entrypoint', arch='FCFormer', **data_path,
+                             workflow=[('train', 10), ('valid', 1), ('test', 1)], resume_from="", experimental_desc="LN")
+                            #  **data_path)
+                            #  , data_dir="/Data/Datasets/hisr")
+    print(TaskDispatcher._task.keys())
+
+    main(cfg, build_model, getDataSession)
+
+if __name__ == '__main__':
+    run_demo()
+
+```
+
+
+**Step5.**. How to customize the code.
 
 One model is divided into three parts:
 
