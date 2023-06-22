@@ -37,8 +37,7 @@ We recommend users to use the code-toolbox [DLPan-Toolbox](https://github.com/li
 ## Requirements
 * Python3.7+, Pytorch>=1.9.0
 * NVIDIA GPU + CUDA
-
-Note: Our project is based on MMCV, but you needn't to install it currently.
+* The project is based on [UDL](https://github.com/XiaoXiao-Woo/UDL).
 
 ## Quick Start
 
