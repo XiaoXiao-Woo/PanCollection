@@ -26,12 +26,14 @@ class parser_args(TaskDispatcher, name='FusionNet'):
         parser.add_argument('--out_dir', metavar='DIR', default=f'{root_dir}/results/{cfg.task}',
                             help='path to save model')
         parser.add_argument('--mode', default=argparse.SUPPRESS, help='protective declare, please ignore it')
-
+        parser.add_argument('--config', default="", type=str)
         parser.add_argument('--lr', default=3e-4, type=float)  # 1e-4 2e-4 8
         # parser.add_argument('--lr_scheduler', default=True, type=bool)
         parser.add_argument('--samples_per_gpu', default=32, type=int,  # 8
                             metavar='N', help='mini-batch size (default: 256)')
-        parser.add_argument('--print-freq', '-p', default=50, type=int,
+        parser.add_argument('--save_interval', default=1, type=int,
+                            metavar='N', help='save ckpt frequency (default: 10)')
+        parser.add_argument('--log_interval', default=50, type=int,
                             metavar='N', help='print frequency (default: 10)')
         parser.add_argument('--seed', default=1, type=int,
                             help='seed for initializing training. ')
@@ -44,7 +46,7 @@ class parser_args(TaskDispatcher, name='FusionNet'):
         ##
         parser.add_argument('--arch', '-a', metavar='ARCH', default='FusionNet', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet'])
-        parser.add_argument('--dataset', default={'train': 'wv3', 'test': 'test_wv3_multiExm1.h5'}, type=str, # 'valid': 'wv3' , 'eval': 'wv3_multiExm.h5'
+        parser.add_argument('--dataset', default={'train': 'wv3', 'valid': 'wv3', 'test': 'test_wv3_multiExm1.h5'}, type=str, # 'valid': 'wv3' , 'eval': 'wv3_multiExm.h5'
                             choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf2',
                                      'wv3_OrigScale_multiExm1.h5', 'test_wv3_multiExm1.h5'],
                             help="performing evalution for patch2entire")
@@ -69,7 +71,7 @@ class parser_args(TaskDispatcher, name='FusionNet'):
         # change cfg for external kwargs
         cfg.merge_from_dict(kwargs)  # dict is merged partially
         cfg.dataset = kwargs['dataset'] if 'dataset' in kwargs else cfg.dataset
-        print(cfg.pretty_text)
+        # print(cfg.pretty_text)
 
 
         self.merge_from_dict(cfg)

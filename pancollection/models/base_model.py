@@ -3,6 +3,8 @@
 # All Rights Reserved
 # @Author  : Xiao Wu
 # @reference:
+import os
+
 from udl_vis.Basis.python_sub_class import ModelDispatcher
 import numpy as np
 import torch
@@ -64,20 +66,17 @@ class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
 
     def val_step(self, *args, **kwargs):
         sr, gt = self.model.val_step(*args, **kwargs)
-        if kwargs['val_mode']:
-            result_our = torch.squeeze(sr).permute(1, 2, 0)
-            metrics = analysis_accu(gt.cuda().squeeze(0), result_our, 4)
+        result_our = torch.squeeze(sr).permute(1, 2, 0)
+        metrics = analysis_accu(gt.cuda().squeeze(0), result_our, 4)
+        if kwargs['test_mode']:
             result_our = result_our * kwargs['img_range']
             if kwargs['idx'] not in [220, 231, 236, 469, 766, 914]:
-                if kwargs['save_fmt'] is not None:
+                if kwargs['save_fmt'] is not None and os.path.isdir(kwargs['save_fmt']):
                     save_results(kwargs['idx'], kwargs['save_dir'], kwargs['filename'], kwargs['save_fmt'], result_our)
                 self.SAM_list.append(metrics['SAM'].item())
                 self.ERGAS_list.append(metrics['ERGAS'].item())
             if kwargs['idx'] == 1257:
                 print(np.mean(self.SAM_list), np.mean(self.ERGAS_list))
-        else:
-            sr, gt = self.model.val_step(*args, **kwargs)
-            metrics = {'loss': F.l1_loss(sr, gt).item()}
 
         return {'log_vars': metrics}
 

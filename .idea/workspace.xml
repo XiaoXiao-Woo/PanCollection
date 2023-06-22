@@ -1,98 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aaab697d-5e06-4fc8-a1ff-3011563f6658" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MANIFEST.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/PanCollection_colab.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/D_lambda_K.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/HQNR.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/MTF.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/MTF_pan.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/genMTF.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/genMTF_pan.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/imresize.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/indexes_evaluation_FS.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/interp23.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/my_D_s.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/my_q2n.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/FS_index/tools.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/common/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/configs/load_ckpt_configs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_HSISR/ADKG.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_HSISR/Weights/ADKNet4HSISR.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_HSISR/data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_HSISR/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_HSISR/results/readme" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_HSISR/test_data/readme" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_HSISR/test_multi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_HSISR/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_HSISR/training_data/readme" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_pansharpening/ADKG.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_pansharpening/Weights/ADKNet4pansharpening.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_pansharpening/data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_pansharpening/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_pansharpening/test_multi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_pansharpening/test_single.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ADKNet_for_pansharpening/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/ddf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/setup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/cuda/ddf_add_cuda.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/cuda/ddf_add_cuda_kernel.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/cuda/ddf_add_faster_cuda.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/cuda/ddf_add_faster_cuda_kernel.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/cuda/ddf_mul_cuda.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/cuda/ddf_mul_cuda_kernel.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/cuda/ddf_mul_faster_cuda.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/cuda/ddf_mul_faster_cuda_kernel.cu" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/ddf_add_ext.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/ddf_add_faster_ext.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/ddf_mul_ext.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/ADKNet/ddf/src/ddf_mul_faster_ext.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/BDPN/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/DCFNet/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/DRPNN/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/DiCNN/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/FusionNet/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/GPPNN/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/GPPNN/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/GPPNN/metrics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/GPPNN/models/GPPNN.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/GPPNN/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/GPPNN/training/train_GPPNN.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/GPPNN/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/LAGConv/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/MSDCNN/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/MUCNN/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/MUCNN/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/MUCNN/Weights/600.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/MUCNN/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/MUCNN/main_test_multi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/MUCNN/main_test_single.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/MUCNN/model/Model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/MUCNN/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/PNN/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/models/PanNet/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/run_pansharpening.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pancollection/run_test_pansharpening.py" afterDir="false" />
+    <list default="true" id="f9724290-a12c-44d4-ba58-02d113c639eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/UDL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UDL.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/UDL.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/common/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/common/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/common/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/common/dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/common/dataset_hp.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/common/dataset_hp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/common/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/common/evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pancollection/PanCollection_colab.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/PanCollection_colab.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pancollection/common/psdata.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/common/psdata.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/common/test_panloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/common/test_panloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/common/train_panloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/common/train_panloader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pancollection/common/valid_panloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/common/valid_panloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/configs/configs.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/configs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pancollection/configs/hook_configs.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/hook_configs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pancollection/configs/option_DCFNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_DCFNet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pancollection/configs/option_LAGNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_LAGNet.py" afterDir="false" />
@@ -103,24 +19,10 @@
       <change beforePath="$PROJECT_DIR$/pancollection/configs/option_msdcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_msdcnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pancollection/configs/option_pannet.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_pannet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pancollection/configs/option_pnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/configs/option_pnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/BDPN/bdpn_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/BDPN/bdpn_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/BDPN/model_bdpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/BDPN/model_bdpn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/DCFNet/model_fcc_dense_head.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/DCFNet/model_fcc_dense_head.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/DRPNN/drpnn_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/DRPNN/drpnn_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/DRPNN/model_drpnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/DRPNN/model_drpnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/DiCNN/dicnn_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/DiCNN/dicnn_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/DiCNN/model_dicnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/DiCNN/model_dicnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pancollection/models/FusionNet/fusionnet_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/FusionNet/fusionnet_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pancollection/models/FusionNet/model_fusionnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/FusionNet/model_fusionnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/LAGConv/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/LAGConv/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/MSDCNN/model_msdcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/MSDCNN/model_msdcnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/MSDCNN/msdcnn_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/MSDCNN/msdcnn_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/PNN/model_pnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/PNN/model_pnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/PNN/pnn_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/PNN/pnn_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/PanNet/model_pannet.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/PanNet/model_pannet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/PanNet/pannet_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/PanNet/pannet_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pancollection/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pancollection/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/models/base_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pancollection/run_pansharpening.py" beforeDir="false" afterPath="$PROJECT_DIR$/pancollection/run_pansharpening.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -146,7 +48,7 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProjectId" id="2G2JQydrEeiBDIIAxsi0txD2M6S" />
+  <component name="ProjectId" id="2RKekqbGdKmGWY84M95L6VkIRyw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -156,53 +58,36 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/results" />
     <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.stylelint" value="" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
-  </component>
-  <component name="PyDebuggerOptionsProvider">
-    <option name="mySupportGeventDebugging" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Python\gitSync\UDL_package\PanCollection" />
+      <recent name="D:\Python\gitSync\UDL_package\PanCollection\results" />
+      <recent name="D:\Python\gitSync\UDL_package\PanCollection\pancollection\AutoDL" />
       <recent name="D:\Python\gitSync\UDL_package\PanCollection\pancollection" />
-      <recent name="D:\Python\gitSync\UDL_package\PanCollection\pancollection\models\PNN" />
-      <recent name="D:\Python\gitSync\UDL_package\PanCollection\pancollection\models\PanNet" />
-      <recent name="D:\Python\gitSync\UDL_package\PanCollection\pancollection\models\MUCNN" />
+      <recent name="D:\Python\gitSync\UDL_package\PanCollection" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Python\gitSync\UDL_package\PanCollection\dist" />
-      <recent name="D:\Python\gitSync\UDL_package\PanCollection" />
       <recent name="D:\Python\gitSync\UDL_package\PanCollection\pancollection" />
-      <recent name="D:\Python\gitSync\UDL_package\PanCollection\results\pansharpening\test_wv3_multiExm1.h5" />
-      <recent name="D:\Python\gitSync\PanCollection\pancollection\common" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.run_test_pansharpening (1)">
-    <configuration name="hug_demo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="UDL" />
+  <component name="RunManager" selected="Python.run_pansharpening">
+    <configuration name="run_nni" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PanCollection" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pancollection" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pancollection/AutoDL" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\Python\gitSync\AEM\hug_demo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pancollection/AutoDL/run_nni.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -212,7 +97,7 @@
       <method v="2" />
     </configuration>
     <configuration name="run_pansharpening" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="UDL" />
+      <module name="PanCollection" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -224,7 +109,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\Python\gitSync\UDL_package\PanCollection\pancollection\run_pansharpening.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pancollection/run_pansharpening.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -233,260 +118,89 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="run_pansharpening" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="UDL" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\Python\gitSync\UDL_package\PanCollection\pancollection\run_pansharpening.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="run_test_pansharpening (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="UDL" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pancollection" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pancollection/run_test_pansharpening.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="run_test_pansharpening" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="UDL" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pancollection" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\Python\gitSync\UDL_package\PanCollection\pancollection\run_test_pansharpening.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="run_test_pansharpening" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="UDL" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\Python\gitSync\UDL_package\PanCollection\pancollection\run_test_pansharpening.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Python.run_pansharpening" />
-      <item itemvalue="Python.hug_demo" />
-      <item itemvalue="Python.run_test_pansharpening" />
-      <item itemvalue="Python.run_test_pansharpening (1)" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.run_test_pansharpening (1)" />
-        <item itemvalue="Python.run_test_pansharpening (1)" />
-        <item itemvalue="Python.run_test_pansharpening" />
-        <item itemvalue="Python.hug_demo" />
+        <item itemvalue="Python.run_pansharpening" />
+        <item itemvalue="Python.run_nni" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="aaab697d-5e06-4fc8-a1ff-3011563f6658" name="Default Changelist" comment="" />
-      <created>1665580735036</created>
+      <changelist id="f9724290-a12c-44d4-ba58-02d113c639eb" name="Default Changelist" comment="" />
+      <created>1687003346402</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1665580735036</updated>
-      <workItem from="1665580738918" duration="1233000" />
-      <workItem from="1665638244363" duration="7104000" />
-      <workItem from="1665729993176" duration="1429000" />
-      <workItem from="1665934929885" duration="1343000" />
-      <workItem from="1666006594772" duration="2898000" />
-      <workItem from="1667910890507" duration="697000" />
-      <workItem from="1668244250549" duration="1501000" />
-      <workItem from="1668399779207" duration="623000" />
-      <workItem from="1668515932078" duration="7485000" />
-      <workItem from="1668583580612" duration="81000" />
-      <workItem from="1668693660669" duration="5861000" />
-      <workItem from="1668755879940" duration="73000" />
-      <workItem from="1668877816895" duration="8762000" />
-      <workItem from="1668935655760" duration="3865000" />
-      <workItem from="1669203115796" duration="4057000" />
-      <workItem from="1669813472008" duration="7345000" />
-      <workItem from="1669881527625" duration="5736000" />
-      <workItem from="1669973258187" duration="3818000" />
-      <workItem from="1669989615925" duration="3000" />
-      <workItem from="1670217221645" duration="2681000" />
-      <workItem from="1670916512108" duration="1521000" />
-      <workItem from="1670929859599" duration="645000" />
-      <workItem from="1670932418114" duration="1354000" />
-      <workItem from="1671092705179" duration="1843000" />
-      <workItem from="1671266338117" duration="1807000" />
-      <workItem from="1671518838543" duration="348000" />
-      <workItem from="1671519572406" duration="10000" />
-      <workItem from="1671614561764" duration="629000" />
-      <workItem from="1671637100594" duration="10000" />
-      <workItem from="1678265530462" duration="4688000" />
-      <workItem from="1678289027132" duration="793000" />
-      <workItem from="1678334195177" duration="3704000" />
-      <workItem from="1678361263258" duration="4753000" />
-      <workItem from="1678452533783" duration="695000" />
-      <workItem from="1678598889193" duration="2390000" />
-      <workItem from="1678698345858" duration="641000" />
-      <workItem from="1678711913573" duration="4512000" />
-      <workItem from="1678856656457" duration="25000" />
-      <workItem from="1678951741208" duration="3391000" />
-      <workItem from="1679290862035" duration="995000" />
-      <workItem from="1679376216577" duration="3753000" />
-      <workItem from="1679390788060" duration="5000" />
-      <workItem from="1679390919546" duration="1427000" />
-      <workItem from="1679409445358" duration="724000" />
-      <workItem from="1679484310726" duration="4402000" />
-      <workItem from="1679499460694" duration="4353000" />
-      <workItem from="1679568107639" duration="1411000" />
-      <workItem from="1679638792698" duration="80000" />
-      <workItem from="1679833214479" duration="1260000" />
-      <workItem from="1679834838404" duration="17000" />
-      <workItem from="1679895546385" duration="2914000" />
-      <workItem from="1679930055801" duration="6387000" />
-      <workItem from="1680005519715" duration="2359000" />
-      <workItem from="1680008463698" duration="431000" />
-      <workItem from="1680024985880" duration="36000" />
-      <workItem from="1680072271970" duration="1356000" />
-      <workItem from="1680161246201" duration="1040000" />
-      <workItem from="1680164877440" duration="12719000" />
-      <workItem from="1680245866314" duration="3558000" />
-      <workItem from="1680338969553" duration="4120000" />
-      <workItem from="1680434925675" duration="594000" />
-      <workItem from="1680534372352" duration="11000" />
-      <workItem from="1680955003424" duration="14000" />
-      <workItem from="1681104763101" duration="97000" />
-      <workItem from="1681105797687" duration="736000" />
-      <workItem from="1681272381395" duration="765000" />
-      <workItem from="1681304232542" duration="6412000" />
-      <workItem from="1682765409621" duration="720000" />
-      <workItem from="1682862266280" duration="5000" />
-      <workItem from="1682862284220" duration="52000" />
-      <workItem from="1683902246599" duration="3040000" />
-      <workItem from="1683977977464" duration="6000" />
-      <workItem from="1684672539095" duration="1387000" />
-      <workItem from="1684680463434" duration="9000" />
-      <workItem from="1684680523449" duration="626000" />
-      <workItem from="1684817191564" duration="604000" />
-      <workItem from="1685862490333" duration="3704000" />
-      <workItem from="1685951934843" duration="936000" />
-      <workItem from="1686063099989" duration="5985000" />
-      <workItem from="1686075864590" duration="1905000" />
-      <workItem from="1686124371387" duration="4148000" />
-      <workItem from="1686132540738" duration="8108000" />
-      <workItem from="1686303376129" duration="26320000" />
-      <workItem from="1686335745751" duration="4813000" />
+      <updated>1687003346402</updated>
+      <workItem from="1687003349405" duration="218000" />
+      <workItem from="1687011253843" duration="606000" />
+      <workItem from="1687015463087" duration="312000" />
+      <workItem from="1687016600325" duration="33204000" />
+      <workItem from="1687275163458" duration="598000" />
+      <workItem from="1687276823404" duration="9255000" />
+      <workItem from="1687354875663" duration="297000" />
+      <workItem from="1687355448156" duration="14842000" />
+      <workItem from="1687403932393" duration="9352000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/UDL/mmcv/mmcv/runner/epoch_based_runner.py</url>
-          <line>228</line>
-          <option name="timeStamp" value="30" />
+          <url>file://$PROJECT_DIR$/../../UDL-VIS/udl_vis/mmcv/runner/record.py</url>
+          <line>308</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/LRTCPan_coeffs.py</url>
-          <line>96</line>
-          <option name="timeStamp" value="34" />
+          <url>file://$PROJECT_DIR$/../../UDL-VIS/udl_vis/mmcv/runner/record.py</url>
+          <line>304</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../UDL-VIS/udl_vis/mmcv/runner/hooks/logger/text.py</url>
+          <line>176</line>
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../UDL-VIS/udl_vis/Basis/option.py</url>
+          <line>92</line>
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../Anaconda3/envs/latest/Lib/site-packages/nni/experiment/experiment.py</url>
+          <line>102</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../nni/nni/experiment/config/utils/internal.py</url>
+          <line>176</line>
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../Anaconda3/envs/latest/Lib/site-packages/nni/experiment/launcher.py</url>
+          <line>104</line>
+          <option name="timeStamp" value="130" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../Anaconda3/envs/latest/Lib/site-packages/nni/experiment/launcher.py</url>
+          <line>180</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../UDL-VIS/udl_vis/mmcv/runner/base_runner.py</url>
+          <line>459</line>
+          <option name="timeStamp" value="138" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PanCollection$demo_pymfe.coverage" NAME="demo_pymfe Coverage Results" MODIFIED="1680409808457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PanCollection$LRTCPan_coeffs.coverage" NAME="LRTCPan_coeffs Coverage Results" MODIFIED="1681313252802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PanCollection$network_swinir_new__1_.coverage" NAME="network_swinir_new (1) Coverage Results" MODIFIED="1668934073875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PanCollection$model.coverage" NAME="model Coverage Results" MODIFIED="1683903097272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/CusTransformer" />
-    <SUITE FILE_PATH="coverage/PanCollection$pytest_in_train_py.coverage" NAME="pytest in train.py Coverage Results" MODIFIED="1668522707359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UDL/pansharpening/models/HyperTransformer" />
-    <SUITE FILE_PATH="coverage/PanCollection$hug_demo.coverage" NAME="hug_demo Coverage Results" MODIFIED="1686316201562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pancollection" />
-    <SUITE FILE_PATH="coverage/PanCollection$main_test_single.coverage" NAME="main_test_single Coverage Results" MODIFIED="1678951876975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UDL/pansharpening/models/MUCNN" />
-    <SUITE FILE_PATH="coverage/PanCollection$GPPNN.coverage" NAME="GPPNN Coverage Results" MODIFIED="1665646100893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UDL/pansharpening/models/GPPNN/models" />
-    <SUITE FILE_PATH="coverage/PanCollection$model__1_.coverage" NAME="model (1) Coverage Results" MODIFIED="1666099764077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UDL/pansharpening/models/ADKNet/ADKNet_for_pansharpening" />
-    <SUITE FILE_PATH="coverage/PanCollection$run_test_pansharpening__1_.coverage" NAME="run_test_pansharpening (1) Coverage Results" MODIFIED="1686369297952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pancollection" />
-    <SUITE FILE_PATH="coverage/PanCollection$run_kmcuda.coverage" NAME="run_kmcuda Coverage Results" MODIFIED="1680170471442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/KMConv/kmeans_cuda" />
-    <SUITE FILE_PATH="coverage/PanCollection$run_pansharpening__1_.coverage" NAME="run_pansharpening (1) Coverage Results" MODIFIED="1686330814787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PanCollection$ADKG.coverage" NAME="ADKG Coverage Results" MODIFIED="1665667318747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UDL/pansharpening/models/ADKNet/ADKNet_for_pansharpening" />
-    <SUITE FILE_PATH="coverage/PanCollection$run_test_pansharpening.coverage" NAME="run_test_pansharpening Coverage Results" MODIFIED="1686327046742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pancollection" />
-    <SUITE FILE_PATH="coverage/PanCollection$transfertrain.coverage" NAME="transfertrain Coverage Results" MODIFIED="1669974936448" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UDL/pansharpening/models/P2Sharpen" />
-    <SUITE FILE_PATH="coverage/PanCollection$kmeans.coverage" NAME="kmeans Coverage Results" MODIFIED="1680247493980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/KMConv" />
-    <SUITE FILE_PATH="coverage/PanCollection$kmconv.coverage" NAME="kmconv Coverage Results" MODIFIED="1680247511220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models/KMConv" />
-    <SUITE FILE_PATH="coverage/PanCollection$psdata.coverage" NAME="psdata Coverage Results" MODIFIED="1669899401718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UDL/pansharpening/common" />
-    <SUITE FILE_PATH="coverage/PanCollection$train.coverage" NAME="train Coverage Results" MODIFIED="1668522876021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UDL/pansharpening/models/HyperTransformer" />
-    <SUITE FILE_PATH="coverage/PanCollection$network_swinir_new.coverage" NAME="network_swinir_new Coverage Results" MODIFIED="1668933134374" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Desktop" />
-    <SUITE FILE_PATH="coverage/PanCollection$run_pansharpening.coverage" NAME="run_pansharpening Coverage Results" MODIFIED="1686287741645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pancollection" />
-    <SUITE FILE_PATH="coverage/PanCollection$network_swinir.coverage" NAME="network_swinir Coverage Results" MODIFIED="1668931438768" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PanCollection$model_fcc_dense_head.coverage" NAME="model_fcc_dense_head Coverage Results" MODIFIED="1678952053115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UDL/pansharpening/models/DCFNet" />
-    <SUITE FILE_PATH="coverage/PanCollection$evaluate.coverage" NAME="evaluate Coverage Results" MODIFIED="1668697163686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UDL/pansharpening/common" />
-    <SUITE FILE_PATH="coverage/PanCollection$network_swinir_wx.coverage" NAME="network_swinir_wx Coverage Results" MODIFIED="1669206601395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PanCollection$run_nni.coverage" NAME="run_nni Coverage Results" MODIFIED="1687405154229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pancollection/AutoDL" />
+    <SUITE FILE_PATH="coverage/PanCollection$run_pansharpening.coverage" NAME="run_pansharpening Coverage Results" MODIFIED="1687424219626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pancollection" />
   </component>
 </project>

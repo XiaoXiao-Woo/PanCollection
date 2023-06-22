@@ -31,7 +31,9 @@ class parser_args(TaskDispatcher, name='LAGNet'):
         # parser.add_argument('--lr_scheduler', default=True, type=bool)
         parser.add_argument('--samples_per_gpu', default=32, type=int,  # 8
                             metavar='N', help='mini-batch size (default: 256)')
-        parser.add_argument('--print-freq', '-p', default=50, type=int,
+        parser.add_argument('--save_interval', default=50, type=int,
+                            metavar='N', help='save ckpt frequency (default: 10)')
+        parser.add_argument('--log_interval', default=50, type=int,
                             metavar='N', help='print frequency (default: 10)')
         parser.add_argument('--seed', default=10, type=int,
                             help='seed for initializing training. ')
@@ -43,7 +45,7 @@ class parser_args(TaskDispatcher, name='LAGNet'):
                             help='path to latest checkpoint (default: none)')
         ##
         parser.add_argument('--arch', '-a', metavar='ARCH', default='LAGNet', type=str)
-        parser.add_argument('--dataset', default={'train': dataset_name, 'test': f'{dataset_name}_multiExm1.h5'}, type=str,
+        parser.add_argument('--dataset', default={'train': dataset_name, 'valid': dataset_name, 'test': f'{dataset_name}_multiExm1.h5'}, type=str,
                             choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf',
                                      'wv2_hp', ..., 'wv3_OrigScale_multiExm1.h5', 'wv3_multiExm1.h5'],
                             help="performing evalution for patch2entire")

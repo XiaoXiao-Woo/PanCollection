@@ -30,7 +30,9 @@ class parser_args(TaskDispatcher, name='DRPNN'):
         parser.add_argument('--lr_scheduler', default=True, type=bool)
         parser.add_argument('--samples_per_gpu', default=64, type=int,  # 8
                             metavar='N', help='mini-batch size (default: 256)')
-        parser.add_argument('--print-freq', '-p', default=50, type=int,
+        parser.add_argument('--save_interval', default=50, type=int,
+                            metavar='N', help='save ckpt frequency (default: 10)')
+        parser.add_argument('--log_interval', default=50, type=int,
                             metavar='N', help='print frequency (default: 10)')
         parser.add_argument('--epochs', default=3000, type=int)
         parser.add_argument('--workers_per_gpu', default=0, type=int)
@@ -42,7 +44,7 @@ class parser_args(TaskDispatcher, name='DRPNN'):
         parser.add_argument('--arch', '-a', metavar='ARCH', default='DRPNN', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet'])
         # _multiExm1.h5
-        parser.add_argument('--dataset', default={'train': 'wv3', 'test': 'wv3_multiExm1.h5'}, type=str,
+        parser.add_argument('--dataset', default={'train': 'wv3', 'valid': 'wv3', 'test': 'wv3_multiExm1.h5'}, type=str,
                             choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf',
                                      'wv3_OrigScale_multiExm1.h5', 'wv3_multiExm1.h5'],
                             help="performing evalution for patch2entire")
@@ -56,8 +58,8 @@ class parser_args(TaskDispatcher, name='DRPNN'):
         cfg.img_range = 2047.0 if dataset_name != "gf2" else 1023.0
         cfg.dataloader_name = "PanCollection_dataloader"  # PanCollection_dataloader, oldPan_dataloader, DLPan_dataloader
         cfg.merge_args2cfg(args)
-        # cfg.workflow = [('train', 50), ('val', 1)]
-        cfg.workflow = [('valid', 1)]
+        # cfg.workflow = [('train', 50), ('valid', 1)]
+        cfg.workflow = [('train', 1)]
         cfg.merge_from_dict(kwargs)  # dict is merged partially
         cfg.dataset = kwargs['dataset'] if 'dataset' in kwargs else cfg.dataset
         print(cfg.pretty_text)

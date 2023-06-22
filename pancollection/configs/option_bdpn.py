@@ -28,7 +28,9 @@ class parser_args(TaskDispatcher, name='BDPN'):
         parser.add_argument('--lr_scheduler', default=True, type=bool)
         parser.add_argument('--samples_per_gpu', default=32, type=int,  # 8
                             metavar='N', help='mini-batch size (default: 256)')
-        parser.add_argument('--print-freq', '-p', default=1, type=int,
+        parser.add_argument('--save_interval', default=1, type=int,
+                            metavar='N', help='save ckpt frequency (default: 10)')
+        parser.add_argument('--log_interval', default=1, type=int,
                             metavar='N', help='print frequency (default: 10)')
         parser.add_argument('--epochs', default=1600, type=int)
         parser.add_argument('--workers_per_gpu', default=0, type=int)
@@ -39,7 +41,7 @@ class parser_args(TaskDispatcher, name='BDPN'):
         # * Model and Dataset
         parser.add_argument('--arch', '-a', metavar='ARCH', default='BDPN', type=str,
                             choices=['PanNet', 'DiCNN', 'PNN', 'FusionNet'])
-        parser.add_argument('--dataset', default={'train': 'wv3', 'test': 'wv3_multiExm1.h5'}, type=str,
+        parser.add_argument('--dataset', default={'train': 'wv3', 'valid': 'wv3', 'test': 'wv3_multiExm1.h5'}, type=str,
                             choices=[None, 'wv2', 'wv3', 'wv4', 'qb', 'gf',
                                      'wv3_OrigScale_multiExm1.h5', 'wv3_multiExm1.h5', ...],
                             help="performing evalution for patch2entire")

@@ -18,8 +18,11 @@ def run_demo(**kwargs):
     # pan.trainer.main(cfg, pan.build_model, pan.getDataSession)
 
 if __name__ == '__main__':
-    arch = 'PNN'
+    arch = 'FusionNet'
     dataset_name = 'gf2'
     cfg = dict(arch=arch, dataset_name=dataset_name, use_resume=False,
-                      dataset={'train': 'gf2', 'test': 'test_gf2_multiExm1.h5'})
+                      dataset={'train': 'gf2', 'valid': 'gf2', 'test': 'test_gf2_multiExm1.h5'},
+                      workflow=[('train', 1)],  # ('valid', 1), ('test', 1),
+                      resume_from="",
+                      use_log_and_save=True)
     run_demo(**cfg)

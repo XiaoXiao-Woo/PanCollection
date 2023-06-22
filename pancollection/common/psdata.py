@@ -16,7 +16,12 @@ class PansharpeningSession():
 
         # self.mapping = {'wv3': 'wv3_multiExm1.h5', 'wv2': 'wv2_multiExm1.h5', 'qb': 'qb_multiExm1.h5', 'gf2': 'gf2_multiExm1.h5'}
 
-    def get_dataloader(self, dataset_name, distributed):
+    def get_dataloader(self, dataset_name, distributed, state_dataloader):
+
+        generator = torch.Generator()
+        generator.manual_seed(self.args.seed)
+        if state_dataloader is not None:
+            generator.set_state(state_dataloader.cpu())
 
         dataset = None
         dataloader_name = self.args.dataloader_name
@@ -34,13 +39,13 @@ class PansharpeningSession():
         if distributed:
             sampler = torch.utils.data.distributed.DistributedSampler(dataset)
 
-        # if not dataset_name in self.dataloaders:
         dataloaders = \
             DataLoader(dataset, batch_size=self.samples_per_gpu,
-                       persistent_workers=(True if self.workers_per_gpu > 0 else False), pin_memory=True,
-                       shuffle=(sampler is None), num_workers=self.workers_per_gpu, drop_last=True, sampler=sampler)
+                       persistent_workers=(True if self.workers_per_gpu > 0 else False),
+                       pin_memory=True, generator=generator, shuffle=(sampler is None),
+                       num_workers=self.workers_per_gpu, drop_last=True, sampler=sampler)
 
-        return dataloaders, sampler
+        return dataloaders, sampler, generator
 
     def get_valid_dataloader(self, dataset_name, distributed):
 
