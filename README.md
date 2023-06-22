@@ -124,7 +124,7 @@ def run_demo():
 
 
     cfg = TaskDispatcher.new(task='hisr', mode='entrypoint', arch='your_model_name', **data_path,
-                             workflow=[('train', 10), ('valid', 1), ('test', 1)], resume_from="", experimental_desc="LN")
+                             workflow=[('train', 10), ('valid', 1), ('test', 1)], resume_from=r"", experimental_desc="Test")
                             #  **data_path)
                             #  , data_dir="/Data/Datasets/hisr")
     print(TaskDispatcher._task.keys())
