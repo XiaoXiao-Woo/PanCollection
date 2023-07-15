@@ -124,7 +124,6 @@ def run_demo():
 
     cfg = TaskDispatcher.new(task='pansharpeninig', mode='entrypoint', arch='<your_model_name>', data_dir='<your_data_path>',
                              workflow=[('train', 10), ('valid', 1), ('test', 1)], resume_from=r"", experimental_desc="Test")
-                            #  , data_dir="")
     print(TaskDispatcher._task.keys())
 
     main(cfg, build_model, getDataSession)
