@@ -144,7 +144,7 @@ One model is divided into three parts:
 
 3. Write a new model in folder of `pancollection/models/<modelName>/model_<modelName>.py`.
 
-Note that when you add a new model into PanCollection, you need to update `pancollection/models/__init__.py` and add option_<modelName>.py.
+Note that when you add a new model into PanCollection, you need to update `pancollection/models/__init__.py` and add `option_<modelName>.py`.
 
 **Others**
 * if you want to add customized datasets, you need to update:
