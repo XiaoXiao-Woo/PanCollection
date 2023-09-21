@@ -189,7 +189,7 @@ We appreciate all contributions to improving PanCollection. Looking forward to y
 
 ## Citation
 Please cite this project if you use datasets or the toolbox in your research.
-```
+```bibtex
 @misc{PanCollection,
     author = {Xiao Wu, Liang-Jian Deng and Ran Ran},
     title = {"PanCollection" for Remote Sensing Pansharpening},
@@ -198,7 +198,7 @@ Please cite this project if you use datasets or the toolbox in your research.
 }
 ```
 
-```
+```bibtex
 @ARTICLE{dengjig2022,
 	author={邓良剑，冉燃，吴潇，张添敬},
 	journal={中国图象图形学报},
@@ -211,7 +211,7 @@ Please cite this project if you use datasets or the toolbox in your research.
    }
 ```
 
-```
+```bibtex
 @ARTICLE{deng2022grsm,
 author={L.-J. Deng, G. Vivone, M. E. Paoletti, G. Scarpa, J. He, Y. Zhang, J. Chanussot, and A. Plaza},
 booktitle={IEEE Geoscience and Remote Sensing Magazine},
