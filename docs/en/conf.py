@@ -122,7 +122,7 @@ html_theme_options = {
     'menu': [
         {
             'name': 'GitHub',
-            'url': 'https://github.com/open-mmlab/mmcv'
+            'url': 'https://github.com/XiaoXiao-Woo/PanCollection'
         },
     ],
     # Specify the language of shared menu
@@ -132,8 +132,8 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
-html_css_files = ['css/readthedocs.css']
+# html_static_path = ['_static']
+# html_css_files = ['css/readthedocs.css']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -148,7 +148,7 @@ html_css_files = ['css/readthedocs.css']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'mmcvdoc'
+htmlhelp_basename = 'pancollectiondoc'
 
 # -- Options for LaTeX output ------------------------------------------------
 
@@ -174,7 +174,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'mmcv.tex', 'mmcv Documentation', 'MMCV Contributors',
+    (master_doc, 'pancollection.tex', 'pancollection Documentation', 'PanCollection Contributors',
      'manual'),
 ]
 
@@ -182,7 +182,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, 'mmcv', 'mmcv Documentation', [author], 1)]
+man_pages = [(master_doc, 'pancollection', 'pancollection Documentation', [author], 1)]
 
 # -- Options for Texinfo output ----------------------------------------------
 
@@ -190,7 +190,7 @@ man_pages = [(master_doc, 'mmcv', 'mmcv Documentation', [author], 1)]
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'mmcv', 'mmcv Documentation', author, 'mmcv',
+    (master_doc, 'pancollection', 'pancollection Documentation', author, 'pancollection',
      'One line description of project.', 'Miscellaneous'),
 ]
 
