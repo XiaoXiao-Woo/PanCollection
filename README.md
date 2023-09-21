@@ -109,7 +109,7 @@ or
 	__cfg.eval__ = True or __cfg.workflow__ = [('test', 1)]
 
 **Step4.** How to customize your model.
-```pythonn
+```python
 def run_demo():
     import os 
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
