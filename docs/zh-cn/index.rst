@@ -1,9 +1,21 @@
 Welcome to PanCollection's documentation!
 ================================
 
-
-
 You can switch between Chinese and English documents in the lower-left corner of the layout.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Get Started
+
+   get_started/introduction.md
+   get_started/installation.md
+
+.. toctree::
+   :maxdepth: 2
+   :caption: PanCollection
+
+   PanCollection/PreProcess.md
+   PanCollection/Evaluation.md
 
 .. toctree::
    :caption: Switch Language
@@ -11,34 +23,14 @@ You can switch between Chinese and English documents in the lower-left corner of
    switch_language.md
 
 .. toctree::
-   :glob:
-   :caption: Get Started
-
-   get_started/Introduction.md
-   get_started/Installation.md
-
-.. toctree::
-   :glob:
-   :caption: PanCollection
-
-   PanCollection/Simulation.md
-   PanCollection/PreProcess.md
-   PanCollection/Example.md
-   PanCollection/Evaluation.md
-
-.. toctree::
-   :caption: Utilization
-
-   citation.md
-   faq.md
-
-.. toctree::
-   :glob:
    :maxdepth: 2
-   :caption: Python API
+   :caption: Related Toolbox
 
+   related.md
 
+.. toctree::
 
+   faq.md
 
 Indices and tables
 ==================
