@@ -222,6 +222,17 @@ doi={10.1109/MGRS.2020.3019315}
 }
 ```
 
+```bibtex
+@InProceedings{Wu_2021_ICCV,
+    author    = {Wu, Xiao and Huang, Ting-Zhu and Deng, Liang-Jian and Zhang, Tian-Jing},
+    title     = {Dynamic Cross Feature Fusion for Remote Sensing Pansharpening},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2021},
+    pages     = {14687-14696}
+}
+```
+
 ## Acknowledgement
 - [MMCV](https://github.com/open-mmlab/mmcv): OpenMMLab foundational library for computer vision.
 
