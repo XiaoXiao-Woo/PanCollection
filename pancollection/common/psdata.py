@@ -1,9 +1,11 @@
 import glob
 import torch
 from torch.utils.data import DataLoader
+from udl_vis.Basis.distributed import DistributedSampler
 from pancollection.common.test_panloader import oldPan_dataloader, PanCollection_dataloader, DLPan_dataloader
 from pancollection.common.train_panloader import oldPan_trainloader, PanCollection_trainloader, DLPan_trainloader
 from pancollection.common.valid_panloader import oldPan_validloader, PanCollection_validloader, DLPan_validloader
+
 
 class PansharpeningSession():
     def __init__(self, args):
@@ -35,9 +37,9 @@ class PansharpeningSession():
         if dataset is None:
             raise NotImplementedError(f"{dataset_name} or {dataloader_name} is not supported.")
 
-        sampler = None
-        if distributed:
-            sampler = torch.utils.data.distributed.DistributedSampler(dataset)
+        sampler = DistributedSampler(dataset, generator=generator)
+        # if distributed:
+        # sampler = torch.utils.data.distributed.DistributedSampler(dataset)
 
         dataloaders = \
             DataLoader(dataset, batch_size=self.samples_per_gpu,
@@ -61,9 +63,10 @@ class PansharpeningSession():
         if dataset is None:
             raise NotImplementedError(f"{dataset_name} or {dataloader_name} is not supported.")
 
-        sampler = None
-        if distributed:
-            sampler = torch.utils.data.distributed.DistributedSampler(dataset)
+        sampler = DistributedSampler(dataset, shuffle=False)
+        # sampler = None
+        # if distributed:
+        # sampler = torch.utils.data.distributed.DistributedSampler(dataset)
 
         # if not dataset_name in self.dataloaders:
         dataloaders = \
@@ -74,7 +77,6 @@ class PansharpeningSession():
         return dataloaders, sampler
 
     def get_eval_dataloader(self, dataset_name, distributed):
-
 
         dataloader_name = self.args.dataloader_name
         if dataloader_name == "oldPan_dataloader":
@@ -89,14 +91,14 @@ class PansharpeningSession():
         if dataset is None:
             raise NotImplementedError(f"{dataset_name} or {dataloader_name} is not supported.")
 
-        sampler = None
-        if distributed:
-            sampler = torch.utils.data.distributed.DistributedSampler(dataset)
+        sampler = DistributedSampler(dataset, shuffle=False)
+        # sampler = None
+        # if distributed:
+        # sampler = torch.utils.data.distributed.DistributedSampler(dataset)
 
         # if not dataset_name in self.dataloaders:
         dataloaders = \
-            DataLoader(dataset, batch_size=1,
-                       shuffle=False, num_workers=1, drop_last=False, sampler=sampler)
+            DataLoader(dataset, batch_size=1, shuffle=False, num_workers=1, drop_last=False, sampler=sampler)
         return dataloaders, sampler
 
 
@@ -137,6 +139,7 @@ def test_my_data(args, sess):
 
     print(len(loader))
 
+
 def test_PanCollection(args, sess):
     # survey: RR: ['gt', 'lms', 'ms', 'pan'] FR: ['lms', 'ms', 'pan']
     # train_wv3.h5 9714 16-64 / / 20
@@ -159,6 +162,7 @@ def test_PanCollection(args, sess):
     # args.dataset = 'wv3_multiExm1.h5'
     # loader, _ = sess.get_eval_dataloader(args.dataset, False)
     print(len(loader))
+
 
 def test_DLPan(args, sess):
     # DLPan: RR: ['gt', 'lms', 'ms', 'pan'] FR: ['lms', 'ms', 'pan']
@@ -186,14 +190,13 @@ def test_DLPan(args, sess):
 if __name__ == '__main__':
     # from option import args
     import argparse
+
     parser = argparse.ArgumentParser()
 
     args = parser.parse_args()
     args.samples_per_gpu = 8
     args.workers_per_gpu = 0
     args.img_range = 2047.0
-
-
 
     sess = PansharpeningSession(args)
 
