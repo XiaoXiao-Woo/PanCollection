@@ -33,6 +33,7 @@ class Dataset_Pro(data.Dataset):
         ms1 = data["ms"][...]  # NxCxHxW=0,1,2,3
         ms1 = np.array(ms1.transpose(0, 2, 3, 1), dtype=np.float32) / img_scale  # NxHxWxC
         ms1_tmp = get_edge(ms1)  # NxHxWxC
+        self.ms = torch.from_numpy(ms1).permute(0, 3, 1, 2)  # NxCxHxW:
         self.ms_hp = torch.from_numpy(ms1_tmp).permute(0, 3, 1, 2)  # NxCxHxW:
 
         pan1 = data['pan'][...]  # Nx1xHxW
@@ -40,6 +41,7 @@ class Dataset_Pro(data.Dataset):
         pan1 = np.squeeze(pan1, axis=3)  # NxHxW
         pan_hp_tmp = get_edge(pan1)  # NxHxW
         pan_hp_tmp = np.expand_dims(pan_hp_tmp, axis=3)  # NxHxWx1
+        self.pan = torch.from_numpy(pan1[..., None]).permute(0, 3, 1, 2)
         self.pan_hp = torch.from_numpy(pan_hp_tmp).permute(0, 3, 1, 2)  # Nx1xHxW:
         print(
             f"gt: {self.gt.size()}, lms: {self.lms.size()}, pan_hp: {self.pan_hp.size()}, ms_hp: {self.ms_hp.size()} with {img_scale}")
@@ -48,7 +50,9 @@ class Dataset_Pro(data.Dataset):
     def __getitem__(self, index):
         return {'gt': self.gt[index, :, :, :].float(),
                 'lms': self.lms[index, :, :, :].float(),
+                'ms': self.ms[index, :, :, :].float(),
                 'ms_hp': self.ms_hp[index, :, :, :].float(),
+                'pan': self.pan[index, ...].float(),
                 'pan_hp': self.pan_hp[index, :, :, :].float()}
 
         #####必要函数

@@ -16,8 +16,8 @@ class parser_args(TaskDispatcher, name='DCFNet'):
         model_path = kwargs["model_path"] if 'model_path' in kwargs else f'.pth.tar'
         dataset_name = kwargs["dataset_name"] if 'dataset_name' in kwargs else "wv3"
         use_resume = kwargs["use_resume"] if 'use_resume' in kwargs else True
-        model_path = load_ckpt(use_resume=use_resume, model_name="DCFNet",
-                               dataset_name=dataset_name, model_path=model_path)
+        # model_path = load_ckpt(use_resume=use_resume, model_name="DCFNet",
+        #                        dataset_name=dataset_name, model_path=model_path)
 
 
 
@@ -31,7 +31,9 @@ class parser_args(TaskDispatcher, name='DCFNet'):
                             metavar='N', help='mini-batch size (default: 256)')
         parser.add_argument('--save_interval', default=10, type=int,
                             metavar='N', help='save ckpt frequency (default: 10)')
-        parser.add_argument('--log_interval', default=10, type=int,
+        parser.add_argument('--log_epoch_interval', default=50, type=int,
+                            metavar='N', help='print frequency (default: 10)')
+        parser.add_argument('--log_iter_interval', default=50, type=int,
                             metavar='N', help='print frequency (default: 10)')
         parser.add_argument('--epochs', default=5000, type=int)
         parser.add_argument('--workers_per_gpu', default=0, type=int)

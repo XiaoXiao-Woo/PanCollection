@@ -10,7 +10,7 @@ def build_model(arch, task, cfg=None):
     if task == "pansharpening":
         from pancollection.models.base_model import PanSharpeningModel as MODELS
 
-        return MODELS.build_model(cfg)
+        return MODELS.build_model_from_task(cfg)
     else:
         raise NotImplementedError(f"It's not supported in {task}")
 

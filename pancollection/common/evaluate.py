@@ -2,6 +2,7 @@ import math
 import torch
 import torch.nn.functional as F
 import numpy as np
+from .FS_index.indexes_evaluation_FS import indexes_evaluation_FS
 
 
 # 由于dat及其方差等数值舍入存在误差，最终结果有0.001左右的误差
@@ -481,12 +482,57 @@ if __name__ == "__main__":
     # a_t_pad = nn.functional.pad(a_t, pad=(1, 1, 1, 1), mode='replicate')
     # print(a_t_pad)
     # print(gs_filter())
-    from skimage.metrics import structural_similarity
+
+    import h5py
     from scipy import io as sio
-    I_HRMS = sio.loadmat('./I_HRMS.mat')['I_HRMS'] / 2047.0
-    I_GT = sio.loadmat('./I_GT.mat')['I_GT'] / 2047.0
-    print(structural_similarity(I_HRMS, I_GT, win_size=11, data_range=1, multichannel=True, gaussian_weights=True))
-    I_HRMS = torch.from_numpy(I_HRMS).unsqueeze(0).permute(0, 3, 1, 2).cuda()
-    I_GT = torch.from_numpy(I_GT).unsqueeze(0).permute(0, 3, 1, 2).cuda()
-    print(I_GT[0, 0, :5, :5])
-    print(torch.mean(_ssim(I_HRMS, I_GT)))
+
+    ################################################################################################################
+    #  |====PSNR(Inf)====|====SSIM(1)====|====Q(1)====|===Q_avg(1)===|=====SAM(0)=====|======ERGAS(0)=======|=======CC(1)=======|=======SCC(1)=======|=======RMSE(0)=======
+    #  FusionNet 39.2423 0.0000 0.9859 0.0000 0.6548 0.0000 0.5854 0.0000 2.0508 0.0000 4.2014 0.0000 0.9800 0.0000 0.9803 0.0000 0.0122 0.0000
+    ################################################################################################################
+    I_fusionnet = sio.loadmat("tests/wv3_fusionnet_reduce_0.mat")['sr']
+    I_fusionnet /= 2047.0
+    print(I_fusionnet.shape)
+    result_our = torch.from_numpy(I_fusionnet).float().cuda().clip(0, 1)
+
+    data = h5py.File(r"D:\Datasets\pansharpening\PanCollection\test_data\test_wv3_multiExm1.h5".replace('\\', '/'))
+    print(data.keys())
+    gt = np.asarray(data['gt']) / 2047.0
+    lms = np.asarray(data['lms']) / 2047.0
+    ms = np.asarray(data['ms']) / 2047.0
+    pan = np.asarray(data['pan']) / 2047.0
+    print(gt.shape, lms.shape, ms.shape, pan.shape)
+
+    gt = torch.from_numpy(gt).float().cuda()
+
+    Qblocks_size = 32;
+    dim_cut = 30
+    reduce_metrics = analysis_accu(gt[0].permute(1, 2, 0), result_our, 4, dim_cut=dim_cut)
+    print(reduce_metrics)
+
+    ################################################################################################################
+    #     |= == D_lambda_avg(0) == = |= == == D_s_avg(0) == == = |= == == =QNR(1) == == == =
+    #     FusionNet 0.0254 0.0000 0.0291 0.0000 0.9462 0.0000
+    ################################################################################################################
+
+    I_fusionnet = sio.loadmat("tests/wv3_fusionnet_full_0.mat")['sr']
+    result_our = I_fusionnet / 2047.0
+    print(result_our.shape)
+    # result_our = torch.from_numpy(I_fusionnet).float().cuda()
+
+    data = h5py.File(r"D:\Datasets\pansharpening\PanCollection\test_data\test_wv3_OrigScale_multiExm1.h5".replace('\\', '/'))
+    print(data.keys())
+    lms = np.asarray(data['lms']) / 2047.0
+    ms = np.asarray(data['ms']) / 2047.0
+    pan = np.asarray(data['pan']) / 2047.0
+    print(lms.shape, ms.shape, pan.shape)
+    L = 11
+    dim_cut = 21
+    # thvalues = 0
+    # pan = torch.from_numpy(pan).float().cuda()
+    # lms = torch.from_numpy(lms).float().cuda()
+    # ms = torch.from_numpy(ms).float().cuda()
+    full_metrics = indexes_evaluation_FS(I_F=result_our, I_MS_LR=ms[0].transpose(1, 2, 0), I_MS=lms[0].transpose(1, 2, 0), I_PAN=pan[0].transpose(1, 2, 0),
+                                         L=L, th_values=thvalues, sensor='wv3', ratio=4, Qblocks_size=32, flagQNR=1)
+
+    print(full_metrics)

@@ -31,7 +31,9 @@ class parser_args(TaskDispatcher, name='DiCNN'):
                             metavar='N', help='mini-batch size (default: 256)')
         parser.add_argument('--save_interval', default=50, type=int,
                             metavar='N', help='save ckpt frequency (default: 10)')
-        parser.add_argument('--log_interval', default=50, type=int,
+        parser.add_argument('--log_epoch_interval', default=50, type=int,
+                            metavar='N', help='print frequency (default: 10)')
+        parser.add_argument('--log_iter_interval', default=50, type=int,
                             metavar='N', help='print frequency (default: 10)')
         parser.add_argument('--epochs', default=5000, type=int)
         parser.add_argument('--workers_per_gpu', default=0, type=int)
@@ -58,7 +60,6 @@ class parser_args(TaskDispatcher, name='DiCNN'):
         cfg.merge_args2cfg(args)
         cfg.workflow = [('train', 1)]
         cfg.merge_from_dict(kwargs)
-        cfg.merge_from_dict(kwargs)  # dict is merged partially
         cfg.dataset = kwargs['dataset'] if 'dataset' in kwargs else cfg.dataset
         print(cfg.pretty_text)
 

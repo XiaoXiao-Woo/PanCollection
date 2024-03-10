@@ -33,7 +33,9 @@ class parser_args(TaskDispatcher, name='FusionNet'):
                             metavar='N', help='mini-batch size (default: 256)')
         parser.add_argument('--save_interval', default=1, type=int,
                             metavar='N', help='save ckpt frequency (default: 10)')
-        parser.add_argument('--log_interval', default=50, type=int,
+        parser.add_argument('--log_epoch_interval', default=50, type=int,
+                            metavar='N', help='print frequency (default: 10)')
+        parser.add_argument('--log_iter_interval', default=50, type=int,
                             metavar='N', help='print frequency (default: 10)')
         parser.add_argument('--seed', default=1, type=int,
                             help='seed for initializing training. ')

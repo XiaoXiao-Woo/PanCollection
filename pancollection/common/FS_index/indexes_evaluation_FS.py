@@ -237,4 +237,29 @@ def indexes_evaluation_FS(I_F, I_MS_LR, I_PAN, L, th_values, I_MS, sensor, ratio
     else:
         QNR_index, D_lambda, D_S = HQNR(I_F, I_MS_LR, I_MS, I_PAN, Qblocks_size, sensor, ratio)
 
-    return QNR_index, D_lambda, D_S
+    return {"QNR": QNR_index, "D_lambda": D_lambda, "D_S": D_S}
+
+
+if __name__ == '__main__':
+    import h5py
+    import scipy.io as sio
+    import os
+
+    mat_path = "D:/Python/matlab_code/pansharpening/Pansharpening Toolbox for Distribution/hsp"
+
+    FR = sio.loadmat(os.path.join(mat_path, 'DatasetFR1.mat'))
+    I_GS = np.array(h5py.File(os.path.join(mat_path, 'I_GS.mat'), 'r')['I_GS']).transpose(2, 1, 0) / 65535.0
+
+    print(I_GS[:3, :3, 0])
+
+    I_MS_LR = FR['I_MS'].transpose(1, 0, 2) / 65535.0
+    I_PAN = FR['I_PAN'].transpose(1, 0) / 65535.0
+    print(I_GS.dtype, 2 ** 16 - 1)
+    print(I_GS.shape, type(I_GS), I_MS_LR.shape, type(I_MS_LR), I_PAN.shape, type(I_PAN))
+    # from_numpy仅支持float
+    I_GS, I_MS_LR, I_PAN = torch.from_numpy(I_GS)[:64, :64], torch.from_numpy(I_MS_LR)[:64, :64], torch.from_numpy(
+        I_PAN)[:64, :64]
+    I_GS = torch.tensor(I_GS, requires_grad=True)
+    print(I_GS.requires_grad)
+    metrics = QS(I_GS, I_MS_LR, None, I_PAN, ratio=6, S=4)
+    print(metrics)

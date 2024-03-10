@@ -27,13 +27,17 @@ class parser_args(TaskDispatcher, name='PanNet'):
         parser.add_argument('--out_dir', metavar='DIR', default=f'{root_dir}/results/{cfg.task}',
                             help='path to save model')
         # * Training
-        parser.add_argument('--lr', default=1e-3, type=float)  # 1e-4 2e-4 8
+        parser.add_argument('--lr', default=3e-4, type=float)  # 1e-4 2e-4 8
         parser.add_argument('--lr_scheduler', default=True, type=bool)
         parser.add_argument('--samples_per_gpu', default=32, type=int,  # 8
                             metavar='N', help='mini-batch size (default: 256)')
         parser.add_argument('--save_interval', default=50, type=int,
                             metavar='N', help='save ckpt frequency (default: 10)')
-        parser.add_argument('--log_interval', default=50, type=int,
+        parser.add_argument('--log_epoch_interval', default=50, type=int,
+                            metavar='N', help='print frequency (default: 10)')
+        parser.add_argument('--log_epoch_interval', default=50, type=int,
+                            metavar='N', help='print frequency (default: 10)')
+        parser.add_argument('--log_iter_interval', default=50, type=int,
                             metavar='N', help='print frequency (default: 10)')
         parser.add_argument('--seed', default=1, type=int,
                             help='seed for initializing training. ')

@@ -27,7 +27,8 @@ class panshaprening_cfg(TaskDispatcher, name='pansharpening'):
         cfg.metrics = 'loss'
         cfg.task = "pansharpening"
         cfg.save_fmt = "mat" # fmt is mat or not mat
-        cfg.taskhead = "pansharpening"
+        # cfg.taskhead = "pansharpening"
+        cfg.test = "reduce"  # reduce/full experiment
         # * Importantly
         warning = f"Note: FusionNet, DiCNN, PNN don't have high-pass filter"
         warnings.warn(warning)
