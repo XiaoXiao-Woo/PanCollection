@@ -9,7 +9,7 @@ from udl_vis.Basis.python_sub_class import ModelDispatcher
 import numpy as np
 import torch
 from torch.nn import functional as F
-from pancollection.common.evaluate import analysis_accu
+from pancollection.common.evaluate import analysis_accu, indexes_evaluation_FS
 from pancollection.common.dataset import save_results
 
 class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
@@ -66,17 +66,26 @@ class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
 
     def val_step(self, *args, **kwargs):
         sr, gt = self.model.val_step(*args, **kwargs)
-        result_our = torch.squeeze(sr).permute(1, 2, 0)
-        metrics = analysis_accu(gt.cuda().squeeze(0), result_our, 4)
-        if kwargs['test_mode']:
-            result_our = result_our * kwargs['img_range']
-            if kwargs['idx'] not in [220, 231, 236, 469, 766, 914]:
-                if kwargs['save_fmt'] is not None and os.path.isdir(kwargs['save_fmt']):
-                    save_results(kwargs['idx'], kwargs['save_dir'], kwargs['filename'], kwargs['save_fmt'], result_our)
-                self.SAM_list.append(metrics['SAM'].item())
-                self.ERGAS_list.append(metrics['ERGAS'].item())
-            if kwargs['idx'] == 1257:
-                print(np.mean(self.SAM_list), np.mean(self.ERGAS_list))
+        if not kwargs['test_mode']:
+            metrics = self.criterion(sr, gt)
+        else:
+            result_our = torch.squeeze(sr).permute(1, 2, 0)
+            if kwargs['test'] == "reduce":
+                metrics = analysis_accu(gt.cuda().squeeze(0), result_our, 4)
+                result_our = result_our * kwargs['img_range']
+                if kwargs['idx'] not in [220, 231, 236, 469, 766, 914]:
+                    if kwargs['save_fmt'] is not None and os.path.isdir(kwargs['save_fmt']):
+                        save_results(kwargs['idx'], kwargs['save_dir'], kwargs['filename'], kwargs['save_fmt'], result_our)
+                    self.SAM_list.append(metrics['SAM'].item())
+                    self.ERGAS_list.append(metrics['ERGAS'].item())
+                if kwargs['idx'] == 1257:
+                    print(np.mean(self.SAM_list), np.mean(self.ERGAS_list))
+            elif kwargs['test'] == 'full':
+                metrics = indexes_evaluation_FS(I_F=result_our.cpu().numpy(),
+                                                I_MS_LR=args[0]["ms"][0].permute(1, 2, 0).cpu().numpy(),
+                                                I_PAN=args[0]['pan'][0].permute(1, 2, 0).cpu().numpy(),
+                                                I_MS=args[0]["lms"][0].permute(1, 2, 0).cpu().numpy(),
+                                                L=11, th_values=0, sensor='wv3', ratio=4, Qblocks_size=32, flagQNR=1)
 
         return {'log_vars': metrics}
 
