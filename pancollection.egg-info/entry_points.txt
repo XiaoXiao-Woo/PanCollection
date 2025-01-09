@@ -1,0 +1,2 @@
+[console_scripts]
+accelerate_pansharpening = pancollection.python_scripts.accelerate_pansharpening:hydra_run

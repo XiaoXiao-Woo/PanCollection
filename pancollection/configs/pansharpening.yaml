@@ -1,0 +1,12 @@
+defaults:
+  - runtime.yaml
+  - datasets_node02.yaml
+
+task: "pansharpening"
+scale: [1]
+best_prec1: 10000
+best_prec5: 10000
+metrics: { "train": "loss", "val": "SAM", "test": "SAM" }
+save_fmt: ["png"] # options: mat, not mat
+test: "reduce" # options: reduce, full experiment
+test_samplers_per_gpu: 20

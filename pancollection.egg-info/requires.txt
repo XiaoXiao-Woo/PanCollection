@@ -1,0 +1,15 @@
+psutil
+opencv-python
+numpy
+matplotlib
+tensorboard
+addict
+yapf
+imageio
+colorlog
+h5py
+regex
+packaging
+colorlog
+pyyaml
+udl-vis

@@ -1,0 +1,54 @@
+command: python
+foreground: true
+n_jobs: 1 # "concurrency number"
+use_log: true
+log_dir: "logs"
+tfb_dir: null
+use_tfb: false
+backend: "mmcv1"
+fp16_cfg: {}
+fp16: false
+fp_scaler: false
+mixed_precision: null # options: null, fp16, bf16, fp8
+
+accumulated_step: 1
+grad_clip_norm: null
+grad_clip_value: null
+seed: 10
+reg: true
+crop_batch_size: 128
+rgb_range: 255
+# Additional parameters
+global_rank: 0
+once_epoch: false
+reset_lr: false
+save_top_k: 1
+save_latest_limit: 1
+load_model_strict: true
+resume_mode: "best"
+validate: false
+gpu_ids: [0]
+prefix_model: ""
+use_colorlog: true
+use_save: true
+device: cuda
+runner_mode: "epoch"
+img_range: 1
+code_dir: ""
+start_save_epoch: 1
+earlyStopping: true
+flag_fast_train: true
+save_fmt: ["png", "mat"]
+start_save_best_epoch: 200
+revise_keys: '[(r"^module\.", "")]'
+precision: 5
+mode: null
+detect_anomalous_params: false
+launcher: "pytorch"
+ema_decay: 0.999
+use_ema: true
+by_epoch: true
+eval_flag: false
+formatter: "model_{epoch}_{metrics}"
+dist_params:
+  backend: "nccl"

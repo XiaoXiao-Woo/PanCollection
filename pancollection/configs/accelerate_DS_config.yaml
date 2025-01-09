@@ -1,0 +1,12 @@
+compute_environment: LOCAL_MACHINE
+debug: false
+deepspeed_config:
+  deepspeed_config_file: /Data3/woo/PanCollection/pancollection/configs/ds_config.json # not effective
+  zero3_init_flag: true
+
+distributed_type: "DEEPSPEED" # DEEPSPEED, FSDP
+downcast_bf16: "no"
+enable_cpu_affinity: false
+machine_rank: 0
+num_machines: 1
+num_processes: 2

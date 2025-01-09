@@ -1,0 +1,32 @@
+hydra:
+  verbose: false
+  run:
+    dir: /Data3/woo/results/pansharpening/${dataset.train_name}/${args.experimental_desc}/${model_type} #_lr${args.lr}_k2_${args.k2}
+  sweep:
+    dir: /Data3/woo/results/pansharpening/${dataset.train_name}/${args.experimental_desc}/${model_type} #_lr${args.lr}_k2_${args.k2}
+    subdir: ./
+  job:
+    env_set:
+      OMP_NUM_THREADS: 1
+  job_logging:
+    level: INFO
+
+dataset:
+  train_name: "wv3"
+  val_name: "wv3"
+  test_name: "wv3"
+
+  wv3_train_path: "/Data/Datasets/pansharpening_2/PanCollection/training_data/train_wv3_9714.h5"
+  wv3_val_path: "/Data/Datasets/pansharpening_2/PanCollection/training_data/valid_wv3_9714.h5"
+  wv3_test_path: "/Data/Datasets/pansharpening_2/PanCollection/test_data/test_wv3_multiExm1.h5"
+  wv3_full_path: "/Data/Datasets/pansharpening_2/PanCollection/test_data/test_wv3_OrigScale_multiExm1.h5"
+
+  gf2_train_path: "/Data/Datasets/pansharpening_2/PanCollection/training_data/train_gf2_19809.h5"
+  gf2_val_path: "/Data/Datasets/pansharpening_2/PanCollection/training_data/valid_gf2_19809.h5"
+  gf2_test_path: "/Data/Datasets/pansharpening_2/PanCollection/test_data/test_gf2_multiExm1.h5"
+  gf2_full_path: "/Data/Datasets/pansharpening_2/PanCollection/test_data/test_gf2_OrigScale_multiExm1.h5"
+
+  qb_train_path: "/Data/Datasets/pansharpening_2/PanCollection/training_data/train_qb_17139.h5"
+  qb_val_path: "/Data/Datasets/pansharpening_2/PanCollection/training_data/valid_qb_17139.h5"
+  qb_test_path: "/Data/Datasets/pansharpening_2/PanCollection/test_data/test_qb_multiExm1.h5"
+  qb_full_path: "/Data/Datasets/pansharpening_2/PanCollection/test_data/test_qb_OrigScale_multiExm1.h5"

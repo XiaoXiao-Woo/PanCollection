@@ -1,0 +1,51 @@
+defaults:
+  - pansharpening.yaml
+
+gpu_ids: [0]
+launcher: "none" # options: none, pytorch, slurm, mpi, dp
+local_rank: 0
+log_epoch_interval: 1
+train_log_iter_interval: 50
+val_log_iter_interval: 10
+test_log_iter_interval: 1
+save_interval: 10
+max_epochs: 400
+test_samples_per_gpu: 20
+model_type: "FusionNet"
+
+args:
+  # Model configuration
+  model_path: ".pth.tar"
+  dataset_name: "wv3"
+  use_resume: true
+
+  lr: 3e-4
+  epochs: 400
+  samples_per_gpu: 32
+  workers_per_gpu: 0
+  seed: 1
+  resume_from: null
+  # Dataset configuration
+  # Evaluation
+  eval: false
+
+  # Experimental description
+  experimental_desc: "test"
+
+  # Additional configuration
+  workflow:
+    - ["test", 1]
+    # - ["train", 10]
+
+  dataset_type: "PanCollection" # "oldPan", "DLPan", "PanCollection", "Dummy"
+  img_range: 2047.0 # or adjust based on dataset_name
+  n_trials: 3
+
+search_space:
+  lr:
+    method: suggest_categorical
+    kwargs:
+      name: "lr"
+      # low: 0.0001
+      # high: 0.01
+      choices: [1e-3, 5e-4, 1e-4]
