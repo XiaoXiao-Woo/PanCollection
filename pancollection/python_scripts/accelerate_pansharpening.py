@@ -4,7 +4,7 @@ from pancollection.models.base_model import PanSharpeningModel
 
 
 def hydra_run(full_config_path="configs/config", import_path=None, build_model=None):
-    from udl_vis.AutoDL.trainer_v2 import run_hydra
+    from udl_vis.AutoDL.trainer import run_hydra
 
     run_hydra(
         full_config_path=full_config_path,
