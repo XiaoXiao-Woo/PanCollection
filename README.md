@@ -4,26 +4,51 @@
 </div>
 
 
-# "PanCollection" for Remote Sensing Pansharpening (Make Available on [PyPI](https://pypi.org/project/pancollection/) :tada:)
+# "PanCollection" for Remote Sensing Pansharpening (Release v1.0.0 [PyPI](https://pypi.org/project/pancollection/) :tada:)
 
 [English](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README.md) | [简体中文](https://github.com/XiaoXiao-Woo/PanCollection/edit/dev/README_zh.md)
 
-This repository is the official PyTorch implementation of “基于卷积神经网络的遥感图像全色锐化进展综述及相关数据集发布” ([paper](https://liangjiandeng.github.io/papers/2022/deng-jig2022.pdf), [homepage](https://liangjiandeng.github.io/PanCollection.html)).
 
-* Release the PanCollection of the pan-sharpening training-test dataset of related satellites (such as WorldView-3, QuickBird, GaoFen2, WorldView-2 satellites); 
-* Release the Python code based on the unified Pytorch framework , which is convenient for later scholars;
-* Release a unified Pansharpening framework with traditional/deep learning methods (including MATLAB test software package, see [link](https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/02-Test-toolbox-for-traditional-and-DL(Matlab))), which is convenient for later scholars to conduct fair tests.
-* Make available on [PyPI](https://pypi.org/project/pancollection/).
-* Added Colab Demo. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1KpWWj1lVUGllZCws01zQfd6CeURuGL2O#scrollTo=k53dsFhAdp6n)
+
+# Release Notes
+
+The following works is implemented by this repository: 
+
+* **2025.1**: Release **PanCollection v1.0.0**. 🎉
+* **2024.12**: *Fully-connected Transformer for Multi-source Image Fusion.*  IEEE T-PAMI 2025. ([Paper coming soon](coming soon)) 📖
+* **2024.12**: *Deep Learning in Remote Sensing Image Fusion: Methods, Protocols, Data, and Future Perspectives.* IEEE GRSM 2024. ([Paper](https://ieeexplore.ieee.org/abstract/document/10778974)) 📖
+* **2024.10**: *SSDiff: Spatial-spectral Integrated Diffusion Model for Remote Sensing Pansharpening.* NeurIPS 2024. ([Paper](https://openreview.net/pdf?id=QMVydwvrx7), [Code](https://github.com/Z-ypnos/SSDiff_main)) 🚀
+* “基于卷积神经网络的遥感图像全色锐化进展综述及相关数据集发布” ([Paper](https://liangjiandeng.github.io/papers/2022/deng-jig2022.pdf), [Homepage](https://liangjiandeng.github.io/PanCollection.html)). 🌐
+* **2022.9**: Made available on [PyPI](https://pypi.org/project/pancollection/). 📦
+* **2022.9**: Added Colab Demo. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1KpWWj1lVUGllZCws01zQfd6CeURuGL2O#scrollTo=k53dsFhAdp6n) ☁️
+* **2022.9**: Released the **PanCollection** of the pansharpening training-test dataset for related satellites (such as **WorldView-3**, **QuickBird**, **GaoFen2**, **WorldView-2**). 🛰️
+* **2022.5**: Released the Python code based on the unified Pytorch framework, facilitating access for later scholars. 🐍
+* **2022.5**: Released a unified pansharpening framework with traditional/deep learning methods (including MATLAB test software package). See [link](https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/02-Test-toolbox-for-traditional-and-DL(Matlab)). ⚙️
+* **2021.5**: *Dynamic Cross Feature Fusion for Remote Sensing Pansharpening* accepted by ICCV 2021. ([Paper](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_Dynamic_Cross_Feature_Fusion_for_Remote_Sensing_Pansharpening_ICCV_2021_paper.html), [Code](https://github.com/XiaoXiao-Woo/Dynamic-Cross-Feature-Fusion-for-Remote-Sensing-Pansharpening)) 📚
 
 See the [repo](https://github.com/liangjiandeng/PanCollection) for more detailed descriptions. 
 
 See the [PanCollection Paper](https://liangjiandeng.github.io/papers/2022/deng-jig2022.pdf) for early results.
 
+## Features
+
+| **Features** | **Value** | 
+| ------------- | --------- |
+| Automatic experimental configuration   | ✅      |   
+| Lightning, transformers, accelerate, mmcv, FSDP, DeepSpeed, etc.     | ✅      |   
+| Evaluation of Reduced/Full resolution dataset      | ✅      |   
+| Multiple models, including FCFormer, SSDiff, CANConv, etc.   | ✅      |   
+| Multiple datasets, including WorldView-3, QuickBird, GaoFen-2, WorldView-2, etc.   | ✅      | Training; Testing                 |
+| Download and upload huggingface models   | ✅     |            
+
 
 ## Recommendations
 
-We recommend users to use this code-toolbox or similar toolbox [DLPan-Toolbox](https://github.com/liangjiandeng/DLPan-Toolbox/tree/main/02-Test-toolbox-for-traditional-and-DL(Matlab)) + the dataset [PanCollection](https://drive.google.com/drive/folders/15VXUjqPybtqUN_spKfJbw40W05K4nDdY?usp=sharing) (DLPan-Toolbox contains MATLAB test software package) for fair training and testing!
+We recommend users utilize this code toolbox alongside our other open-source datasets for optimal results:
+
+Python Evaluation: Available in the current repository. For MATLAB Evaluation, refer to the DLPan-Toolbox.
+Dataset: Access the PanCollection, which includes the MATLAB test software package in DLPan-Toolbox for fair training and testing.
+For Training and Inference, combine UDL with the dataset PanCollection to ensure a fair training and testing environment!
 
 ## Datasets (Reduced and Full)
 
@@ -34,42 +59,30 @@ We recommend users to use this code-toolbox or similar toolbox [DLPan-Toolbox](h
 | GaoFen-2           | 1023      |    Training; Testing   |
 | WorldView-2        | 2047      |    Training; Testing; Generalization        |
 
-## Requirements
-* Python3.7+, Pytorch>=1.9.0
-* NVIDIA GPU + CUDA
-* The project is based on [UDL](https://github.com/XiaoXiao-Woo/UDL).
 
-## Quick Start
+
+## Easier Quick Start (coming soon)
 
 🤗 To get started with PanCollection benchmark (training, inference, etc.), we recommend reading [Google Colab](https://colab.research.google.com/drive/1KpWWj1lVUGllZCws01zQfd6CeURuGL2O#scrollTo=k53dsFhAdp6n)!
 
-```python
-import pancollection as pan
-cfg = pan.TaskDispatcher.new(task='pansharpening', mode='entrypoint', arch='FusionNet', 
-                             dataset_name="gf2", use_resume=False,
-                             dataset={'train': 'gf2', 'test': 'test_gf2_multiExm1.h5'})
-print(pan.TaskDispatcher._task)
-pan.trainer.main(cfg, pan.build_model, pan.getDataSession)
-```
-### Quick Start for Developer
 
-**Step0.** set your Python environment.
+
+### Set Your Python Environment.
 
 >git clone https://github.com/XiaoXiao-Woo/PanCollection
 
 Then, 
 
-> python setup.py develop
+> pip install -e .
 
 
 or
 
 > pip install -i pancollection https://pypi.org/simple
 
-**Step1.**
-* Download datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) from the [homepage](https://liangjiandeng.github.io/PanCollection.html). Put it with the following format. 
 
-* Verify the dataset path in `PanCollection/UDL/Basis/option.py`, or you can print the output of `run_pansharpening.py`, then set __cfg.data_dir__ to your dataset path.
+### Download datasets 
+Four satellite datasets (WorldView-3, QuickBird, GaoFen2, WorldView2) are available from the [homepage](https://liangjiandeng.github.io/PanCollection.html). Put it with the following format. 
 
 ```
 |-$ROOT/Datasets
@@ -86,102 +99,19 @@ or
 │   │   │   ├── ...
 ```
 
-**Step2.** Open `PanCollection/UDL/pansharpening`,  run the following code:
-
-> python run_pansharpening.py
-
-**step3.** How to train/validate the code.
-
-* A training example：
-
-	run_pansharpening.py
-  
-	where arch='BDPN', and configs/option_bdpn.py has: 
-  
-	__cfg.eval__ = False, 
-  
-	__cfg.workflow__ = [('train', 50), ('valid', 1)], __cfg.dataset__ = {'train': 'wv3', 'valid': 'wv3_multiExm.h5'}
-	
-* A test example:
-
-	run_test_pansharpening.py
-  
-	__cfg.eval__ = True or __cfg.workflow__ = [('test', 1)]
-
-**Step4.** How to customize your model.
-```python
-def run_demo():
-    import os 
-    os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-
-    from <your_model_file> import build
-    from pancollection.configs.configs import TaskDispatcher
-    from udl_vis.AutoDL.trainer import main
-    from pancollection.common.builder import build_model, getDataSession
-    import option_<your_model_file> # please refer to https://github.com/XiaoXiao-Woo/PanCollection/blob/main/pancollection/configs/option_fusionnet.py
+### Run the code
 
 
-    cfg = TaskDispatcher.new(task='pansharpeninig', mode='entrypoint', arch='<your_model_name>', data_dir='<your_data_path>',
-                             workflow=[('train', 10), ('valid', 1), ('test', 1)], resume_from=r"", experimental_desc="Test")
-    print(TaskDispatcher._task.keys())
-
-    main(cfg, build_model, getDataSession)
-
-if __name__ == '__main__':
-    run_demo()
-
-```
-
-
-**Step5.** How to customize the code.
-
-One model is divided into three parts:
-
-1. Record hyperparameter configurations in folder of `pancollection/configs/option_<modelName>.py`. For example, you can load pretrained model by __cfg.resume_from__ = "your_model_path".
-
-2. Set model, loss, optimizer, scheduler in folder of `pancollection/models/<modelName>_main.py`.
-
-3. Write a new model in folder of `pancollection/models/<modelName>/model_<modelName>.py`.
-
-Note that when you add a new model into PanCollection, you need to update `pancollection/models/__init__.py` and add `option_<modelName>.py`.
-
-**Others**
-* if you want to add customized datasets, you need to update:
-
-```
-pansharpening/common/psdata.py.
-```
-
-* if you want to add customized tasks, you need to update:
-
-```
-1.Put model_<newModelName> and <newModelName>_main in pancollection/models.
-2.Create a new folder of pancollection/configs to put option_<newModelName>.
-3.Add a class in panCollection/models/base_model.py, like this:
-```
-```python
-class PanSharpeningModel(ModelDispatcher, name='pansharpening'):
-```
-
-* if you want to add customized training settings, such as saving model, recording logs, and so on. you need to update:
-
-```
-udl-vis/mmcv/mmcv/runner/hooks
-```
-
-Note that: Don't put model/dataset/task-related files into the folder of AutoDL.
-
-* if you want to know more details of runner about how to train/test in `udl-vis/AutoDL/trainer.py`, please see  udl-vis/mmcv/runner/epoch_based_runner.py
+coming soon
 
 ## Plannings
 	
 - [ ] [hugging face 🤗](https://huggingface.co/datasets/elsting/PanCollection)
   - [ ] Integrated into [Huggingface Spaces 🤗](https://huggingface.co/spaces) using [Gradio](https://github.com/gradio-app/gradio). Try out the web demo: [Hugging Face Spaces](https://huggingface.co/spaces/elsting/PanCollection)
-
-- [ ] Support more models	
-
+- [x] Support hydra for parameter setting.
+- [ ] Support model zoo with downloading and uploading from [Huggingface 🤗](https://huggingface.co/models?search=pansharpening)
 - [ ] Make the [Leaderboard](https://paperswithcode.com/dataset/worldview-3-pancollection) for model results.
+
 
 ## Contribution
 We appreciate all contributions to improving PanCollection. Looking forward to your contribution to PanCollection.
@@ -189,14 +119,58 @@ We appreciate all contributions to improving PanCollection. Looking forward to y
 
 ## Citation
 Please cite this project if you use datasets or the toolbox in your research.
+
 ```bibtex
-@misc{PanCollection,
-    author = {Xiao Wu, Liang-Jian Deng and Ran Ran},
-    title = {"PanCollection" for Remote Sensing Pansharpening},
-    url = {https://github.com/XiaoXiao-Woo/PanCollection/},
-    year = {2022},
+@article{FCForrmer,
+  title={Fully-connected Transformer for Multi-source  Image Fusion},
+  author={Xiao Wu, Zi-Han Cao, Ting-Zhu Huang, Liang-Jian Deng, Jocelyn Chanussot, and Gemine Vivone}
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year={2025},
+  publisher={IEEE}
 }
 ```
+
+```bibtex
+@InProceedings{Wu_2021_ICCV,
+    author    = {Wu, Xiao and Huang, Ting-Zhu and Deng, Liang-Jian and Zhang, Tian-Jing},
+    title     = {Dynamic Cross Feature Fusion for Remote Sensing Pansharpening},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2021},
+    pages     = {14687-14696}
+}
+```
+
+
+```bibtex
+@article{vivone2024deep,
+  title={Deep Learning in Remote Sensing Image Fusion: Methods, protocols, data, and future perspectives},
+  author={Vivone, Gemine and Deng, Liang-Jian and Deng, Shangqi and Hong, Danfeng and Jiang, Menghui and Li, Chenyu and Li, Wei and Shen, Huanfeng and Wu, Xiao and Xiao, Jin-Liang and others},
+  journal={IEEE Geoscience and Remote Sensing Magazine},
+  year={2024},
+  publisher={IEEE}
+}
+```
+
+```bibtex
+@article{ssdiff,
+  title={SSDiff: Spatial-spectral Integrated Diffusion Model for Remote Sensing Pansharpening},
+  author={Zhong, Yu and Wu, Xiao and Deng, Liang-Jian and Cao, Zihan},
+  journal={arXiv preprint arXiv:2404.11537},
+  year={2024}
+}
+```
+
+```bibtex
+@ARTICLE{duancvpr2024,
+title={Content-Adaptive Non-Local Convolution for Remote Sensing Pansharpening},
+author={Yule Duan, Xiao Wu, Haoyu Deng, Liang-Jian Deng*},
+journal={IEEE/CVF Computer Vision and Pattern Recognition Conference (CVPR)},
+year={2024}
+}
+```
+
+
 
 ```bibtex
 @ARTICLE{dengjig2022,
@@ -223,18 +197,21 @@ doi={10.1109/MGRS.2020.3019315}
 ```
 
 ```bibtex
-@InProceedings{Wu_2021_ICCV,
-    author    = {Wu, Xiao and Huang, Ting-Zhu and Deng, Liang-Jian and Zhang, Tian-Jing},
-    title     = {Dynamic Cross Feature Fusion for Remote Sensing Pansharpening},
-    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-    month     = {October},
-    year      = {2021},
-    pages     = {14687-14696}
+@misc{PanCollection,
+    author = {Xiao Wu, Liang-Jian Deng and Ran Ran},
+    title = {"PanCollection" for Remote Sensing Pansharpening},
+    url = {https://github.com/XiaoXiao-Woo/PanCollection/},
+    year = {2022},
 }
 ```
 
+
 ## Acknowledgement
+- [accelerate](https://github.com/huggingface/accelerate): Accelerate is a simple way to train and use PyTorch models with multi-GPU, TPU, and mixed-precision.
+- [hydra](https://hydra.cc/): Hydra is a framework for elegantly configuring complex applications.
 - [MMCV](https://github.com/open-mmlab/mmcv): OpenMMLab foundational library for computer vision.
+- [UDL](https://github.com/XiaoXiao-Woo/UDL): UDL is a unified framework for vision tasks.with accelerate, lightning, transformers, mmcv1 engines.
 
 ## License & Copyright
 This project is open sourced under GNU General Public License v3.0.
+
