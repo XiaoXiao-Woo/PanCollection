@@ -215,3 +215,7 @@ doi={10.1109/MGRS.2020.3019315}
 ## License & Copyright
 This project is open sourced under GNU General Public License v3.0.
 
+## Contact
+If you have any questions or suggestions, please feel free to contact us.
+
+Email: Xiao.Wu@mbzuai.ac.ae, liangjian.deng@gmail.com
