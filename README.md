@@ -15,7 +15,7 @@
 The following works is implemented by this repository: 
 
 * **2025.1**: Release **PanCollection v1.0.0**. 🎉
-* **2024.12**: *Fully-connected Transformer for Multi-source Image Fusion.*  IEEE T-PAMI 2025. ([Paper coming soon](coming soon)) 📖
+* **2024.12**: *Fully-connected Transformer for Multi-source Image Fusion.*  IEEE T-PAMI 2025. ([Paper](coming soon)) 📖
 * **2024.12**: *Deep Learning in Remote Sensing Image Fusion: Methods, Protocols, Data, and Future Perspectives.* IEEE GRSM 2024. ([Paper](https://ieeexplore.ieee.org/abstract/document/10778974)) 📖
 * **2024.10**: *SSDiff: Spatial-spectral Integrated Diffusion Model for Remote Sensing Pansharpening.* NeurIPS 2024. ([Paper](https://openreview.net/pdf?id=QMVydwvrx7), [Code](https://github.com/Z-ypnos/SSDiff_main)) 🚀
 * “基于卷积神经网络的遥感图像全色锐化进展综述及相关数据集发布” ([Paper](https://liangjiandeng.github.io/papers/2022/deng-jig2022.pdf), [Homepage](https://liangjiandeng.github.io/PanCollection.html)). 🌐
