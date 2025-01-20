@@ -1,0 +1,70 @@
+defaults:
+  - base: pansharpening
+  - datasets_node02
+  - _self_
+
+base:
+  grad_clip_norm: 1
+  img_range: 2047.0 # or adjust based on dataset_name
+  debug: false
+  test_samples_per_gpu: 20
+
+
+log_epoch_interval: 1
+train_log_iter_interval: 50
+val_log_iter_interval: 10
+test_log_iter_interval: 1
+save_interval: 10
+
+# Experimental description
+experimental_desc: "test"
+
+
+# Evaluation
+eval: false
+direction: "maximize"
+
+# Main configuration
+model_type: "FusionNet"
+max_epochs: 400
+patch_size_list: { "lms": 64, "ms": 16, "pan": 64, "x_net": 64 }
+
+# Additional configuration
+workflow:
+  - ["test", 1]
+  - ["train", 10]
+
+
+# Dataset configuration
+samples_per_gpu: 32
+workers_per_gpu: 0
+seed: 1
+resume_from: ""
+dataset:
+  train_name: "wv3"
+  val_name: "wv3"
+  test_name: "wv3"
+
+
+optimizer_cfg:
+  # see udl_vis.Basis.optim.optim.py
+  optimizer_type: "Adam"
+  betas: [0.95, 0.99]
+  weight_decay: 0
+  lr: 3e-4
+
+
+args:
+  # Model configuration
+  model_path: ".pth.tar"
+  use_resume: true
+  dataset_type: "PanCollection" # "oldPan", "DLPan", "PanCollection", "Dummy"
+
+search_space:
+  lr:
+    method: suggest_categorical
+    kwargs:
+      name: "lr"
+      # low: 0.0001
+      # high: 0.01
+      choices: [1e-3, 5e-4, 1e-4]
