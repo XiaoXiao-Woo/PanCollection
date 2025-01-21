@@ -57,6 +57,100 @@ class Dataset_Pro(Dataset):
         return self.gt.shape[0]
 
 
+def load_dataset_H5_hp(file_path, scale, suffix, use_cuda=True):
+    if suffix == ".h5":
+        data = h5py.File(file_path)  # CxHxW
+        print(data.keys())
+    else:
+        data = sio.loadmat(file_path)
+    # shape_list = []
+    # for k in data.keys():
+    #     shape_list.append((k, data[k].shape))
+    # print(shape_list)
+
+    # tensor type: NxCxHxW:
+
+    lms = torch.from_numpy(data["lms"][...] / scale).float()  # .permute(0, 3, 1, 2)
+    ms = data["ms"][...] / scale
+    ms_hp = torch.from_numpy(get_edge(ms)).float()  # .permute(0, 3, 1, 2)  # NxCxHxW:
+    ms = torch.from_numpy(ms).float()
+    # mms_hp = torch.nn.functional.interpolate(ms_hp, size=(ms_hp.size(2) * 2, ms_hp.size(3) * 2),
+    #                                       mode="bilinear", align_corners=True)
+    pan = np.squeeze(data["pan"][...])
+    pan = pan[:, np.newaxis, :, :]  # NxCxHxW (C=1)
+    pan_hp = torch.from_numpy(
+        get_edge(pan / scale)
+    ).float()  # .permute(0, 3, 1, 2)  # Nx1xHxW:
+    pan = torch.from_numpy(pan / scale).float()
+    if data.get("gt", None) is None:
+        gt = torch.from_numpy(data["lms"][...] / scale).float()
+    else:
+        gt = torch.from_numpy(data["gt"][...] / scale).float()
+
+    return {
+        "lms": lms,
+        # 'mms:': mms_hp,
+        "ms": ms,
+        "ms_hp": ms_hp,
+        "pan_hp": pan_hp,
+        "pan": pan,
+        "gt": gt,
+    }
+
+
+def load_dataset_H5(file_path, scale, suffix, use_cuda=True):
+    if suffix == ".h5":
+        data = h5py.File(file_path)  # CxHxW
+        print(data.keys())
+    else:
+        data = sio.loadmat(r"D:\Datasets\wzc\E1_r_gf2_82.mat")
+
+    # tensor type:
+    if use_cuda:
+        lms = (
+            torch.from_numpy(data["lms"][...] / scale).cuda().float()
+        )  # CxHxW = 8x64x64
+
+        ms = torch.from_numpy(data["ms"][...] / scale).cuda().float()  # CxHxW= 8x64x64
+        mms = torch.nn.functional.interpolate(
+            ms,
+            size=(ms.size(2) * 2, ms.size(3) * 2),
+            mode="bilinear",
+            align_corners=True,
+        )
+        pan = torch.from_numpy(data["pan"][...] / scale).cuda().float()  # HxW = 256x256
+
+        gt = torch.from_numpy(data["gt"][...] / scale).cuda().float()
+
+    else:
+        lms = torch.from_numpy(data["lms"][...] / scale).float()  # CxHxW = 8x64x64
+
+        ms = torch.from_numpy(data["ms"][...] / scale).float()  # CxHxW= 8x64x64
+        mms = torch.nn.functional.interpolate(
+            ms,
+            size=(ms.size(2) * 2, ms.size(3) * 2),
+            mode="bilinear",
+            align_corners=True,
+        )
+        pan = torch.from_numpy(data["pan"][...] / scale).float()  # HxW = 256x256
+
+        if data.get("gt", None) is None:
+            gt = torch.from_numpy(data["lms"][...] / scale).float()
+        else:
+            if np.max(data["gt"][...]) > 1:
+                gt = torch.from_numpy(data["gt"][...] / scale).float()
+            else:
+                gt = torch.from_numpy(data["gt"][...]).float()
+    num = 20
+    return {
+        "lms": lms[:num],
+        "mms:": mms[:num],
+        "ms": ms[:num],
+        "pan": pan[:num],
+        "gt": gt[:num],
+    }
+
+
 class MultiExmTest_h5(Dataset):
 
     def __init__(self, file_path, dataset_name, img_scale, suffix=".h5"):

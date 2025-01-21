@@ -2,21 +2,9 @@ import glob
 import torch
 from torch.utils.data import DataLoader
 from udl_vis.Basis.distributed import DistributedSampler, RandomSampler
-from pancollection.common.test_panloader import (
-    oldPan_dataset,
-    PanCollection_dataset,
-    DLPan_dataset,
-)
-from pancollection.common.train_panloader import (
-    oldPan_train_dataset,
-    PanCollection_train_dataset,
-    DLPan_train_dataset,
-)
-from pancollection.common.valid_panloader import (
-    oldPan_valid_dataset,
-    PanCollection_valid_dataset,
-    DLPan_valid_dataset,
-)
+from pancollection.common.test_panloader import PanCollection_dataset
+from pancollection.common.train_panloader import PanCollection_train_dataset
+from pancollection.common.valid_panloader import PanCollection_valid_dataset
 from pancollection.common.data import DummyPansharpeningDataset
 
 
@@ -148,4 +136,3 @@ class PansharpeningSession:
             sampler=sampler,
         )
         return dataloaders, sampler
-
