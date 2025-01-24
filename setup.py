@@ -39,7 +39,7 @@ setup(
         "packaging",
         "colorlog",
         "pyyaml",
-        "udl-vis"
+        "udl-vis",
         "hydra-core"
     ],
 )
